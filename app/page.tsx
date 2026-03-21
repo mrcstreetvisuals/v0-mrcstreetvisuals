@@ -531,8 +531,8 @@ export default function Portfolio() {
         </ResponsiveContainer>
       </section>
 
-      {/* Testimonials Section */}
-      rflow-hidden">
+      {/* About Section */}
+      <section id="about" className="py-16 sm:py-20 md:py-28 lg:py-32 relative overflow-hidden">
         {/* Primary skate-themed background image */}
         <BackgroundImage
           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DSCF2640.jpg-djp8x3Gh6UyZCu6QsFLOJ810QFVMHQ.jpeg"
