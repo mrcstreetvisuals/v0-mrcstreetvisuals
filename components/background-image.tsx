@@ -55,7 +55,7 @@ export function BackgroundImage({
           transition: `opacity ${fadeInDuration}ms cubic-bezier(0.4, 0, 0.2, 1)`,
           objectPosition,
         }}
-        onLoadingComplete={() => setIsLoaded(true)}
+        onLoad={() => setIsLoaded(true)}
         sizes="100vw"
       />
     </div>
