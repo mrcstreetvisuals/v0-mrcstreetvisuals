@@ -532,34 +532,17 @@ export default function Portfolio() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-16 sm:py-20 md:py-28 lg:py-32 relative overflow-hidden">
-        {/* Primary skate-themed background image */}
+      <section id="about" className="section-padding relative overflow-hidden">
         <BackgroundImage
           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DSCF2640.jpg-djp8x3Gh6UyZCu6QsFLOJ810QFVMHQ.jpeg"
           alt="Skateboard park action background"
-          opacity={0.08}
+          opacity={0.2}
           fadeInDuration={2000}
-          className="z-0"
         />
-        
-        {/* Secondary texture overlay for depth */}
-        <BackgroundImage
-          src="/images/shop/skate-park-colorful-ramp.jpg"
-          alt="Skate park colorful ramp"
-          opacity={0.05}
-          fadeInDuration={2500}
-          className="z-0"
-        />
-        
-        {/* Dark gradient overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-950/80 via-slate-900/60 to-slate-950/80 pointer-events-none z-5" />
-        
-        {/* Accent gradient for visual interest and brand colors */}
-        <div className="absolute inset-0 bg-gradient-to-l from-red-950/12 via-transparent to-purple-950/10 pointer-events-none z-5" />
         
         <ResponsiveContainer maxWidth="5xl" className="relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Image Side - Enhanced with decorative accent */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center">
+            {/* Image Side - Mobile responsive */}
             <GradualBlurWrapper
               blurAmount={12}
               duration={1200}
@@ -572,10 +555,10 @@ export default function Portfolio() {
             >
               <div className="relative">
                 {/* Decorative accent behind image */}
-                <div className="absolute -inset-4 bg-gradient-to-br from-red-500/20 to-purple-500/20 rounded-2xl blur-xl" />
+                <div className="absolute -inset-3 sm:-inset-4 bg-gradient-to-br from-red-500/15 to-purple-500/15 rounded-lg sm:rounded-2xl blur-xl" />
                 
-                {/* Main image container */}
-                <div className="relative h-[450px] sm:h-[550px] lg:h-[650px] rounded-xl overflow-hidden shadow-2xl border border-white/10">
+                {/* Main image container - responsive heights */}
+                <div className="relative h-64 sm:h-96 md:h-[500px] lg:h-[600px] rounded-lg sm:rounded-xl overflow-hidden shadow-2xl border border-white/10">
                   <Image
                     src="/images/skate-park-action.jpg"
                     alt="Photographer at skate park with camera"
@@ -587,8 +570,8 @@ export default function Portfolio() {
               </div>
             </GradualBlurWrapper>
 
-            {/* Content Side */}
-            <div className="flex flex-col justify-center space-y-8">
+            {/* Content Side - Mobile optimized spacing */}
+            <div className="flex flex-col justify-center space-y-6 sm:space-y-8">
               <div>
                 <GradualBlurWrapper
                   blurAmount={15}
@@ -599,17 +582,17 @@ export default function Portfolio() {
                   triggerOnce={false}
                   reverseOnExit={true}
                 >
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="h-1 w-12 bg-gradient-to-r from-red-500 to-purple-500" />
-                    <span className="text-sm font-semibold text-red-500 uppercase tracking-wider">About</span>
+                  <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                    <div className="h-0.5 sm:h-1 w-8 sm:w-12 bg-gradient-to-r from-red-500 to-purple-500" />
+                    <span className="text-xs sm:text-sm font-semibold text-red-500 uppercase tracking-wider">About</span>
                   </div>
-                  <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-r from-red-500 to-purple-400 bg-clip-text text-transparent mobile-heading-adjust">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-r from-red-500 to-purple-400 bg-clip-text text-transparent mobile-heading-adjust">
                     Capturing Moments, Creating Stories
                   </h2>
                 </GradualBlurWrapper>
               </div>
 
-              <div className="space-y-5 text-base sm:text-lg text-gray-300 leading-relaxed mobile-body-adjust">
+              <div className="space-y-3 sm:space-y-5 text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed mobile-body-adjust">
                 <GradualBlurWrapper
                   blurAmount={10}
                   duration={1000}
@@ -662,8 +645,8 @@ export default function Portfolio() {
                 </GradualBlurWrapper>
               </div>
 
-              {/* Highlights Grid */}
-              <div className="grid grid-cols-3 gap-4 pt-4">
+              {/* Highlights Grid - Mobile responsive */}
+              <div className="grid grid-cols-3 gap-2 sm:gap-4 pt-4 sm:pt-6">
                 {[
                   { label: "Disciplines", value: "5+" },
                   { label: "Projects", value: "100+" },
@@ -679,11 +662,11 @@ export default function Portfolio() {
                     triggerOnce={false}
                     reverseOnExit={true}
                   >
-                    <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 text-center hover:bg-white/10 transition-colors">
-                      <p className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-red-500 to-purple-400 bg-clip-text text-transparent">
+                    <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-2 sm:p-4 text-center hover:bg-white/10 transition-colors">
+                      <p className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-red-500 to-purple-400 bg-clip-text text-transparent">
                         {item.value}
                       </p>
-                      <p className="text-xs sm:text-sm text-gray-400 mt-1 uppercase tracking-wider">{item.label}</p>
+                      <p className="text-xs sm:text-sm text-gray-400 mt-0.5 sm:mt-1 uppercase tracking-wider">{item.label}</p>
                     </div>
                   </GradualBlurWrapper>
                 ))}
