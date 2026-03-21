@@ -539,7 +539,7 @@ export default function Portfolio() {
           opacity={0.2}
           fadeInDuration={2000}
         />
-        
+
         <ResponsiveContainer maxWidth="5xl" className="relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center">
             {/* Image Side - Mobile responsive */}
@@ -556,7 +556,7 @@ export default function Portfolio() {
               <div className="relative">
                 {/* Decorative accent behind image */}
                 <div className="absolute -inset-3 sm:-inset-4 bg-gradient-to-br from-red-500/15 to-purple-500/15 rounded-lg sm:rounded-2xl blur-xl" />
-                
+
                 {/* Main image container - responsive heights */}
                 <div className="relative h-64 sm:h-96 md:h-[500px] lg:h-[600px] rounded-lg sm:rounded-xl overflow-hidden shadow-2xl border border-white/10">
                   <Image
@@ -604,9 +604,9 @@ export default function Portfolio() {
                   reverseOnExit={true}
                 >
                   <p>
-                    My journey in photography began with a simple fascination for capturing fleeting moments that tell
-                    powerful stories. Over the years, this passion has evolved into a professional practice that spans
-                    multiple disciplines—from the electric energy of nightlife events to the raw power of action sports.
+                    Before becoming a visual storyteller, I was a kid with a skateboard.
+                    On cracked sidewalks and empty parking lots, I learned the importance of balance, patience, and resilience. Skateboarding was more than an after-school activity; it shaped my character. Fall, get up, and try again became my rhythm.
+
                   </p>
                 </GradualBlurWrapper>
 
@@ -621,9 +621,7 @@ export default function Portfolio() {
                   reverseOnExit={true}
                 >
                   <p>
-                    What drives me is the challenge of finding the perfect frame in every situation. Whether I'm
-                    documenting skate culture, creating compelling product imagery, or capturing the serene beauty
-                    of natural landscapes, I approach each project with the same dedication to excellence and vision.
+                    With my board under my arm and a borrowed camera in my bag, I began filming my friends, chasing motion, speed, and freedom. Those early skate sessions became my first studio, my first classroom. I learned how to frame movement, how to follow rhythm, how to turn chaos into composition.
                   </p>
                 </GradualBlurWrapper>
 
@@ -638,9 +636,10 @@ export default function Portfolio() {
                   reverseOnExit={true}
                 >
                   <p>
-                    My work is characterized by bold compositions, masterful use of light, and an authentic connection
-                    with subjects. From fully equipped studio sessions to remote locations, I'm committed to delivering
-                    photography that exceeds expectations.
+                    Skate culture taught me discipline without rules, creativity without limits, and loyalty to this community. These values would later define Mrcstreetvisuals as it is today.
+                    Today, in every video I direct and every photo I take, there is still something of the skater: the search for flow, the love of risk, the refusal to stand still.
+
+
                   </p>
                 </GradualBlurWrapper>
               </div>
