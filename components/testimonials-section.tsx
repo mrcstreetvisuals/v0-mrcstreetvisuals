@@ -14,7 +14,7 @@ export function TestimonialsSection() {
   }, [])
 
   return (
-    <div className="relative py-16 sm:py-20 md:py-24 flex items-center">
+    <section className="relative py-16 sm:py-20 md:py-24 overflow-hidden">
       <BackgroundImage
         src="/images/nightclub-dance.jpg"
         alt="Photography reviews background"
@@ -34,7 +34,7 @@ export function TestimonialsSection() {
             reverseOnExit={true}
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-red-500 to-purple-400 bg-clip-text text-transparent mobile-heading-adjust">
-              Client Reviews
+              Reviews
             </h2>
           </GradualBlurWrapper>
 
@@ -63,12 +63,12 @@ export function TestimonialsSection() {
           triggerOnce={false}
           reverseOnExit={true}
         >
-          <div className="w-full">
+          <div className="w-full flex justify-center">
             {/* Elfsight Google Reviews Widget */}
             <div className="elfsight-app-f87d232c-8173-4b1a-a1e4-a6cb527721a4" data-elfsight-app-lazy></div>
           </div>
         </GradualBlurWrapper>
       </ResponsiveContainer>
-    </div>
+    </section>
   )
 }
