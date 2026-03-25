@@ -451,7 +451,7 @@ export default function Portfolio() {
                     src="/images/skate-park-action.jpg"
                     alt="Photographer at skate park with camera"
                     fill
-                    className="object-cover object-center hover:scale-105 transition-transform duration-500"
+                    className="object-cover object-center hover:scale-105 transition-transform duration-500 mt-24"
                     priority
                   />
                 </div>
