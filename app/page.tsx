@@ -7,7 +7,6 @@ import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { ScrollIndicator } from "@/components/scroll-indicator"
-import { TestimonialsSection } from "@/components/testimonials-section"
 import { MobileNavigation } from "@/components/mobile-navigation"
 import { ImageSlider } from "@/components/image-slider"
 import { ResponsiveContainer } from "@/components/responsive-container"
@@ -420,146 +419,18 @@ export default function Portfolio() {
         </ResponsiveContainer>
       </section>
 
-      {/* Packages Preview Section */}
-      <section id="packages-preview" className="section-padding bg-gray-900/50 relative overflow-hidden">
+      {/* About Me Section */}
+      <section id="about" className="section-padding relative overflow-hidden">
         <BackgroundImage
-          src="/images/sports/surf-lineup-turquoise.jpg"
-          alt="Surf lineup background"
+          src="/images/sports/skate-ramp-bw.jpg"
+          alt="Skateboard park background"
           opacity={0.2}
-          fadeInDuration={1500}
-        />
-        <ResponsiveContainer maxWidth="2xl" className="content-spacing-lg relative z-10">
-          <div className="text-center mb-12 sm:mb-16">
-            <GradualBlurWrapper
-              blurAmount={15}
-              duration={1200}
-              delay={100}
-              animationType="blur-fade"
-              threshold={0.2}
-              triggerOnce={false}
-              reverseOnExit={true}
-            >
-              <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-red-500 to-purple-400 bg-clip-text text-transparent mobile-heading-adjust py-1.5">
-                Photography Packages
-              </h2>
-            </GradualBlurWrapper>
-
-            <GradualBlurWrapper
-              blurAmount={12}
-              duration={1000}
-              delay={300}
-              animationType="blur-slide"
-              direction="up"
-              threshold={0.2}
-              triggerOnce={false}
-              reverseOnExit={true}
-            >
-              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-400 max-w-3xl mx-auto mobile-body-adjust">
-                Choose the perfect package for your needs. From intimate sessions to full-day coverage, I offer flexible
-                options to capture your special moments.
-              </p>
-            </GradualBlurWrapper>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-12">
-            {packages.map((pkg, index) => (
-              <GradualBlurWrapper
-                key={pkg.title}
-                blurAmount={12}
-                duration={1200}
-                delay={200 + index * 150}
-                animationType="blur-slide"
-                direction="up"
-                threshold={0.15}
-                triggerOnce={false}
-                reverseOnExit={true}
-              >
-                <Card className="bg-gray-900/80 backdrop-blur-sm border-gray-800 overflow-hidden group hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20 h-full">
-                  <CardContent className="p-6 sm:p-8">
-                    <div
-                      className={`w-16 h-16 rounded-full bg-gradient-to-r ${pkg.gradient} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
-                    >
-                      <pkg.icon className="w-8 h-8 text-white" />
-                    </div>
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 text-white mobile-heading-adjust">
-                      {pkg.title}
-                    </h3>
-                    <p className="text-sm sm:text-base md:text-lg text-gray-400 mb-6 mobile-body-adjust">
-                      {pkg.description}
-                    </p>
-                    <ul className="space-y-3 mb-6">
-                      {pkg.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center text-gray-300 text-sm sm:text-base">
-                          <svg
-                            className="w-5 h-5 mr-3 text-purple-400 flex-shrink-0"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              </GradualBlurWrapper>
-            ))}
-          </div>
-
-          <GradualBlurWrapper
-            blurAmount={8}
-            duration={1000}
-            delay={800}
-            animationType="blur-scale"
-            threshold={0.2}
-            triggerOnce={false}
-            reverseOnExit={true}
-          >
-            <div className="text-center">
-              <Link href="/packages">
-                <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-red-500 to-purple-600 hover:from-red-600 hover:to-purple-700 text-white transform hover:scale-105 transition-all duration-300 shadow-brand text-sm sm:text-base px-8 sm:px-10 py-4 sm:py-5"
-                >
-                  View All Packages
-                </Button>
-              </Link>
-            </div>
-          </GradualBlurWrapper>
-        </ResponsiveContainer>
-      </section>
-
-      {/* Testimonials Section */}
-      rflow-hidden">
-        {/* Primary skate-themed background image */}
-        <BackgroundImage
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DSCF2640.jpg-djp8x3Gh6UyZCu6QsFLOJ810QFVMHQ.jpeg"
-          alt="Skateboard park action background"
-          opacity={0.08}
           fadeInDuration={2000}
-          className="z-0"
         />
-        
-        {/* Secondary texture overlay for depth */}
-        <BackgroundImage
-          src="/images/shop/skate-park-colorful-ramp.jpg"
-          alt="Skate park colorful ramp"
-          opacity={0.05}
-          fadeInDuration={2500}
-          className="z-0"
-        />
-        
-        {/* Dark gradient overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-950/80 via-slate-900/60 to-slate-950/80 pointer-events-none z-5" />
-        
-        {/* Accent gradient for visual interest and brand colors */}
-        <div className="absolute inset-0 bg-gradient-to-l from-red-950/12 via-transparent to-purple-950/10 pointer-events-none z-5" />
         
         <ResponsiveContainer maxWidth="5xl" className="relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Image Side - Enhanced with decorative accent */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center">
+            {/* Image Side - Mobile responsive */}
             <GradualBlurWrapper
               blurAmount={12}
               duration={1200}
@@ -572,23 +443,23 @@ export default function Portfolio() {
             >
               <div className="relative">
                 {/* Decorative accent behind image */}
-                <div className="absolute -inset-4 bg-gradient-to-br from-red-500/20 to-purple-500/20 rounded-2xl blur-xl" />
+                <div className="absolute -inset-3 sm:-inset-4 bg-gradient-to-br from-red-500/15 to-purple-500/15 rounded-lg sm:rounded-2xl blur-xl" />
                 
-                {/* Main image container */}
-                <div className="relative h-[450px] sm:h-[550px] lg:h-[650px] rounded-xl overflow-hidden shadow-2xl border border-white/10">
+                {/* Main image container - responsive heights */}
+                <div className="relative h-64 sm:h-96 md:h-[500px] lg:h-[600px] rounded-lg sm:rounded-xl overflow-hidden shadow-2xl border border-white/10">
                   <Image
                     src="/images/skate-park-action.jpg"
                     alt="Photographer at skate park with camera"
                     fill
-                    className="object-cover object-center hover:scale-105 transition-transform duration-500"
+                    className="object-cover object-center hover:scale-105 transition-transform duration-500 mt-24"
                     priority
                   />
                 </div>
               </div>
             </GradualBlurWrapper>
 
-            {/* Content Side */}
-            <div className="flex flex-col justify-center space-y-8">
+            {/* Content Side - Mobile optimized spacing */}
+            <div className="flex flex-col justify-center space-y-6 sm:space-y-8">
               <div>
                 <GradualBlurWrapper
                   blurAmount={15}
@@ -599,17 +470,17 @@ export default function Portfolio() {
                   triggerOnce={false}
                   reverseOnExit={true}
                 >
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="h-1 w-12 bg-gradient-to-r from-red-500 to-purple-500" />
-                    <span className="text-sm font-semibold text-red-500 uppercase tracking-wider">About</span>
+                  <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                    <div className="h-0.5 sm:h-1 w-8 sm:w-12 bg-gradient-to-r from-red-500 to-purple-500" />
+                    <span className="text-xs sm:text-sm font-semibold text-red-500 uppercase tracking-wider">About</span>
                   </div>
-                  <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-r from-red-500 to-purple-400 bg-clip-text text-transparent mobile-heading-adjust">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-r from-red-500 to-purple-400 bg-clip-text text-transparent mobile-heading-adjust">
                     Capturing Moments, Creating Stories
                   </h2>
                 </GradualBlurWrapper>
               </div>
 
-              <div className="space-y-5 text-base sm:text-lg text-gray-300 leading-relaxed mobile-body-adjust">
+              <div className="space-y-3 sm:space-y-5 text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed mobile-body-adjust">
                 <GradualBlurWrapper
                   blurAmount={10}
                   duration={1000}
@@ -621,9 +492,22 @@ export default function Portfolio() {
                   reverseOnExit={true}
                 >
                   <p>
-                    My journey in photography began with a simple fascination for capturing fleeting moments that tell
-                    powerful stories. Over the years, this passion has evolved into a professional practice that spans
-                    multiple disciplines—from the electric energy of nightlife events to the raw power of action sports.
+                    Before becoming a visual storyteller, I was a kid with a skateboard. On cracked sidewalks and empty parking lots, I learned the importance of balance, patience, and resilience. Skateboarding was more than an after-school activity; it shaped my character. Fall, get up, and try again became my rhythm.
+                  </p>
+                </GradualBlurWrapper>
+
+                <GradualBlurWrapper
+                  blurAmount={10}
+                  duration={1000}
+                  delay={400}
+                  animationType="blur-slide"
+                  direction="up"
+                  threshold={0.2}
+                  triggerOnce={false}
+                  reverseOnExit={true}
+                >
+                  <p>
+                    With my board under my arm and a borrowed camera in my bag, I began filming my friends, chasing motion, speed, and freedom. Those early skate sessions became my first studio, my first classroom. I learned how to frame movement, how to follow rhythm, how to turn chaos into composition.
                   </p>
                 </GradualBlurWrapper>
 
@@ -638,16 +522,14 @@ export default function Portfolio() {
                   reverseOnExit={true}
                 >
                   <p>
-                    What drives me is the challenge of finding the perfect frame in every situation. Whether I'm
-                    documenting skate culture, creating compelling product imagery, or capturing the serene beauty
-                    of natural landscapes, I approach each project with the same dedication to excellence and vision.
+                    Skate culture taught me discipline without rules, creativity without limits, and loyalty to this community. These values would later define Mrcstreetvisuals as it is today.
                   </p>
                 </GradualBlurWrapper>
 
                 <GradualBlurWrapper
                   blurAmount={10}
                   duration={1000}
-                  delay={700}
+                  delay={600}
                   animationType="blur-slide"
                   direction="up"
                   threshold={0.2}
@@ -655,15 +537,13 @@ export default function Portfolio() {
                   reverseOnExit={true}
                 >
                   <p>
-                    My work is characterized by bold compositions, masterful use of light, and an authentic connection
-                    with subjects. From fully equipped studio sessions to remote locations, I'm committed to delivering
-                    photography that exceeds expectations.
+                    Today, in every video I direct and every photo I take, there is still something of the skater: the search for flow, the love of risk, the refusal to stand still.
                   </p>
                 </GradualBlurWrapper>
               </div>
 
-              {/* Highlights Grid */}
-              <div className="grid grid-cols-3 gap-4 pt-4">
+              {/* Highlights Grid - Mobile responsive */}
+              <div className="grid grid-cols-3 gap-2 sm:gap-4 pt-4 sm:pt-6">
                 {[
                   { label: "Disciplines", value: "5+" },
                   { label: "Projects", value: "100+" },
@@ -673,17 +553,17 @@ export default function Portfolio() {
                     key={item.label}
                     blurAmount={8}
                     duration={800}
-                    delay={900 + index * 150}
+                    delay={700 + index * 150}
                     animationType="blur-scale"
                     threshold={0.2}
                     triggerOnce={false}
                     reverseOnExit={true}
                   >
-                    <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 text-center hover:bg-white/10 transition-colors">
-                      <p className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-red-500 to-purple-400 bg-clip-text text-transparent">
+                    <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-2 sm:p-4 text-center hover:bg-white/10 transition-colors">
+                      <p className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-red-500 to-purple-400 bg-clip-text text-transparent">
                         {item.value}
                       </p>
-                      <p className="text-xs sm:text-sm text-gray-400 mt-1 uppercase tracking-wider">{item.label}</p>
+                      <p className="text-xs sm:text-sm text-gray-400 mt-0.5 sm:mt-1 uppercase tracking-wider">{item.label}</p>
                     </div>
                   </GradualBlurWrapper>
                 ))}
@@ -693,7 +573,65 @@ export default function Portfolio() {
         </ResponsiveContainer>
       </section>
 
-      {/* Contact Section */}
+      {/* Reviews Section */}
+      <section id="reviews" className="section-padding relative overflow-hidden">
+        <BackgroundImage
+          src="/images/nightclub-dance.jpg"
+          alt="Photography reviews background"
+          opacity={0.15}
+          fadeInDuration={2000}
+          className="z-0"
+        />
+        <ResponsiveContainer maxWidth="2xl" className="content-spacing-lg relative z-10 w-full">
+          <div className="text-center mb-12 sm:mb-16">
+            <GradualBlurWrapper
+              blurAmount={15}
+              duration={1200}
+              delay={100}
+              animationType="blur-fade"
+              threshold={0.2}
+              triggerOnce={false}
+              reverseOnExit={true}
+            >
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-red-500 to-purple-400 bg-clip-text text-transparent mobile-heading-adjust">
+                Reviews
+              </h2>
+            </GradualBlurWrapper>
+
+            <GradualBlurWrapper
+              blurAmount={12}
+              duration={1000}
+              delay={300}
+              animationType="blur-slide"
+              direction="up"
+              threshold={0.2}
+              triggerOnce={false}
+              reverseOnExit={true}
+            >
+              <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mobile-body-adjust">
+                See what my clients say about their experience working with me
+              </p>
+            </GradualBlurWrapper>
+          </div>
+
+          <GradualBlurWrapper
+            blurAmount={10}
+            duration={1000}
+            delay={500}
+            animationType="blur-fade"
+            threshold={0.2}
+            triggerOnce={false}
+            reverseOnExit={true}
+          >
+            <div className="w-full flex justify-center">
+              {/* Elfsight Google Reviews Widget */}
+              <div className="elfsight-app-f87d232c-8173-4b1a-a1e4-a6cb527721a4" data-elfsight-app-lazy></div>
+            </div>
+          </GradualBlurWrapper>
+        </ResponsiveContainer>
+      </section>
+
+      {/* Let's Create Together Section */}
       <section id="contact" className="section-padding relative overflow-hidden">
         <BackgroundImage
           src="/images/cultural-performance-bw.jpg"
