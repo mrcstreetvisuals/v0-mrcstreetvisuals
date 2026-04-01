@@ -500,8 +500,8 @@ export default function Portfolio() {
       {/* About Me Section */}
       <section id="about" className="section-padding relative overflow-hidden">
         <BackgroundImage
-          src="/images/skate-park-colorful-ramp.jpg"
-          alt="Skateboard park background"
+          src="/images/surf-lineup-turquoise.jpg"
+          alt="Turquoise ocean background"
           opacity={0.15}
           fadeInDuration={2000}
         />
@@ -526,8 +526,8 @@ export default function Portfolio() {
                 {/* Main image container - responsive heights with pill-shaped rounded corners */}
                 <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[500px] xl:h-[600px] rounded-[50px] sm:rounded-[78px] overflow-hidden shadow-2xl">
                   <Image
-                    src="/images/skate-park-action.jpg"
-                    alt="Photographer at skate park with camera"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/30847.jpg-WI78D63irUi3diHbjsgrpveyZlkgkn.jpeg"
+                    alt="Photographer capturing landscape with camera"
                     fill
                     className="object-cover object-center hover:scale-105 transition-transform duration-500"
                     style={{
