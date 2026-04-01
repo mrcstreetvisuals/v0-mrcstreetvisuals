@@ -15,7 +15,7 @@ export default function ShopPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All")
   const [fullscreenProductId, setFullscreenProductId] = useState<string | null>(null)
 
-  const categories = ["All", "Beachs Life", "Surf Culture", "Cultural Heritage", "Seascapes", "Skateboarding"]
+  const categories = ["All", "Beach Life", "Surf Culture", "Cultural Heritage", "Seascapes", "Skateboarding"]
 
   const filteredProducts =
     selectedCategory === "All" ? shopProducts : shopProducts.filter((product) => product.category === selectedCategory)
@@ -220,8 +220,8 @@ export default function ShopPage() {
                   variant={selectedCategory === category ? "default" : "outline"}
                   onClick={() => setSelectedCategory(category)}
                   className={`${selectedCategory === category
-                      ? "bg-gradient-to-r from-red-500 to-purple-600 hover:from-red-600 hover:to-purple-700"
-                      : "border-gray-600 text-gray-300 hover:bg-gray-800"
+                    ? "bg-gradient-to-r from-red-500 to-purple-600 hover:from-red-600 hover:to-purple-700"
+                    : "border-gray-600 text-gray-300 hover:bg-gray-800"
                     }`}
                 >
                   {category}
