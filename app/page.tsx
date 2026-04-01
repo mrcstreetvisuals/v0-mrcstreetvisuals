@@ -446,7 +446,7 @@ export default function Portfolio() {
                 <div className="absolute -inset-3 sm:-inset-4 bg-gradient-to-br from-red-500/15 to-purple-500/15 rounded-lg sm:rounded-2xl blur-xl" />
                 
                 {/* Main image container - responsive heights */}
-                <div className="relative h-64 sm:h-96 md:h-[500px] lg:h-[600px] rounded-lg sm:rounded-xl overflow-hidden shadow-2xl border border-white/10">
+                <div className="relative h-64 sm:h-96 md:h-[500px] lg:h-[600px] rounded-lg sm:rounded-xl overflow-hidden shadow-2xl">
                   <Image
                     src="/images/skate-park-action.jpg"
                     alt="Photographer at skate park with camera"
