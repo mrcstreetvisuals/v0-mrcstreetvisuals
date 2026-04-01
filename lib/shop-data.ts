@@ -230,7 +230,7 @@ export const shopProducts: PrintProduct[] = [
   },
   {
     id: "couple-sunset-surfboards",
-    title: "Golden Connection",
+    title: "Golden Connections",
     description:
       "Romantic golden hour silhouette of two souls sharing a perfect sunset moment, with surfboards as witnesses to their coastal love story.",
     image: "/images/shop/couple-sunset-surfboards.jpg",
