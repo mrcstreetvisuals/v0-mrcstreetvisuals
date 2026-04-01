@@ -520,16 +520,25 @@ export default function Portfolio() {
               reverseOnExit={true}
             >
               <div className="relative">
-                {/* Decorative accent behind image */}
-                <div className="absolute -inset-3 sm:-inset-4 bg-gradient-to-br from-red-500/15 to-purple-500/15 rounded-lg sm:rounded-2xl blur-xl" />
+                {/* Decorative accent behind image - Hidden */}
+                <div className="absolute -inset-3 sm:-inset-4 bg-gradient-to-br from-red-500/15 to-purple-500/15 rounded-lg sm:rounded-2xl blur-xl hidden" />
                 
-                {/* Main image container - responsive heights */}
-                <div className="relative h-64 sm:h-96 md:h-[500px] lg:h-[600px] rounded-lg sm:rounded-xl overflow-hidden shadow-2xl">
+                {/* Main image container - responsive heights with pill-shaped rounded corners */}
+                <div className="relative h-64 sm:h-96 md:h-[500px] lg:h-[600px] rounded-[78px] overflow-hidden shadow-2xl">
                   <Image
                     src="/images/skate-park-action.jpg"
                     alt="Photographer at skate park with camera"
                     fill
-                    className="object-cover object-center hover:scale-105 transition-transform duration-500 mt-24"
+                    className="object-cover object-center hover:scale-105 transition-transform duration-500"
+                    style={{
+                      marginTop: "-16px",
+                      marginRight: "-27px",
+                      marginLeft: "1px",
+                      paddingTop: "-117px",
+                      paddingBottom: "-71px",
+                      paddingLeft: "-134px",
+                      paddingRight: "-52px",
+                    }}
                     priority
                   />
                 </div>
