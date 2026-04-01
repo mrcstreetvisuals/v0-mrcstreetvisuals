@@ -419,12 +419,90 @@ export default function Portfolio() {
         </ResponsiveContainer>
       </section>
 
+      {/* Packages Section */}
+      <section id="packages" className="section-padding relative overflow-hidden">
+        <BackgroundImage
+          src="/images/nightclub-dance.jpg"
+          alt="Packages background"
+          opacity={0.2}
+          fadeInDuration={2000}
+        />
+        <ResponsiveContainer maxWidth="5xl" className="relative z-10">
+          <div className="text-center mb-12 sm:mb-16">
+            <GradualBlurWrapper
+              blurAmount={15}
+              duration={1200}
+              delay={100}
+              animationType="blur-fade"
+              threshold={0.2}
+              triggerOnce={false}
+              reverseOnExit={true}
+            >
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-red-500 to-purple-400 bg-clip-text text-transparent mobile-heading-adjust">
+                Photography Packages
+              </h2>
+            </GradualBlurWrapper>
+
+            <GradualBlurWrapper
+              blurAmount={12}
+              duration={1000}
+              delay={300}
+              animationType="blur-slide"
+              direction="up"
+              threshold={0.2}
+              triggerOnce={false}
+              reverseOnExit={true}
+            >
+              <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mobile-body-adjust">
+                Choose the perfect package for your photography needs
+              </p>
+            </GradualBlurWrapper>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            {packages.map((pkg, index) => (
+              <GradualBlurWrapper
+                key={pkg.title}
+                blurAmount={10}
+                duration={1000}
+                delay={500 + index * 200}
+                animationType="blur-scale"
+                threshold={0.2}
+                triggerOnce={false}
+                reverseOnExit={true}
+              >
+                <Card className="bg-white/5 backdrop-blur-sm border-white/10 hover:border-white/20 transition-colors h-full">
+                  <CardContent className="p-6 sm:p-8">
+                    <div className={`inline-flex p-3 rounded-lg bg-gradient-to-r ${pkg.gradient} mb-4`}>
+                      <pkg.icon className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">{pkg.title}</h3>
+                    <p className="text-sm sm:text-base text-gray-400 mb-6">{pkg.description}</p>
+                    <ul className="space-y-3 mb-8">
+                      {pkg.features.map((feature) => (
+                        <li key={feature} className="flex items-center gap-3 text-sm sm:text-base text-gray-300">
+                          <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-red-500 to-purple-500" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                    <Button className="w-full bg-gradient-to-r from-red-500 to-purple-600 hover:from-red-600 hover:to-purple-700 text-white font-semibold">
+                      Get Started
+                    </Button>
+                  </CardContent>
+                </Card>
+              </GradualBlurWrapper>
+            ))}
+          </div>
+        </ResponsiveContainer>
+      </section>
+
       {/* About Me Section */}
       <section id="about" className="section-padding relative overflow-hidden">
         <BackgroundImage
-          src="/images/sports/skate-ramp-bw.jpg"
+          src="/images/skate-park-colorful-ramp.jpg"
           alt="Skateboard park background"
-          opacity={0.2}
+          opacity={0.15}
           fadeInDuration={2000}
         />
         
@@ -446,7 +524,7 @@ export default function Portfolio() {
                 <div className="absolute -inset-3 sm:-inset-4 bg-gradient-to-br from-red-500/15 to-purple-500/15 rounded-lg sm:rounded-2xl blur-xl" />
                 
                 {/* Main image container - responsive heights */}
-                <div className="relative h-64 sm:h-96 md:h-[500px] lg:h-[600px] rounded-lg sm:rounded-xl overflow-hidden shadow-2xl border border-white/10">
+                <div className="relative h-64 sm:h-96 md:h-[500px] lg:h-[600px] rounded-lg sm:rounded-xl overflow-hidden shadow-2xl">
                   <Image
                     src="/images/skate-park-action.jpg"
                     alt="Photographer at skate park with camera"
