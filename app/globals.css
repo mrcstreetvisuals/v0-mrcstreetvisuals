@@ -53,19 +53,84 @@
 
   /* added responsive padding utility for consistent vertical flow */
   .section-padding {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   .content-spacing-lg {
-    gap: 3rem;
+    gap: 1.5rem;
+  }
+
+  /* Mobile-first responsive utilities */
+  @media (min-width: 640px) {
+    .section-padding {
+      padding-top: 3.5rem;
+      padding-bottom: 3.5rem;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    .content-spacing-lg {
+      gap: 2rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .content-spacing-lg {
+      gap: 2.5rem;
+    }
+  }
+
+  /* Responsive text adjustments */
+  .mobile-heading-adjust {
+    letter-spacing: -0.02em;
+  }
+
+  .mobile-text-adjust {
+    line-height: 1.5;
+  }
+
+  .mobile-body-adjust {
+    line-height: 1.6;
+  }
+
+  /* Image responsive container */
+  .responsive-image-container {
+    aspect-ratio: auto;
+  }
+
+  @media (max-width: 640px) {
+    .responsive-image-container {
+      max-width: 100%;
+    }
+  }
+
+  /* Flexible flex containers */
+  .flex-responsive {
+    flex-direction: column;
+  }
+
+  @media (min-width: 768px) {
+    .flex-responsive {
+      flex-direction: row;
+    }
+  }
+
+  /* iOS viewport fix */
+  .ios-vh-fix {
+    min-height: 100dvh;
+    min-height: 100vh;
   }
 }
 
 @media (min-width: 768px) {
   .section-padding {
-    padding-top: 7rem;
-    padding-bottom: 7rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
 
@@ -74,13 +139,41 @@ section {
   position: relative;
 }
 
+/* Responsive Image Guidelines:
+   1. Use Next.js Image component with fill prop for background images
+   2. Set explicit aspect ratios for images to prevent CLS
+   3. Use object-contain for portraits, object-cover for backgrounds
+   4. Always provide responsive sizes prop
+   
+   Responsive Layout Guidelines:
+   1. Use grid grid-cols-1 md:grid-cols-2+ for multi-column layouts
+   2. Use flex flex-col sm:flex-row for horizontal layouts
+   3. Mobile first: start with mobile styles, add breakpoints with min-width
+   4. Use responsive spacing: gap-3 sm:gap-4 md:gap-6
+*/
+
 @media (min-width: 1024px) {
   :root {
     --section-gap: 10rem;
   }
   .section-padding {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .section-padding {
     padding-top: 10rem;
     padding-bottom: 10rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .content-spacing-lg {
+    gap: 3rem;
   }
 }
 

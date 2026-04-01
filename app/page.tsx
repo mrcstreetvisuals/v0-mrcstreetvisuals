@@ -244,7 +244,7 @@ export default function Portfolio() {
             triggerOnce={false}
             reverseOnExit={true}
           >
-            <h1 className="!mt-[150px] text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold bg-gradient-to-r from-white via-purple-400 to-red-500 bg-clip-text text-transparent mobile-heading-adjust drop-shadow-lg">
+            <h1 className="mt-12 sm:mt-16 md:mt-20 lg:mt-24 xl:mt-32 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold bg-gradient-to-r from-white via-purple-400 to-red-500 bg-clip-text text-transparent mobile-heading-adjust drop-shadow-lg">
               mrcstreetvisuals
             </h1>
           </GradualBlurWrapper>
@@ -524,7 +524,7 @@ export default function Portfolio() {
                 <div className="absolute -inset-3 sm:-inset-4 bg-gradient-to-br from-red-500/15 to-purple-500/15 rounded-lg sm:rounded-2xl blur-xl hidden" />
                 
                 {/* Main image container - responsive heights with pill-shaped rounded corners */}
-                <div className="relative h-64 sm:h-96 md:h-[500px] lg:h-[600px] rounded-[78px] overflow-hidden shadow-2xl">
+                <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[500px] xl:h-[600px] rounded-[50px] sm:rounded-[78px] overflow-hidden shadow-2xl">
                   <Image
                     src="/images/skate-park-action.jpg"
                     alt="Photographer at skate park with camera"
@@ -854,7 +854,7 @@ export default function Portfolio() {
       <ScrollIndicator />
 
       {/* Footer */}
-      <footer className="py-6 sm:py-8 px-responsive-md border-t border-gray-800 bg-gray-900">
+      <footer className="py-6 sm:py-8 px-4 sm:px-6 md:px-8 lg:px-12 border-t border-gray-800 bg-gray-900">
         <ResponsiveContainer maxWidth="full">
           <GradualBlurWrapper
             blurAmount={6}
