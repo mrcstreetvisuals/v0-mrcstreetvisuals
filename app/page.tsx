@@ -422,9 +422,9 @@ export default function Portfolio() {
       {/* About Me Section */}
       <section id="about" className="section-padding relative overflow-hidden">
         <BackgroundImage
-          src="/images/sports/skate-ramp-bw.jpg"
+          src="/images/skate-park-colorful-ramp.jpg"
           alt="Skateboard park background"
-          opacity={0.2}
+          opacity={0.15}
           fadeInDuration={2000}
         />
         
@@ -451,7 +451,7 @@ export default function Portfolio() {
                     src="/images/skate-park-action.jpg"
                     alt="Photographer at skate park with camera"
                     fill
-                    className="object-contain object-center hover:scale-105 transition-transform duration-500 mt-24"
+                    className="object-cover object-center hover:scale-105 transition-transform duration-500 mt-24"
                     priority
                   />
                 </div>
