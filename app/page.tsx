@@ -531,7 +531,7 @@ export default function Portfolio() {
                     fill
                     className="object-cover object-center hover:scale-105 transition-transform duration-500"
                     style={{
-                      marginTop: "-16px",
+                      marginTop: "-2px",
                       marginRight: "-27px",
                       marginLeft: "1px",
                       paddingTop: "-117px",
