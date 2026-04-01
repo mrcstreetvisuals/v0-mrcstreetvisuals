@@ -3,7 +3,7 @@ export interface PrintProduct {
   title: string
   description: string
   image: string
-  category: "Beach Life" | "Surf Culture" | "Cultural Heritage" | "Seascapes" | "Skateboarding"
+  category: " Beach Life" | "Surf Culture" | "Cultural Heritage" | "Seascapes" | "Skateboarding"
   printPrice: number
   framedPrice: number
   totalStock: number
@@ -230,7 +230,7 @@ export const shopProducts: PrintProduct[] = [
   },
   {
     id: "couple-sunset-surfboards",
-    title: "Golden Connections",
+    title: "Golden Connection",
     description:
       "Romantic golden hour silhouette of two souls sharing a perfect sunset moment, with surfboards as witnesses to their coastal love story.",
     image: "/images/shop/couple-sunset-surfboards.jpg",
