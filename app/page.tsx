@@ -500,10 +500,12 @@ export default function Portfolio() {
       {/* About Me Section */}
       <section id="about" className="section-padding relative overflow-hidden">
         <BackgroundImage
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/30847.jpg-WI78D63irUi3diHbjsgrpveyZlkgkn.jpeg"
-          alt="Photography landscape background"
-          opacity={0.12}
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DSCF6647.JPG-fsqgmUZ66eJOiVOvaTU7IoQRGE8aTr.jpeg"
+          alt="Silhouette of photographers and community"
+          opacity={0.18}
           fadeInDuration={2000}
+          quality={85}
+          objectPosition="center"
         />
         
         <ResponsiveContainer maxWidth="5xl" className="relative z-10">
