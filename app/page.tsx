@@ -500,9 +500,9 @@ export default function Portfolio() {
       {/* About Me Section */}
       <section id="about" className="section-padding relative overflow-hidden">
         <BackgroundImage
-          src="/images/surf-lineup-turquoise.jpg"
-          alt="Turquoise ocean background"
-          opacity={0.15}
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/30847.jpg-WI78D63irUi3diHbjsgrpveyZlkgkn.jpeg"
+          alt="Photography landscape background"
+          opacity={0.12}
           fadeInDuration={2000}
         />
         
