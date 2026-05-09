@@ -4,6 +4,7 @@ import { useEffect, Suspense } from "react"
 import { usePathname, useSearchParams } from "next/navigation"
 import { PerformanceMonitor } from "@/components/performance-monitor"
 import { Analytics } from "@vercel/analytics/next"
+import { AIChatbot } from "@/components/ai-chatbot"
 import type React from "react"
 
 function AnalyticsTracker() {
@@ -44,6 +45,7 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
         {children}
       </Suspense>
       <Analytics />
+      {process.env.NEXT_PUBLIC_CHATBOT_ENABLED === 'true' && <AIChatbot />}
     </>
   )
 }
