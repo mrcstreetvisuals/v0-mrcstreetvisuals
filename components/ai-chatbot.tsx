@@ -1,6 +1,6 @@
 'use client'
 
-import { useChat } from '@ai-sdk/react'
+import React, { useChat } from '@ai-sdk/react'
 import { DefaultChatTransport } from 'ai'
 import { useState } from 'react'
 import { Send, X, MessageCircle } from 'lucide-react'
@@ -8,6 +8,13 @@ import { Send, X, MessageCircle } from 'lucide-react'
 export function AIChatbot() {
   const [isOpen, setIsOpen] = useState(false)
   const [localInput, setLocalInput] = useState('')
+  const [mounted, setMounted] = useState(false)
+  
+  // Ensure component is mounted before rendering to avoid hydration mismatch
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
+
   const { messages, sendMessage, status } = useChat({
     transport: new DefaultChatTransport({
       api: '/api/chat',
@@ -42,6 +49,8 @@ export function AIChatbot() {
       .map((p: any) => p.text)
       .join('')
   }
+
+  if (!mounted) return null
 
   return (
     <>
