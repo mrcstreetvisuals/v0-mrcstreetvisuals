@@ -1,14 +1,46 @@
 'use client'
 
-import { useChat } from 'ai/react'
+import { useChat } from '@ai-sdk/react'
+import { DefaultChatTransport } from 'ai'
 import { useState } from 'react'
 import { Send, X, MessageCircle } from 'lucide-react'
 
 export function AIChatbot() {
   const [isOpen, setIsOpen] = useState(false)
-  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
-    api: '/api/chat',
+  const { messages, input, setInput, sendMessage, status } = useChat({
+    transport: new DefaultChatTransport({
+      api: '/api/chat',
+    }),
+    initialMessages: [
+      {
+        id: '1',
+        role: 'assistant',
+        parts: [
+          {
+            type: 'text',
+            text: 'Hello! I\'m here to help you with any questions about mrcstreetvisuals. Feel free to ask about my services, portfolio, or photography journey!',
+          },
+        ],
+      },
+    ],
   })
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (input.trim()) {
+      sendMessage({ text: input })
+      setInput('')
+    }
+  }
+
+  // Helper function to extract text from UIMessage parts
+  const getMessageText = (message: any): string => {
+    if (!message.parts || !Array.isArray(message.parts)) return ''
+    return message.parts
+      .filter((p: any) => p.type === 'text')
+      .map((p: any) => p.text)
+      .join('')
+  }
 
   return (
     <>
@@ -61,17 +93,17 @@ export function AIChatbot() {
                       : 'bg-slate-700 text-gray-100 rounded-bl-none'
                   }`}
                 >
-                  <p className="text-sm">{message.content}</p>
+                  <p className="text-sm break-words">{getMessageText(message)}</p>
                 </div>
               </div>
             ))}
-            {isLoading && (
+            {status === 'streaming' && (
               <div className="flex justify-start">
                 <div className="bg-slate-700 text-gray-100 px-4 py-2 rounded-lg rounded-bl-none">
                   <div className="flex gap-2">
                     <div className="w-2 h-2 bg-red-500 rounded-full animate-bounce" />
-                    <div className="w-2 h-2 bg-red-500 rounded-full animate-bounce delay-100" />
-                    <div className="w-2 h-2 bg-red-500 rounded-full animate-bounce delay-200" />
+                    <div className="w-2 h-2 bg-red-500 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }} />
+                    <div className="w-2 h-2 bg-red-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
                   </div>
                 </div>
               </div>
@@ -86,13 +118,14 @@ export function AIChatbot() {
             <input
               type="text"
               value={input}
-              onChange={handleInputChange}
+              onChange={(e) => setInput(e.target.value)}
               placeholder="Ask something..."
               className="flex-1 bg-slate-700 text-white placeholder-gray-400 rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-red-500 transition-all"
+              disabled={status === 'streaming'}
             />
             <button
               type="submit"
-              disabled={isLoading || !input.trim()}
+              disabled={status === 'streaming' || !input.trim()}
               className="bg-gradient-to-r from-red-500 to-purple-600 hover:from-red-600 hover:to-purple-700 disabled:from-gray-600 disabled:to-gray-700 text-white rounded-lg px-4 py-2 transition-all flex items-center gap-2"
             >
               <Send className="w-4 h-4" />

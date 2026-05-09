@@ -1,5 +1,5 @@
+import { streamText, convertToModelMessages } from 'ai'
 import { openai } from '@ai-sdk/openai'
-import { streamText } from 'ai'
 
 const systemPrompt = `You are a helpful AI assistant for mrcstreetvisuals, a professional photography and videography portfolio. You represent Achraf, a visual storyteller specializing in skateboarding culture, street photography, and cinematic content.
 
@@ -21,13 +21,18 @@ When responding:
 Do not discuss unrelated topics. Politely redirect conversations back to photography and visual storytelling.`
 
 export async function POST(req: Request) {
-  const { messages } = await req.json()
+  try {
+    const { messages } = await req.json()
 
-  const result = streamText({
-    model: openai('gpt-4o-mini'),
-    system: systemPrompt,
-    messages,
-  })
+    const result = streamText({
+      model: openai('gpt-4o-mini'),
+      system: systemPrompt,
+      messages: await convertToModelMessages(messages),
+    })
 
-  return result.toDataStreamResponse()
+    return result.toUIMessageStreamResponse()
+  } catch (error) {
+    console.error('[v0] Chat API error:', error)
+    return new Response('Internal server error', { status: 500 })
+  }
 }
