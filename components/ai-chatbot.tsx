@@ -28,7 +28,7 @@ export function AIChatbot() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (localInput.trim()) {
+    if (localInput && localInput.trim()) {
       sendMessage({ text: localInput })
       setLocalInput('')
     }
@@ -126,7 +126,7 @@ export function AIChatbot() {
             />
             <button
               type="submit"
-              disabled={status === 'streaming' || !localInput.trim()}
+              disabled={status === 'streaming' || !localInput || !localInput.trim()}
               className="bg-gradient-to-r from-red-500 to-purple-600 hover:from-red-600 hover:to-purple-700 disabled:from-gray-600 disabled:to-gray-700 text-white rounded-lg px-4 py-2 transition-all flex items-center gap-2"
             >
               <Send className="w-4 h-4" />
