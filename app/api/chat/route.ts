@@ -22,17 +22,76 @@ Do not discuss unrelated topics. Politely redirect conversations back to photogr
 
 export async function POST(req: Request) {
   try {
-    const { messages } = await req.json()
+    // Validate request content type
+    const contentType = req.headers.get('content-type')
+    if (!contentType?.includes('application/json')) {
+      return new Response(
+        JSON.stringify({ error: 'Content-Type must be application/json' }),
+        { status: 400, headers: { 'Content-Type': 'application/json' } }
+      )
+    }
+
+    const body = await req.json()
+    const { messages } = body
+
+    // Validate messages array
+    if (!Array.isArray(messages)) {
+      return new Response(
+        JSON.stringify({ error: 'Messages must be an array' }),
+        { status: 400, headers: { 'Content-Type': 'application/json' } }
+      )
+    }
+
+    if (messages.length === 0) {
+      return new Response(
+        JSON.stringify({ error: 'Messages array cannot be empty' }),
+        { status: 400, headers: { 'Content-Type': 'application/json' } }
+      )
+    }
+
+    // Limit message history to prevent abuse
+    const maxMessages = 50
+    if (messages.length > maxMessages) {
+      return new Response(
+        JSON.stringify({ error: `Maximum ${maxMessages} messages allowed per request` }),
+        { status: 413, headers: { 'Content-Type': 'application/json' } }
+      )
+    }
+
+    // Validate latest message exists and has content
+    const lastMessage = messages[messages.length - 1]
+    if (!lastMessage || typeof lastMessage !== 'object') {
+      return new Response(
+        JSON.stringify({ error: 'Invalid message format' }),
+        { status: 400, headers: { 'Content-Type': 'application/json' } }
+      )
+    }
 
     const result = streamText({
       model: openai('gpt-4o-mini'),
       system: systemPrompt,
       messages: await convertToModelMessages(messages),
+      maxTokens: 300, // Limit response length to prevent abuse
     })
 
     return result.toUIMessageStreamResponse()
   } catch (error) {
     console.error('[v0] Chat API error:', error)
-    return new Response('Internal server error', { status: 500 })
+    
+    // Handle specific error types
+    if (error instanceof SyntaxError) {
+      return new Response(
+        JSON.stringify({ error: 'Invalid JSON in request body' }),
+        { status: 400, headers: { 'Content-Type': 'application/json' } }
+      )
+    }
+
+    // Return generic error to client
+    return new Response(
+      JSON.stringify({ 
+        error: 'Failed to process your message. Please try again.' 
+      }),
+      { status: 500, headers: { 'Content-Type': 'application/json' } }
+    )
   }
 }
