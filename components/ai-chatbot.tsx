@@ -29,10 +29,13 @@ export function AIChatbot() {
     setMounted(true)
   }, [])
 
-  // Auto-scroll to bottom of messages
+  // Auto-scroll to bottom of messages when new messages arrive or status changes
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }, [])
+    const timer = setTimeout(() => {
+      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+    }, 0)
+    return () => clearTimeout(timer)
+  }, [messages, status])
 
   const { messages, sendMessage, status } = useChat({
     transport: new DefaultChatTransport({
@@ -50,8 +53,15 @@ export function AIChatbot() {
         ],
       },
     ],
-    onError: () => {
+    onError: (error) => {
+      console.error('[v0] Chat error:', error)
       setError('Failed to send message. Please try again.')
+    },
+    onFinish: () => {
+      // Clear error when message completes successfully
+      if (status !== 'error') {
+        setError(null)
+      }
     },
   })
 
@@ -67,7 +77,6 @@ export function AIChatbot() {
   // Validate and handle input submission
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setError(null)
 
     // Input validation
     if (!localInput || !localInput.trim()) {
@@ -92,6 +101,9 @@ export function AIChatbot() {
       return
     }
 
+    // Clear validation errors before sending
+    setError(null)
+    
     // Send message and update counter
     sendMessage({ text: localInput })
     setLocalInput('')
@@ -187,8 +199,8 @@ export function AIChatbot() {
               </div>
             )}
             
-            {/* Error Message Display */}
-            {error && (
+            {/* Error Message Display - Only for API/request errors */}
+            {error && status !== 'submitted' && !localInput && (
               <div 
                 className="bg-red-900/30 border border-red-500/50 rounded-lg px-3 sm:px-4 py-2 flex items-start gap-2 text-xs sm:text-sm"
                 role="alert"
@@ -226,10 +238,10 @@ export function AIChatbot() {
             </div>
             <button
               type="submit"
-              disabled={status === 'streaming' || !localInput || !localInput.trim()}
+              disabled={status === 'streaming' || !localInput?.trim()}
               className="bg-gradient-to-r from-red-500 to-purple-600 hover:from-red-600 hover:to-purple-700 disabled:from-gray-600 disabled:to-gray-700 text-white rounded-lg px-3 sm:px-4 py-2 transition-all flex items-center gap-2 flex-shrink-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 disabled:cursor-not-allowed"
-              aria-label="Send message"
-              title="Send message (Enter or click button)"
+              aria-label={status === 'streaming' ? 'Waiting for response...' : 'Send message'}
+              title={status === 'streaming' ? 'Waiting for AI response...' : 'Send message (Enter or click button)'}
             >
               <Send className="w-4 h-4" />
             </button>
