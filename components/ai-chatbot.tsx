@@ -24,19 +24,6 @@ export function AIChatbot() {
   const [lastResetTime, setLastResetTime] = useState(Date.now())
   const messagesEndRef = useRef<HTMLDivElement>(null)
   
-  // Ensure component is mounted before rendering to avoid hydration mismatch
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  // Auto-scroll to bottom of messages when new messages arrive or status changes
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
-    }, 0)
-    return () => clearTimeout(timer)
-  }, [messages, status])
-
   const { messages, sendMessage, status } = useChat({
     transport: new DefaultChatTransport({
       api: '/api/chat',
@@ -64,6 +51,19 @@ export function AIChatbot() {
       }
     },
   })
+
+  // Ensure component is mounted before rendering to avoid hydration mismatch
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  // Auto-scroll to bottom of messages when new messages arrive or status changes
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+    }, 0)
+    return () => clearTimeout(timer)
+  }, [messages, status])
 
   // Helper function to extract text from UIMessage parts
   const getMessageText = (message: ChatMessage): string => {
