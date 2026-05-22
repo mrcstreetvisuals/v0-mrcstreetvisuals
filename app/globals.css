@@ -32,6 +32,13 @@
     border-color: hsl(var(--border));
   }
 
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
@@ -256,15 +263,22 @@ section {
 }
 
 /* Elfsight widget styling - prevents black spacing issues */
-.elfsight-app-f87d232c-8173-4b1a-a1e4-a6cb527721a4 {
+.elfsight-app-f87d232c-8173-4b1a-a1e4-a6cb527721a4,
+.elfsight-app-00902436-61ad-4803-bf9e-1d69aeec61d5 {
   display: flex;
   justify-content: center;
   width: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: auto !important;
 }
 
-.elfsight-app-f87d232c-8173-4b1a-a1e4-a6cb527721a4 iframe {
+.elfsight-app-f87d232c-8173-4b1a-a1e4-a6cb527721a4 iframe,
+.elfsight-app-00902436-61ad-4803-bf9e-1d69aeec61d5 iframe {
   border: none !important;
   background: transparent !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 /* Reduced motion support */
