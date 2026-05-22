@@ -60,7 +60,7 @@ export default function Portfolio() {
     {
       title: "Portraits",
       description: "Intimate and creative portrait photography capturing personality and emotion",
-      thumbnail: "/images/portrait-nature.jpg",
+      thumbnail: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A3944-GfqQNH81A3efSkcwdQcyyNGgb4AnSB.jpg",
       href: "/portfolio/portraits",
       color: "from-purple-500 to-pink-500",
     },
