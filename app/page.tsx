@@ -60,7 +60,7 @@ export default function Portfolio() {
     {
       title: "Portraits",
       description: "Intimate and creative portrait photography capturing personality and emotion",
-      thumbnail: "/images/portrait-nature.jpg",
+      thumbnail: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A3944-GfqQNH81A3efSkcwdQcyyNGgb4AnSB.jpg",
       href: "/portfolio/portraits",
       color: "from-purple-500 to-pink-500",
     },
@@ -438,7 +438,7 @@ export default function Portfolio() {
               triggerOnce={false}
               reverseOnExit={true}
             >
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-red-500 to-purple-400 bg-clip-text text-transparent mobile-heading-adjust">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-red-500 to-purple-400 bg-clip-text text-transparent mobile-heading-adjust" style={{ marginTop: '-6px', paddingTop: '7px', lineHeight: '1.6em' }}>
                 Photography Packages
               </h2>
             </GradualBlurWrapper>

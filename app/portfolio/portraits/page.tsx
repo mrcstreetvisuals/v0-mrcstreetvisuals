@@ -14,6 +14,30 @@ export default function PortraitsAlbum() {
 
   const portraitImages = [
     {
+      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A3944-GfqQNH81A3efSkcwdQcyyNGgb4AnSB.jpg",
+      alt: "Golden hour beach portrait on sand",
+      caption: "Golden Sand Dreams",
+      description:
+        "Serene golden hour portrait captured on the beach with warm, soft lighting illuminating the subject against textured sand and ocean waves.",
+      category: "Beach",
+    },
+    {
+      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A3900-uwDvdhTQfi6ZqLLIbBtXBdAi6Yk0Qd.jpg",
+      alt: "Golden hour portrait in shallow ocean water",
+      caption: "Sunset Waters",
+      description:
+        "Contemplative portrait in shallow water during golden hour, showcasing warm ocean light and peaceful ocean backdrop with authentic seaside aesthetic.",
+      category: "Beach",
+    },
+    {
+      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A3946-H0mbL25fuw7YkkBJ5cmFJNsNMRmT96.jpg",
+      alt: "Golden hour portrait lying on beach sand",
+      caption: "Golden Hour Repose",
+      description:
+        "Relaxed golden hour portrait with the subject resting on warm sand, capturing the softness and beauty of sunset beach photography.",
+      category: "Beach",
+    },
+    {
       src: "/images/portrait-nature.jpg",
       alt: "Natural outdoor portrait",
       caption: "Golden Hour Portrait",
