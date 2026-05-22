@@ -48,7 +48,7 @@ export default function PackagesPage() {
       icon: Film,
       image: "/images/sports/surf-wave-bw.jpg",
       features: [
-        "1-1.5 hours shooting (shore + drone video)",
+        "1-1.5 hours shooting (shore)",
         "15 edited surf photos",
         "Short 20-30 sec highlight video",
         "Color corrected",
@@ -65,7 +65,7 @@ export default function PackagesPage() {
       icon: Sparkles,
       image: "/images/sports/surf-powerful-wave.jpg",
       features: [
-        "2-3 hour session (shore + drone optional)",
+        "2-3 hour session (shore)",
         "30+ edited photos",
         "Full 1-2 min cinematic surf video",
         "Music + slow-mo + color grade",
@@ -180,7 +180,7 @@ export default function PackagesPage() {
       icon: Sparkles,
       image: "/images/shop/sunset-couple-surfboards.jpg",
       features: [
-        "3-4 hours full coverage (surf, water, drone, portraits)",
+        "3-4 hours full coverage (surf, water, portraits)",
         "40+ edited photos",
         "Cinematic video (1-2 min, graded + music)",
         "Private gallery delivery",
@@ -217,7 +217,6 @@ export default function PackagesPage() {
       image: "/images/real-estate/rooftop-terrace-sunset-chairs.jpg",
       features: [
         "Wide-angle detailed coverage",
-        "Drone photos included",
         "20+ edited images",
         "Twilight/golden hour shots available",
         "Priority editing and delivery",
@@ -301,12 +300,6 @@ export default function PackagesPage() {
   ]
 
   const addOns = [
-    {
-      name: "Drone Footage",
-      price: "+20€",
-      description: "Aerial perspectives and cinematic angles",
-      icon: Film,
-    },
     {
       name: "Printed Photos",
       price: "+15€-45€",
