@@ -4,7 +4,7 @@ import { useEffect, Suspense } from "react"
 import { usePathname, useSearchParams } from "next/navigation"
 import { PerformanceMonitor } from "@/components/performance-monitor"
 import { Analytics } from "@vercel/analytics/next"
-import { BotpressChatbot } from "@/components/botpress-chatbot"
+import { ElfsightChatbot } from "@/components/elfsight-chatbot"
 import type React from "react"
 
 function AnalyticsTracker() {
@@ -45,7 +45,7 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
         {children}
       </Suspense>
       <Analytics />
-      <BotpressChatbot />
+      <ElfsightChatbot />
     </>
   )
 }
