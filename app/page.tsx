@@ -54,6 +54,18 @@ export default function Portfolio() {
       src: "/images/shop/beach-crowd-bw.jpg",
       alt: "Black and white aerial view of beach life",
     },
+    {
+      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A1471-A9uaj6D85IDGuOWPNMB7Ec1I6DO.jpg",
+      alt: "Man driving van with tattooed arms",
+    },
+    {
+      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A4859-uq3opqs6yFmOAMQNioB0jdAznZY9lT.jpg",
+      alt: "People holding Palmer Skateboard Company flag at sunset",
+    },
+    {
+      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A4822-rYld5gINmmCf1QgoPPVNnY28ypxvNI.jpg",
+      alt: "DJ at turntables with ocean backdrop",
+    },
   ]
 
   const portfolioCategories = [

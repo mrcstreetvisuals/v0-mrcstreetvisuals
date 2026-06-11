@@ -8,31 +8,9 @@ import Link from "next/link"
 import { useState } from "react"
 import { GradualBlurWrapper } from "@/components/gradual-blur-wrapper"
 import { InteractiveImageCard } from "@/components/interactive-image-card"
-import { ImageSlider } from "@/components/image-slider"
 
 export default function ProductsAlbum() {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null)
-
-  const carouselImages = [
-    {
-      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A1471-A9uaj6D85IDGuOWPNMB7Ec1I6DO.jpg",
-      alt: "Street Culture Automotive",
-      title: "Street Culture Automotive",
-      description: "Dynamic portrait of tattooed driver in van setting",
-    },
-    {
-      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A4859-uq3opqs6yFmOAMQNioB0jdAznZY9lT.jpg",
-      alt: "Brand Heritage Sunset",
-      title: "Brand Heritage Sunset",
-      description: "Golden hour portrait of brand ambassadors celebrating Palmer Skateboard Company",
-    },
-    {
-      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A4822-rYld5gINmmCf1QgoPPVNnY28ypxvNI.jpg",
-      alt: "Ocean DJ Performance",
-      title: "Ocean DJ Performance",
-      description: "Professional DJ portrait with turntables against dramatic ocean backdrop",
-    },
-  ]
 
   const productImages = [
     {
@@ -229,26 +207,6 @@ export default function ProductsAlbum() {
               <span>Perfect Composition</span>
             </div>
           </GradualBlurWrapper>
-        </div>
-      </section>
-
-      {/* Featured Carousel Section */}
-      <section className="py-16 px-4 pt-header-offset bg-gradient-to-b from-black to-gray-900">
-        <div className="container mx-auto max-w-5xl mb-16">
-          <GradualBlurWrapper
-            blurAmount={12}
-            duration={1000}
-            delay={100}
-            animationType="blur-fade"
-            threshold={0.2}
-            triggerOnce={false}
-            reverseOnExit={true}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center bg-gradient-to-r from-green-400 to-teal-500 bg-clip-text text-transparent">
-              Featured Work
-            </h2>
-          </GradualBlurWrapper>
-          <ImageSlider images={carouselImages} autoPlay={true} interval={5000} showControls={true} showIndicators={true} className="rounded-xl shadow-2xl" aspectRatio="wide" />
         </div>
       </section>
 
