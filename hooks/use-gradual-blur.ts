@@ -80,26 +80,28 @@ export function useGradualBlur({
       return
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true)
-          }
-        })
-      },
-      {
-        threshold: Array.isArray(threshold) ? threshold : [threshold],
-        rootMargin,
-      },
-    )
+    const observerOptions = {
+      threshold: Array.isArray(threshold) ? threshold : [threshold],
+      rootMargin,
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      })
+    }, observerOptions)
 
     observer.observe(element)
 
     return () => {
-      observer.unobserve(element)
+      if (element) {
+        observer.unobserve(element)
+      }
+      observer.disconnect()
     }
-  }, [threshold, rootMargin, delay, triggerOnce, reverseOnExit, exitDelay, blurAmount, animateBlur])
+  }, [threshold, rootMargin])
 
   const blurStyle = {
     filter: "none", // Hardcoded to none

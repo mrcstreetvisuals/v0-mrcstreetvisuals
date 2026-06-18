@@ -10,7 +10,6 @@ import { ScrollIndicator } from "@/components/scroll-indicator"
 import { MobileNavigation } from "@/components/mobile-navigation"
 import { ImageSlider } from "@/components/image-slider"
 import { ResponsiveContainer } from "@/components/responsive-container"
-import { FloatingContactButtons } from "@/components/floating-contact-buttons"
 import { GradualBlurWrapper } from "@/components/gradual-blur-wrapper"
 import { BackgroundImage } from "@/components/background-image"
 
@@ -53,6 +52,18 @@ export default function Portfolio() {
     {
       src: "/images/shop/beach-crowd-bw.jpg",
       alt: "Black and white aerial view of beach life",
+    },
+    {
+      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A1471-A9uaj6D85IDGuOWPNMB7Ec1I6DO.jpg",
+      alt: "Man driving van with tattooed arms",
+    },
+    {
+      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A4859-uq3opqs6yFmOAMQNioB0jdAznZY9lT.jpg",
+      alt: "People holding Palmer Skateboard Company flag at sunset",
+    },
+    {
+      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A4822-rYld5gINmmCf1QgoPPVNnY28ypxvNI.jpg",
+      alt: "DJ at turntables with ocean backdrop",
     },
   ]
 
@@ -127,17 +138,31 @@ export default function Portfolio() {
 
   useEffect(() => {
     let lastScrollY = window.scrollY
+    let ticking = false
 
     const handleScroll = () => {
       const currentScrollY = window.scrollY
-      const scrollDirection = currentScrollY > lastScrollY ? "down" : "up"
+      
+      if (Math.abs(currentScrollY - lastScrollY) < 5) {
+        ticking = false
+        return
+      }
 
+      const scrollDirection = currentScrollY > lastScrollY ? "down" : "up"
       document.body.setAttribute("data-scroll-direction", scrollDirection)
       lastScrollY = currentScrollY
+      ticking = false
     }
 
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => window.removeEventListener("scroll", handleScroll)
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(handleScroll)
+        ticking = true
+      }
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
   useEffect(() => {
@@ -165,7 +190,7 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-black text-white scroll-smooth">
       {/* Header */}
-      <header className="fixed top-0 w-full z-50 bg-transparent border-b border-transparent header-height">
+      <header className="fixed top-0 w-full z-50 bg-black/30 backdrop-blur-md border-b border-gray-800/30 header-height">
         <ResponsiveContainer maxWidth="full" padding="md">
           <div className="flex items-center justify-between py-3 sm:py-4">
             <div className="flex items-center space-x-2 sm:space-x-3">
@@ -211,9 +236,6 @@ export default function Portfolio() {
           </div>
         </ResponsiveContainer>
       </header>
-
-      {/* Floating Contact Buttons */}
-      <FloatingContactButtons />
 
       {/* Hero Section with Image Slider */}
       <section id="home" className="relative h-screen ios-vh-fix flex items-center justify-center overflow-hidden">

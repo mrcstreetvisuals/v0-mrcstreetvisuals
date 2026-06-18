@@ -14,6 +14,70 @@ export default function ProductsAlbum() {
 
   const productImages = [
     {
+      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A1471-A9uaj6D85IDGuOWPNMB7Ec1I6DO.jpg",
+      alt: "Man driving van with tattooed arms wearing checkered beanie",
+      caption: "Street Culture Automotive",
+      description:
+        "Dynamic portrait of tattooed driver in van setting, capturing street culture and lifestyle aesthetic with authentic styling.",
+      category: "Lifestyle",
+    },
+    {
+      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A1523-TQSmvXleYQm2qlm3DieHXAuSQCUYc9.jpg",
+      alt: "Motocross rider in red helmet with colorful gloves raised",
+      caption: "Victory Moment Motocross",
+      description:
+        "Action-packed moment celebrating motocross achievement with vibrant helmet colors and dynamic pose against clear sky.",
+      category: "Sports",
+    },
+    {
+      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A4334-b81QLuGRcKsfWKuX2suJCkAibxGvLx.jpg",
+      alt: "Skateboarder performing airborne trick",
+      caption: "Aerial Skateboard Trick",
+      description:
+        "High-energy skateboarding action shot capturing mid-air trick with dramatic sky and motion-filled composition.",
+      category: "Sports",
+    },
+    {
+      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A4800-UVA2awRrjfbBluKKQhLdXbONTMKxpy.jpg",
+      alt: "Person holding spray paint cans against graffiti wall",
+      caption: "Street Art Expression",
+      description:
+        "Creative street art photography showing artist with spray cans against vibrant graffiti backdrop, capturing urban culture.",
+      category: "Street Art",
+    },
+    {
+      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A4859-uq3opqs6yFmOAMQNioB0jdAznZY9lT.jpg",
+      alt: "Two people holding Palmer Skateboard Company flag at sunset",
+      caption: "Brand Heritage Sunset",
+      description:
+        "Golden hour portrait of brand ambassadors celebrating Palmer Skateboard Company with flag in scenic field setting.",
+      category: "Brand",
+    },
+    {
+      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A3246-dxK3uh69xQYNVzL05fkLaWB5CvAMGT.jpg",
+      alt: "Person with Palmer flag on snowy mountain peak",
+      caption: "Summit Brand Adventure",
+      description:
+        "Epic mountain photography featuring Palmer Skateboard Company flag at snowy peak with dramatic alpine landscape backdrop.",
+      category: "Adventure",
+    },
+    {
+      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A2954-yXkJ3UOn8xEFMRqSkNac2PF4K5j8kx.jpg",
+      alt: "Two people on beach with ocean backdrop",
+      caption: "Coastal Brand Moments",
+      description:
+        "Vibrant beach portrait featuring brand ambassadors with dynamic energy and ocean backdrop, capturing lifestyle and community.",
+      category: "Lifestyle",
+    },
+    {
+      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A4822-rYld5gINmmCf1QgoPPVNnY28ypxvNI.jpg",
+      alt: "Person at DJ turntables with red cap against ocean",
+      caption: "Ocean DJ Performance",
+      description:
+        "Professional DJ portrait with turntables against dramatic ocean and sunset backdrop, showcasing music production lifestyle.",
+      category: "Music",
+    },
+    {
       src: "/images/product-nafa-single.jpg",
       alt: "NAFA cosmetic bottle with natural lighting",
       caption: "NAFA Hair Oil",
@@ -91,7 +155,7 @@ export default function ProductsAlbum() {
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden pt-header-offset">
         <div className="absolute inset-0">
-          <Image src="/images/product-nafa-single.jpg" alt="Products hero" fill className="object-cover" priority />
+          <Image src="/images/products-cover.jpg" alt="Products hero" fill className="object-cover" priority />
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
         </div>
 
