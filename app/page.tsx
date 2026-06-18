@@ -10,7 +10,6 @@ import { ScrollIndicator } from "@/components/scroll-indicator"
 import { MobileNavigation } from "@/components/mobile-navigation"
 import { ImageSlider } from "@/components/image-slider"
 import { ResponsiveContainer } from "@/components/responsive-container"
-import { FloatingContactButtons } from "@/components/floating-contact-buttons"
 import { GradualBlurWrapper } from "@/components/gradual-blur-wrapper"
 import { BackgroundImage } from "@/components/background-image"
 
@@ -237,9 +236,6 @@ export default function Portfolio() {
           </div>
         </ResponsiveContainer>
       </header>
-
-      {/* Floating Contact Buttons */}
-      <FloatingContactButtons />
 
       {/* Hero Section with Image Slider */}
       <section id="home" className="relative h-screen ios-vh-fix flex items-center justify-center overflow-hidden">

@@ -191,6 +191,62 @@ export default function PackagesPage() {
     },
   ]
 
+  const couplePackages = [
+    {
+      id: "romantic-couple-beach",
+      name: "Romantic Beach Session",
+      price: "60€",
+      duration: "1 hour",
+      icon: Camera,
+      image: "/images/sunset-couple-silhouette.jpg",
+      features: [
+        "60-minute beach photoshoot",
+        "10+ edited couple portraits",
+        "Golden hour or sunset timing",
+        "Natural romantic lighting",
+        "Delivery in 24h",
+      ],
+      popular: false,
+      color: "from-rose-500 to-pink-500",
+    },
+    {
+      id: "couple-adventure-pack",
+      name: "Couple Adventure Pack",
+      price: "110€-130€",
+      duration: "2 hours",
+      icon: Film,
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DSCF9743.JPG-LPk09NhFDupTAKYgXcanejoYJxQtXq.jpeg",
+      features: [
+        "2-hour creative couple session",
+        "20+ edited romantic photos",
+        "Multiple locations (beach, street, nature)",
+        "Couple highlight video (30-45 sec)",
+        "Artistic color grading",
+        "Priority delivery (same day)",
+      ],
+      popular: true,
+      color: "from-red-500 to-rose-500",
+    },
+    {
+      id: "couple-engagement-premium",
+      name: "Couple Engagement Premium",
+      price: "180€-220€",
+      duration: "3 hours",
+      icon: Sparkles,
+      image: "/images/surfer-wave-action.jpg",
+      features: [
+        "3-hour full couple photoshoot",
+        "40+ professionally edited photos",
+        "Engagement or anniversary focused",
+        "Full cinematic video (1-2 min, music included)",
+        "Premium album design included",
+        "Private online gallery with unlimited downloads",
+      ],
+      popular: false,
+      color: "from-purple-500 to-pink-500",
+    },
+  ]
+
   const realEstatePackages = [
     {
       id: "basic-listing",
@@ -687,6 +743,103 @@ export default function PackagesPage() {
                   {pkg.popular && (
                     <div className="absolute top-4 right-4 z-10">
                       <Badge className="bg-cyan-500 text-white text-xs sm:text-sm">Best Value</Badge>
+                    </div>
+                  )}
+
+                  <div className="relative aspect-[4/3] w-full overflow-hidden">
+                    <Image
+                      src={pkg.image || "/placeholder.svg"}
+                      alt={pkg.name}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
+                    />
+                  </div>
+
+                  <CardContent className="p-4 sm:p-6 flex flex-col flex-1">
+                    <div
+                      className={`w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-r ${pkg.color} flex items-center justify-center mb-3 sm:mb-4`}
+                    >
+                      <pkg.icon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                    </div>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">{pkg.name}</h3>
+                    <div className="text-2xl sm:text-3xl font-bold text-white mb-1">{pkg.price}</div>
+                    <p className="text-xs sm:text-sm text-gray-400 mb-4 sm:mb-6">{pkg.duration}</p>
+                    <ul className="space-y-2 sm:space-y-3 mb-4 sm:mb-6 flex-1">
+                      {pkg.features.map((feature, i) => (
+                        <li key={i} className="flex items-start text-xs sm:text-sm text-gray-300">
+                          <Check className="h-4 w-4 sm:h-5 sm:w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Button
+                      onClick={() => handleBooking(pkg.name, pkg.price)}
+                      className={`w-full bg-gradient-to-r ${pkg.color} hover:opacity-90 text-white transform hover:scale-105 transition-all duration-300 text-sm sm:text-base`}
+                    >
+                      Book Now
+                    </Button>
+                  </CardContent>
+                </Card>
+              </GradualBlurWrapper>
+            ))}
+          </div>
+        </ResponsiveContainer>
+      </section>
+
+      {/* Couple Photography Packages */}
+      <section className="relative py-16 sm:py-20 md:py-24 lg:py-32">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-10" />
+          <Image
+            src="/images/sunset-couple-silhouette.jpg"
+            alt="Couple background"
+            fill
+            className="object-cover opacity-20"
+          />
+        </div>
+
+        <ResponsiveContainer maxWidth="2xl" className="relative z-20 px-4">
+          <div className="text-center mb-12 sm:mb-16">
+            <GradualBlurWrapper
+              blurAmount={12}
+              duration={1000}
+              delay={100}
+              animationType="blur-fade"
+              threshold={0.2}
+              triggerOnce={false}
+              reverseOnExit={true}
+            >
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-rose-400 to-pink-500 bg-clip-text text-transparent py-1.5">
+                Couple Photography Packages
+              </h2>
+              <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
+                Capture your love story with romantic and creative couple photography
+              </p>
+            </GradualBlurWrapper>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            {couplePackages.map((pkg, index) => (
+              <GradualBlurWrapper
+                key={pkg.id}
+                blurAmount={10}
+                duration={1000}
+                delay={200 + index * 100}
+                animationType="blur-slide"
+                direction="up"
+                threshold={0.15}
+                triggerOnce={false}
+                reverseOnExit={true}
+              >
+                <Card
+                  className={`bg-gray-900/95 backdrop-blur-sm border-gray-800 overflow-hidden group hover:scale-105 transition-all duration-300 relative h-full flex flex-col ${
+                    pkg.popular ? "ring-2 ring-rose-500" : ""
+                  }`}
+                >
+                  {pkg.popular && (
+                    <div className="absolute top-4 right-4 z-10">
+                      <Badge className="bg-rose-500 text-white text-xs sm:text-sm">Most Popular</Badge>
                     </div>
                   )}
 
