@@ -100,6 +100,30 @@ export default function PortraitsAlbum() {
         "Intimate and thoughtful portrait with soft natural lighting, capturing a moment of peaceful reflection in a natural setting.",
       category: "Intimate",
     },
+    {
+      src: "/images/portraits/studio-portrait-bw.jpg",
+      alt: "Professional black and white studio portrait",
+      caption: "Studio Intensity",
+      description:
+        "Powerful black and white studio portrait with dramatic stage lighting, showcasing personality and strength with artistic precision.",
+      category: "Studio",
+    },
+    {
+      src: "/images/portraits/fashion-night-portrait.jpg",
+      alt: "Fashion portrait in evening setting",
+      caption: "Evening Elegance",
+      description:
+        "Stylish fashion portrait captured in night setting with dramatic lighting and patterned attire showcasing contemporary style.",
+      category: "Fashion",
+    },
+    {
+      src: "/images/portraits/cultural-headdress-bw.jpg",
+      alt: "Black and white portrait with traditional headdress",
+      caption: "Cultural Adornment",
+      description:
+        "Artistic black and white portrait capturing traditional cultural elements and personal expression through authentic styling.",
+      category: "Cultural",
+    },
   ]
 
   return (

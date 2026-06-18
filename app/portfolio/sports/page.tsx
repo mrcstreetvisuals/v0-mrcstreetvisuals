@@ -111,6 +111,14 @@ export default function SportsAlbum() {
       description: "Lifestyle photography capturing the authentic surf culture and beach atmosphere.",
       category: "Surfing",
     },
+    {
+      src: "/images/sports/skateboard-trick-sky.jpg",
+      alt: "Skateboarder performing trick against dramatic sky",
+      caption: "Sky High Trick",
+      description:
+        "Dynamic action shot of a skateboarder executing an impressive trick with beautiful sky backdrop and motion photography.",
+      category: "Skateboarding",
+    },
   ]
 
   return (

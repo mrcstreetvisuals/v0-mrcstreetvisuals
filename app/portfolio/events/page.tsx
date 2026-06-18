@@ -112,6 +112,38 @@ export default function EventsAlbum() {
       description: "Artistic capture of light trails and motion blur creating dynamic visual effects.",
       category: "Creative",
     },
+    {
+      src: "/images/events/cultural-performers-bw.jpg",
+      alt: "Cultural performers in traditional attire",
+      caption: "Traditional Wings",
+      description:
+        "Striking black and white documentation of cultural performers in traditional ceremonial costumes with elaborate wing pieces.",
+      category: "Cultural",
+    },
+    {
+      src: "/images/events/night-musicians-rooftop.jpg",
+      alt: "Musicians performing on rooftop at night",
+      caption: "Rooftop Jam Session",
+      description:
+        "Vibrant night photography capturing musicians in casual session on a rooftop with warm atmospheric lighting.",
+      category: "Music",
+    },
+    {
+      src: "/images/events/indoor-party-neon.jpg",
+      alt: "Indoor party with neon and ambient lighting",
+      caption: "Neon Party Vibes",
+      description:
+        "Energetic party photography with creative neon and colored lighting, capturing the social and celebratory atmosphere.",
+      category: "Party",
+    },
+    {
+      src: "/images/events/performance-stage-blue.jpg",
+      alt: "Live performance with blue stage lighting",
+      caption: "Stage Presence",
+      description:
+        "Professional performance photography with dramatic blue stage lighting and crowd atmosphere creating concert ambiance.",
+      category: "Concert",
+    },
   ]
 
   return (
