@@ -139,17 +139,31 @@ export default function Portfolio() {
 
   useEffect(() => {
     let lastScrollY = window.scrollY
+    let ticking = false
 
     const handleScroll = () => {
       const currentScrollY = window.scrollY
-      const scrollDirection = currentScrollY > lastScrollY ? "down" : "up"
+      
+      if (Math.abs(currentScrollY - lastScrollY) < 5) {
+        ticking = false
+        return
+      }
 
+      const scrollDirection = currentScrollY > lastScrollY ? "down" : "up"
       document.body.setAttribute("data-scroll-direction", scrollDirection)
       lastScrollY = currentScrollY
+      ticking = false
     }
 
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => window.removeEventListener("scroll", handleScroll)
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(handleScroll)
+        ticking = true
+      }
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
   useEffect(() => {
