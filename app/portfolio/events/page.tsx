@@ -14,11 +14,58 @@ export default function EventsAlbum() {
 
   const eventImages = [
     {
+      src: "/images/events/cultural-performers-bw.jpg",
+      alt: "Cultural performers in traditional attire",
+      caption: "Traditional Wings",
+      description:
+        "Striking black and white documentation of cultural performers in traditional ceremonial costumes with elaborate wing pieces.",
+      category: "Cultural",
+    },
+    {
+      src: "/images/events/night-musicians-rooftop.jpg",
+      alt: "Musicians performing on rooftop at night",
+      caption: "Rooftop Jam Session",
+      description:
+        "Vibrant night photography capturing musicians in casual session on a rooftop with warm atmospheric lighting.",
+      category: "Music",
+    },
+    {
+      src: "/images/events/indoor-party-neon.jpg",
+      alt: "Indoor party with neon and ambient lighting",
+      caption: "Neon Party Vibes",
+      description:
+        "Energetic party photography with creative neon and colored lighting, capturing the social and celebratory atmosphere.",
+      category: "Party",
+    },
+    {
+      src: "/images/events/performance-stage-blue.jpg",
+      alt: "Live performance with blue stage lighting",
+      caption: "Stage Presence",
+      description:
+        "Professional performance photography with dramatic blue stage lighting and crowd atmosphere creating concert ambiance.",
+      category: "Concert",
+    },
+    {
       src: "/images/nightclub-red.jpg",
-      alt: "Nightclub with dramatic red lighting",
-      caption: "Electric Nightlife",
-      description: "High-energy nightclub photography capturing the vibrant atmosphere and dynamic lighting.",
+      alt: "Nightclub with red lighting",
+      caption: "Red Lights",
+      description: "Vibrant nightclub photography showcasing energy and atmosphere with striking red lighting.",
       category: "Nightlife",
+    },
+    {
+      src: "/images/events/the-lost-haven-neon.jpg",
+      alt: "The Lost Haven venue with neon signage",
+      caption: "The Lost Haven",
+      description: "Atmospheric venue photography capturing the unique aesthetic of a nightlife venue with neon elements.",
+      category: "Venue",
+    },
+    {
+      src: "/images/events/live-concert-blue-lights.jpg",
+      alt: "Live concert performance with blue stage lighting",
+      caption: "Concert Stage Magic",
+      description:
+        "Professional concert photography capturing a live performance with dramatic blue stage lighting and full band setup.",
+      category: "Concert",
     },
     {
       src: "/images/events/the-lost-haven-neon.jpg",

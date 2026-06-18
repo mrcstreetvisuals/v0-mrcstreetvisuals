@@ -14,11 +14,42 @@ export default function PortraitsAlbum() {
 
   const portraitImages = [
     {
-      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A3944-GfqQNH81A3efSkcwdQcyyNGgb4AnSB.jpg",
-      alt: "Golden hour beach portrait on sand",
-      caption: "Golden Sand Dreams",
+      src: "/images/portraits/studio-portrait-bw.jpg",
+      alt: "Professional black and white studio portrait",
+      caption: "Studio Intensity",
       description:
-        "Serene golden hour portrait captured on the beach with warm, soft lighting illuminating the subject against textured sand and ocean waves.",
+        "Powerful black and white studio portrait with dramatic stage lighting, showcasing personality and strength with artistic precision.",
+      category: "Studio",
+    },
+    {
+      src: "/images/portraits/fashion-night-portrait.jpg",
+      alt: "Fashion portrait in evening setting",
+      caption: "Evening Elegance",
+      description:
+        "Stylish fashion portrait captured in night setting with dramatic lighting and patterned attire showcasing contemporary style.",
+      category: "Fashion",
+    },
+    {
+      src: "/images/portraits/cultural-headdress-bw.jpg",
+      alt: "Black and white portrait with traditional headdress",
+      caption: "Cultural Adornment",
+      description:
+        "Artistic black and white portrait capturing traditional cultural elements and personal expression through authentic styling.",
+      category: "Cultural",
+    },
+    {
+      src: "/images/nightclub-red.jpg",
+      alt: "Nightclub scene with red lighting",
+      caption: "Neon Nights",
+      description: "Vibrant nightclub photography with dramatic red neon lighting and dynamic crowd atmosphere.",
+      category: "Nightlife",
+    },
+    {
+      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A3946-H0mbL25fuw7YkkBJ5cmFJNsNMRmT96.jpg",
+      alt: "Golden hour portrait lying on beach sand",
+      caption: "Golden Hour Repose",
+      description:
+        "Relaxed golden hour portrait with the subject resting on warm sand, capturing the softness and beauty of sunset beach photography.",
       category: "Beach",
     },
     {

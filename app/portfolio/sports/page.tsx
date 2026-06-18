@@ -14,6 +14,14 @@ export default function SportsAlbum() {
 
   const sportsImages = [
     {
+      src: "/images/sports/skateboard-trick-sky.jpg",
+      alt: "Skateboarder performing trick against dramatic sky",
+      caption: "Sky High Trick",
+      description:
+        "Dynamic action shot of a skateboarder executing an impressive trick with beautiful sky backdrop and motion photography.",
+      category: "Skateboarding",
+    },
+    {
       src: "/images/surfer-wave-action.jpg",
       alt: "Surfer riding a powerful wave",
       caption: "Wave Rider",
