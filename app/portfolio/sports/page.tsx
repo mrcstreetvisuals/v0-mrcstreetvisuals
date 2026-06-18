@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { ImageViewer } from "@/components/image-viewer"
-import { ArrowLeft, Instagram, Mail, MessageCircle, Eye } from "lucide-react"
+import { ArrowLeft, Instagram, Mail, MessageCircle } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"

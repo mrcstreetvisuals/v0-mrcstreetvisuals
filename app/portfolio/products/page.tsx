@@ -155,7 +155,7 @@ export default function ProductsAlbum() {
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden pt-header-offset">
         <div className="absolute inset-0">
-          <Image src="/images/product-nafa-single.jpg" alt="Products hero" fill className="object-cover" priority />
+          <Image src="/images/products-cover.jpg" alt="Products hero" fill className="object-cover" priority />
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
         </div>
 

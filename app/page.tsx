@@ -190,7 +190,7 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-black text-white scroll-smooth">
       {/* Header */}
-      <header className="fixed top-0 w-full z-50 bg-transparent border-b border-transparent header-height">
+      <header className="fixed top-0 w-full z-50 bg-black/30 backdrop-blur-md border-b border-gray-800/30 header-height">
         <ResponsiveContainer maxWidth="full" padding="md">
           <div className="flex items-center justify-between py-3 sm:py-4">
             <div className="flex items-center space-x-2 sm:space-x-3">
