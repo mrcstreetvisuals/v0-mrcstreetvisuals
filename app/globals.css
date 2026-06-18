@@ -281,11 +281,38 @@ section {
   padding: 0 !important;
 }
 
+/* Header hide/show on scroll */
+header {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+body[data-scroll-direction="down"] header {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+body[data-scroll-direction="up"] header {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Keep header visible at top of page */
+body:not([data-scroll-direction]) header {
+  transform: translateY(0);
+  opacity: 1;
+}
+
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  header {
+    transition: none !important;
   }
 }
