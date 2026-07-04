@@ -100,7 +100,7 @@ export default function PackagesPage() {
       price: "30€",
       duration: "20 minutes",
       icon: Camera,
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A3900-uwDvdhTQfi6ZqLLIbBtXBdAi6Yk0Qd.jpg",
+      image: "/images/portraits/woman-sunglasses-warm-light.jpg",
       features: ["20-minute shoot (after surf or sunset)", "5 edited portraits", "Natural light only"],
       popular: false,
       color: "from-pink-500 to-rose-500",
@@ -111,7 +111,7 @@ export default function PackagesPage() {
       price: "50€",
       duration: "45 minutes",
       icon: Camera,
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A3946-H0mbL25fuw7YkkBJ5cmFJNsNMRmT96.jpg",
+      image: "/images/portraits/contemplative-woman-curly-hair.jpg",
       features: [
         "45-minute beach or village shoot",
         "10 edited portraits",
@@ -215,7 +215,7 @@ export default function PackagesPage() {
       price: "110€-130€",
       duration: "2 hours",
       icon: Film,
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DSCF9743.JPG-LPk09NhFDupTAKYgXcanejoYJxQtXq.jpeg",
+      image: "/images/sunset-couple-silhouette.jpg",
       features: [
         "2-hour creative couple session",
         "20+ edited romantic photos",
