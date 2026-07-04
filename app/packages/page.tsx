@@ -1,5 +1,7 @@
 "use client"
 
+// Force rebuild - fixing hydration mismatch 
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -195,7 +197,7 @@ export default function PackagesPage() {
     {
       id: "romantic-couple-beach",
       name: "Romantic Beach Session",
-      price: "60€",
+      price: "100€",
       duration: "1 hour",
       icon: Camera,
       image: "/images/sunset-couple-silhouette.jpg",
@@ -251,8 +253,8 @@ export default function PackagesPage() {
     {
       id: "basic-listing",
       name: "Basic Listing Package",
-      price: "60€",
-      duration: "1-2 hours",
+      price: "100€",
+      duration: "1 hour",
       icon: Home,
       image: "/images/real-estate/minimalist-bedroom-yellow-pillows.jpg",
       features: [
@@ -267,8 +269,8 @@ export default function PackagesPage() {
     {
       id: "premium-real-estate",
       name: "Premium Package",
-      price: "90€",
-      duration: "2-3 hours",
+      price: "150€",
+      duration: "2 hours",
       icon: Sparkles,
       image: "/images/real-estate/rooftop-terrace-sunset-chairs.jpg",
       features: [
@@ -287,12 +289,12 @@ export default function PackagesPage() {
       id: "small-event",
       name: "Small Event",
       price: "80€",
-      duration: "1-2 hours",
+      duration: "1 hour",
       icon: PartyPopper,
       image: "/images/events/nightclub-red.jpg",
       features: [
-        "1-2 hour coverage",
-        "30+ edited high-res photos",
+        "1 hour coverage",
+        "30 edited high-res photos",
         "Key moments captured",
         "Online gallery delivery",
         "Fast turnaround (48h)",
@@ -303,12 +305,12 @@ export default function PackagesPage() {
     {
       id: "half-day-event",
       name: "Half-Day Event",
-      price: "130€",
-      duration: "3-4 hours",
+      price: "150€",
+      duration: "3 hours",
       icon: Camera,
       image: "/images/events/traditional-cultural-ensemble.jpg",
       features: [
-        "3-4 hour full coverage",
+        "3 hours full coverage",
         "60+ edited high-res photos",
         "Highlight selection",
         "Multiple angles captured",
@@ -340,7 +342,7 @@ export default function PackagesPage() {
     {
       id: "brand-collection",
       name: "Brand Collection",
-      price: "80€",
+      price: "100€",
       duration: "Full Brand Session",
       icon: Sparkles,
       image: "/images/product-nafa-duo.jpg",
@@ -358,13 +360,13 @@ export default function PackagesPage() {
   const addOns = [
     {
       name: "Printed Photos",
-      price: "+15€-45€",
+      price: "+20€-45€",
       description: "Physical prints or small photobook",
       icon: Camera,
     },
     {
       name: "Custom Video with Music",
-      price: "+20€",
+      price: "+50€",
       description: "Personalized soundtrack and editing",
       icon: Sparkles,
     },
