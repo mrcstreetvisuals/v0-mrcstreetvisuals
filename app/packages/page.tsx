@@ -195,7 +195,7 @@ export default function PackagesPage() {
     {
       id: "romantic-couple-beach",
       name: "Romantic Beach Session",
-      price: "60€",
+      price: "100€",
       duration: "1 hour",
       icon: Camera,
       image: "/images/sunset-couple-silhouette.jpg",
