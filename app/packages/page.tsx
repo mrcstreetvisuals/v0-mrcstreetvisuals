@@ -251,8 +251,8 @@ export default function PackagesPage() {
     {
       id: "basic-listing",
       name: "Basic Listing Package",
-      price: "60€",
-      duration: "1-2 hours",
+      price: "100€",
+      duration: "1 hour",
       icon: Home,
       image: "/images/real-estate/minimalist-bedroom-yellow-pillows.jpg",
       features: [
@@ -267,8 +267,8 @@ export default function PackagesPage() {
     {
       id: "premium-real-estate",
       name: "Premium Package",
-      price: "90€",
-      duration: "2-3 hours",
+      price: "150€",
+      duration: "2 hours",
       icon: Sparkles,
       image: "/images/real-estate/rooftop-terrace-sunset-chairs.jpg",
       features: [
