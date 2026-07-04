@@ -100,7 +100,7 @@ export default function PackagesPage() {
       price: "30€",
       duration: "20 minutes",
       icon: Camera,
-      image: "/https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A3900-uwDvdhTQfi6ZqLLIbBtXBdAi6Yk0Qd.jpg",
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A3900-uwDvdhTQfi6ZqLLIbBtXBdAi6Yk0Qd.jpg",
       features: ["20-minute shoot (after surf or sunset)", "5 edited portraits", "Natural light only"],
       popular: false,
       color: "from-pink-500 to-rose-500",
