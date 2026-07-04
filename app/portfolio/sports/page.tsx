@@ -269,8 +269,7 @@ export default function SportsAlbum() {
                 perfect moment where skill, timing, and natural elements converge.
               </p>
               <p className="text-sm text-purple-400 flex items-center justify-center gap-2">
-                <Eye className="h-4 w-4" />
-                Click the eye icon on each photo to toggle information visibility
+                Click each photo to view full-size images and details
               </p>
             </GradualBlurWrapper>
           </div>
