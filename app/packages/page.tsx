@@ -111,7 +111,7 @@ export default function PackagesPage() {
       price: "50€",
       duration: "45 minutes",
       icon: Camera,
-      image: "/images/portraits/contemplative-woman-curly-hair.jpg",
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A3946-H0mbL25fuw7YkkBJ5cmFJNsNMRmT96.jpg",
       features: [
         "45-minute beach or village shoot",
         "10 edited portraits",
@@ -195,7 +195,7 @@ export default function PackagesPage() {
     {
       id: "romantic-couple-beach",
       name: "Romantic Beach Session",
-      price: "100€",
+      price: "60€",
       duration: "1 hour",
       icon: Camera,
       image: "/images/sunset-couple-silhouette.jpg",
