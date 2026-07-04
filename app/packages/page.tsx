@@ -1,5 +1,7 @@
 "use client"
 
+// Force rebuild - fixing hydration mismatch 
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -198,7 +200,7 @@ export default function PackagesPage() {
       price: "60€",
       duration: "1 hour",
       icon: Camera,
-      image: "/images/sunset-couple-silhouette.jpg",
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A3946-H0mbL25fuw7YkkBJ5cmFJNsNMRmT96.jpg",
       features: [
         "60-minute beach photoshoot",
         "10+ edited couple portraits",
