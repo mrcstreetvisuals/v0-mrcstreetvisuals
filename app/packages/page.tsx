@@ -197,10 +197,10 @@ export default function PackagesPage() {
     {
       id: "romantic-couple-beach",
       name: "Romantic Beach Session",
-      price: "60€",
+      price: "100€",
       duration: "1 hour",
       icon: Camera,
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A3946-H0mbL25fuw7YkkBJ5cmFJNsNMRmT96.jpg",
+      image: "/images/sunset-couple-silhouette.jpg",
       features: [
         "60-minute beach photoshoot",
         "10+ edited couple portraits",
