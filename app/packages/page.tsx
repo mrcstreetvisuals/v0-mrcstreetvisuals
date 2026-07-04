@@ -215,7 +215,7 @@ export default function PackagesPage() {
       price: "110€-130€",
       duration: "2 hours",
       icon: Film,
-      image: "/images/sunset-couple-silhouette.jpg",
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DSCF9743.JPG-LPk09NhFDupTAKYgXcanejoYJxQtXq.jpeg",
       features: [
         "2-hour creative couple session",
         "20+ edited romantic photos",
