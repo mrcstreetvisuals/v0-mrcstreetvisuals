@@ -31,9 +31,23 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
     // Add smooth scroll behavior
     document.documentElement.style.scrollBehavior = "smooth"
 
+    // Suppress ResizeObserver loop errors
+    const originalError = console.error
+    console.error = function (...args: any[]) {
+      if (
+        args[0] &&
+        typeof args[0] === "string" &&
+        args[0].includes("ResizeObserver loop completed with undelivered notifications")
+      ) {
+        return
+      }
+      originalError.apply(console, args)
+    }
+
     // Clean up on unmount
     return () => {
       document.documentElement.style.scrollBehavior = ""
+      console.error = originalError
     }
   }, [])
 

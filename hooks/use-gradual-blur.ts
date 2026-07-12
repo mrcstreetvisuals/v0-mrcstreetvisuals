@@ -85,21 +85,32 @@ export function useGradualBlur({
       rootMargin,
     }
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
-      })
-    }, observerOptions)
+    let isConnected = true
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!isConnected) return
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true)
+          }
+        })
+      },
+      observerOptions,
+    )
 
-    observer.observe(element)
+    try {
+      observer.observe(element)
+    } catch (e) {
+      // Suppress ResizeObserver errors
+    }
 
     return () => {
-      if (element) {
-        observer.unobserve(element)
+      isConnected = false
+      try {
+        observer.disconnect()
+      } catch (e) {
+        // Suppress ResizeObserver errors on cleanup
       }
-      observer.disconnect()
     }
   }, [threshold, rootMargin])
 
