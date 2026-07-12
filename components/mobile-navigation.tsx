@@ -98,7 +98,7 @@ export function MobileNavigation({ currentSection }: MobileNavigationProps) {
           {" "}
           {/* Added top padding for header space */}
           {/* Navigation Links */}
-          <nav className="flex-1 px-6 py-4">
+          <nav className="flex-1 px-6 py-4 bg-white/5 backdrop-blur-md rounded-lg m-4 border border-white/10">
             <ul className="space-y-2">
               {navigationItems.map((item, index) => (
                 <li
