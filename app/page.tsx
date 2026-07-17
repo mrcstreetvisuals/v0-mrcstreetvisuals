@@ -12,9 +12,53 @@ import { ImageSlider } from "@/components/image-slider"
 import { ResponsiveContainer } from "@/components/responsive-container"
 import { GradualBlurWrapper } from "@/components/gradual-blur-wrapper"
 import { BackgroundImage } from "@/components/background-image"
+import { InstagramCarousel } from "@/components/instagram-carousel"
 
 export default function Portfolio() {
   const [currentBgIndex, setCurrentBgIndex] = useState(0)
+
+  const instagramPosts = [
+    {
+      id: "1",
+      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A3944-GfqQNH81A3efSkcwdQcyyNGgb4AnSB.jpg",
+      alt: "Portrait photography showcase",
+      caption: "Capturing authentic moments and emotions through the lens.",
+      permalink: "https://www.instagram.com/_mrcstreetvisuals_/",
+      isVideo: false,
+    },
+    {
+      id: "2",
+      src: "/images/nightclub-red.jpg",
+      alt: "Event photography at nightclub",
+      caption: "High-energy event coverage with dramatic lighting.",
+      permalink: "https://www.instagram.com/_mrcstreetvisuals_/",
+      isVideo: false,
+    },
+    {
+      id: "3",
+      src: "/images/surfer-wave-action.jpg",
+      alt: "Action sports photography",
+      caption: "Dynamic action shots capturing athletic moments.",
+      permalink: "https://www.instagram.com/_mrcstreetvisuals_/",
+      isVideo: false,
+    },
+    {
+      id: "4",
+      src: "/images/sunset-couple-silhouette.jpg",
+      alt: "Couple silhouette at sunset",
+      caption: "Romantic and intimate photography sessions.",
+      permalink: "https://www.instagram.com/_mrcstreetvisuals_/",
+      isVideo: false,
+    },
+    {
+      id: "5",
+      src: "/images/pink-car-automotive.jpg",
+      alt: "Automotive photography",
+      caption: "Stunning automotive and product photography.",
+      permalink: "https://www.instagram.com/_mrcstreetvisuals_/",
+      isVideo: false,
+    },
+  ]
 
   const heroSliderImages = [
     {
@@ -214,6 +258,9 @@ export default function Portfolio() {
               <Link href="#home" className="hover:text-purple-400 transition-colors text-sm lg:text-base">
                 Home
               </Link>
+              <Link href="#instagram" className="hover:text-purple-400 transition-colors text-sm lg:text-base">
+                Instagram
+              </Link>
               <Link href="#portfolio" className="hover:text-purple-400 transition-colors text-sm lg:text-base">
                 Portfolio
               </Link>
@@ -337,6 +384,58 @@ export default function Portfolio() {
                 </Button>
               </a>
             </div>
+          </GradualBlurWrapper>
+        </ResponsiveContainer>
+      </section>
+
+      {/* Instagram Showcase Section */}
+      <section id="instagram" className="section-padding relative bg-gradient-to-b from-black via-black to-gray-900">
+        <div className="absolute inset-0 bg-gradient-to-r from-red-500/5 via-purple-500/5 to-red-500/5 pointer-events-none" />
+        <ResponsiveContainer maxWidth="2xl" className="content-spacing-lg relative z-10">
+          {/* Header */}
+          <div className="text-center mb-12 sm:mb-16">
+            <GradualBlurWrapper
+              blurAmount={15}
+              duration={1200}
+              delay={100}
+              animationType="blur-fade"
+              threshold={0.2}
+              triggerOnce={false}
+              reverseOnExit={true}
+            >
+              <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-red-500 to-purple-400 bg-clip-text text-transparent mobile-heading-adjust">
+                Latest From Instagram
+              </h2>
+            </GradualBlurWrapper>
+
+            <GradualBlurWrapper
+              blurAmount={12}
+              duration={1000}
+              delay={300}
+              animationType="blur-slide"
+              direction="up"
+              threshold={0.2}
+              triggerOnce={false}
+              reverseOnExit={true}
+            >
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-400 max-w-3xl mx-auto mobile-body-adjust">
+                Follow my journey on Instagram for daily content, behind-the-scenes moments, and exclusive updates on
+                photography sessions and events.
+              </p>
+            </GradualBlurWrapper>
+          </div>
+
+          {/* Carousel */}
+          <GradualBlurWrapper
+            blurAmount={10}
+            duration={1200}
+            delay={200}
+            animationType="blur-scale"
+            threshold={0.15}
+            triggerOnce={false}
+            reverseOnExit={true}
+          >
+            <InstagramCarousel posts={instagramPosts} autoplayInterval={5000} showFollowButton={true} />
           </GradualBlurWrapper>
         </ResponsiveContainer>
       </section>
