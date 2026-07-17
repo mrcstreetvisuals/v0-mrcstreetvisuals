@@ -258,9 +258,6 @@ export default function Portfolio() {
               <Link href="#home" className="hover:text-purple-400 transition-colors text-sm lg:text-base">
                 Home
               </Link>
-              <Link href="#instagram" className="hover:text-purple-400 transition-colors text-sm lg:text-base">
-                Instagram
-              </Link>
               <Link href="#portfolio" className="hover:text-purple-400 transition-colors text-sm lg:text-base">
                 Portfolio
               </Link>

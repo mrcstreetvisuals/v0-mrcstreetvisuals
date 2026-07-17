@@ -13,7 +13,6 @@ export function MobileNavigation({ currentSection }: MobileNavigationProps) {
 
   const navigationItems = [
     { href: "#home", label: "Home" },
-    { href: "#instagram", label: "Instagram" },
     { href: "#portfolio", label: "Portfolio" },
     { href: "/packages", label: "Packages" },
     { href: "/shop", label: "Shop" },
