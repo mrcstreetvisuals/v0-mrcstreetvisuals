@@ -377,6 +377,26 @@ export default function PackagesPage() {
     },
   ]
 
+  const motorcyclePackages = [
+    {
+      id: "motorcycle-signature-session",
+      name: "Motorcycle Signature Session",
+      price: "90€",
+      duration: "1 hour",
+      icon: Camera,
+      image: "/images/motorcycle/motorcycle-signature-session.png",
+      features: [
+        "1-hour location shoot",
+        "12 professionally edited motorcycle photos",
+        "Detail, riding, and lifestyle coverage",
+        "Cinematic color grading",
+        "Private online gallery delivered within 48h",
+      ],
+      popular: true,
+      color: "from-orange-500 to-red-500",
+    },
+  ]
+
   const addOns = [
     {
       name: "Printed Photos",
@@ -1240,6 +1260,95 @@ export default function PackagesPage() {
                 <Card className="bg-gray-900/95 backdrop-blur-sm border-gray-800 overflow-hidden group hover:scale-[1.02] transition-all duration-300 relative h-full flex flex-col ring-2 ring-fuchsia-500/70">
                   <div className="absolute top-4 right-4 z-10">
                     <Badge className="bg-fuchsia-500 text-white text-xs sm:text-sm">Featured</Badge>
+                  </div>
+
+                  <div className="relative aspect-[16/9] w-full overflow-hidden">
+                    <Image
+                      src={pkg.image}
+                      alt={pkg.name}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, 672px"
+                    />
+                  </div>
+
+                  <CardContent className="p-5 sm:p-7 flex flex-col">
+                    <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-r ${pkg.color} flex items-center justify-center mb-4`}>
+                      <pkg.icon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">{pkg.name}</h3>
+                    <div className="text-3xl sm:text-4xl font-bold text-white mb-1">{pkg.price}</div>
+                    <p className="text-sm text-gray-400 mb-5 sm:mb-6">{pkg.duration}</p>
+                    <ul className="space-y-3 mb-6 sm:mb-7">
+                      {pkg.features.map((feature, i) => (
+                        <li key={i} className="flex items-start text-sm text-gray-300">
+                          <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Button
+                      onClick={() => handleBooking(pkg.name, pkg.price)}
+                      className={`w-full bg-gradient-to-r ${pkg.color} hover:opacity-90 text-white transform hover:scale-105 transition-all duration-300`}
+                    >
+                      Book Now
+                    </Button>
+                  </CardContent>
+                </Card>
+              </GradualBlurWrapper>
+            ))}
+          </div>
+        </ResponsiveContainer>
+      </section>
+
+      {/* Motorcycle Photography Package */}
+      <section id="motorcycle-packages" aria-label="Motorcycle photography packages" className="relative py-16 sm:py-20 md:py-24 lg:py-32">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-10" />
+          <Image
+            src="/images/motorcycle/motorcycle-signature-session.png"
+            alt="Motorcycle photography background"
+            fill
+            className="object-cover opacity-20"
+          />
+        </div>
+
+        <ResponsiveContainer maxWidth="2xl" className="relative z-20 px-4">
+          <div className="text-center mb-12 sm:mb-16">
+            <GradualBlurWrapper
+              blurAmount={12}
+              duration={1000}
+              delay={100}
+              animationType="blur-fade"
+              threshold={0.2}
+              triggerOnce={false}
+              reverseOnExit={true}
+            >
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent py-1.5">
+                Motorcycle Photography
+              </h2>
+              <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
+                Capture the character, details, and freedom of your motorcycle in every frame.
+              </p>
+            </GradualBlurWrapper>
+          </div>
+
+          <div className="grid grid-cols-1 max-w-2xl mx-auto">
+            {motorcyclePackages.map((pkg, index) => (
+              <GradualBlurWrapper
+                key={pkg.id}
+                blurAmount={10}
+                duration={1000}
+                delay={200 + index * 100}
+                animationType="blur-slide"
+                direction="up"
+                threshold={0.15}
+                triggerOnce={false}
+                reverseOnExit={true}
+              >
+                <Card className="bg-gray-900/95 backdrop-blur-sm border-gray-800 overflow-hidden group hover:scale-[1.02] transition-all duration-300 relative h-full flex flex-col ring-2 ring-orange-500/70">
+                  <div className="absolute top-4 right-4 z-10">
+                    <Badge className="bg-orange-500 text-white text-xs sm:text-sm">Featured</Badge>
                   </div>
 
                   <div className="relative aspect-[16/9] w-full overflow-hidden">
