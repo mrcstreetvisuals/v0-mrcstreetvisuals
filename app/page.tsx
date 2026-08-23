@@ -12,18 +12,19 @@ import { ImageSlider } from "@/components/image-slider"
 import { ResponsiveContainer } from "@/components/responsive-container"
 import { GradualBlurWrapper } from "@/components/gradual-blur-wrapper"
 import { BackgroundImage } from "@/components/background-image"
+import { editorialImages } from "@/lib/editorial-image-map"
 
 export default function Portfolio() {
   const [currentBgIndex, setCurrentBgIndex] = useState(0)
 
   const heroSliderImages = [
     {
-      src: "/images/surfer-wave-action.jpg",
-      alt: "Surfer riding a powerful wave",
+      src: editorialImages.hero.src,
+      alt: editorialImages.hero.alt,
     },
     {
-      src: "/images/sunset-couple-silhouette.jpg",
-      alt: "Couple silhouette at sunset",
+      src: editorialImages.about.src,
+      alt: editorialImages.about.alt,
     },
     {
       src: "/images/surfers-bw-silhouette.jpg",
@@ -344,8 +345,8 @@ export default function Portfolio() {
       {/* Portfolio Albums Section */}
       <section id="portfolio" className="section-padding relative">
         <BackgroundImage
-          src="/images/surfer-wave-action.jpg"
-          alt="Surfer wave action background"
+          src={editorialImages.action.src}
+          alt={editorialImages.action.alt}
           opacity={0.3}
           priority={false}
           fadeInDuration={1500}
@@ -444,8 +445,8 @@ export default function Portfolio() {
       {/* Packages Section */}
       <section id="packages" className="section-padding relative overflow-hidden">
         <BackgroundImage
-          src="/images/nightclub-dance.jpg"
-          alt="Packages background"
+          src={editorialImages.products.src}
+          alt={editorialImages.products.alt}
           opacity={0.2}
           fadeInDuration={2000}
         />
@@ -522,8 +523,8 @@ export default function Portfolio() {
       {/* About Me Section */}
       <section id="about" className="section-padding relative overflow-hidden">
         <BackgroundImage
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DSCF6647.JPG-fsqgmUZ66eJOiVOvaTU7IoQRGE8aTr.jpeg"
-          alt="Silhouette of photographers and community"
+          src={editorialImages.about.src}
+          alt={editorialImages.about.alt}
           opacity={0.18}
           fadeInDuration={2000}
           quality={85}
@@ -745,8 +746,8 @@ export default function Portfolio() {
       {/* Let's Create Together Section */}
       <section id="contact" className="section-padding relative overflow-hidden">
         <BackgroundImage
-          src="/images/cultural-performance-bw.jpg"
-          alt="Let's create together background"
+          src={editorialImages.closing.src}
+          alt={editorialImages.closing.alt}
           opacity={0.2}
           fadeInDuration={2000}
         />

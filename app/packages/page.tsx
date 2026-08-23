@@ -25,6 +25,7 @@ import Link from "next/link"
 import { GradualBlurWrapper } from "@/components/gradual-blur-wrapper"
 import { ResponsiveContainer } from "@/components/responsive-container"
 import { PackageAlbum } from "@/components/package-album"
+import { editorialImages } from "@/lib/editorial-image-map"
 
 export default function PackagesPage() {
   const surfPackages = [
@@ -433,8 +434,8 @@ export default function PackagesPage() {
   ]
 
   const albumSections = [
-    { id: "surf", eyebrow: "Surf", title: "Ocean in motion", description: "From first wave to full cinematic coverage, choose a session built around your time in the water.", image: "/images/sports/surf-lineup-turquoise.jpg", packages: surfPackages },
-    { id: "portrait", eyebrow: "Portrait", title: "Your story, framed", description: "Natural light portraits with a streetwise, coastal point of view.", image: "/images/portraits/street-vendor-golden-hour.jpg", packages: portraitPackages },
+    { id: "surf", eyebrow: "Surf", title: "Ocean in motion", description: "From first wave to full cinematic coverage, choose a session built around your time in the water.", image: editorialImages.hero.src, packages: surfPackages },
+    { id: "portrait", eyebrow: "Portrait", title: "Your story, framed", description: "Natural light portraits with a streetwise, coastal point of view.", image: editorialImages.portraits.src, packages: portraitPackages },
     { id: "combo", eyebrow: "Surf + Portrait", title: "The whole day", description: "Pair the energy of the ocean with portraits that carry the feeling home.", image: "/images/shop/sunset-couple-surfboards.jpg", packages: comboPackages },
     { id: "couple", eyebrow: "Couple", title: "Two people, one story", description: "Romantic sessions made for beaches, streets, golden hours, and everything between.", image: "/images/sunset-couple-silhouette.jpg", packages: couplePackages },
     { id: "real-estate", eyebrow: "Real Estate & Rentals", title: "Make space memorable", description: "Bright, honest property imagery that helps guests and buyers picture themselves there.", image: "/images/real-estate/rooftop-terrace-sunset-chairs.jpg", packages: realEstatePackages },
