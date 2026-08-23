@@ -433,16 +433,28 @@ export default function PackagesPage() {
 
   const addOns = [
     {
-      name: "Printed Photos",
-      price: "+20€-45€",
-      description: "Physical prints or small photobook",
+      name: "Extra shooting hour",
+      price: "40€",
+      description: "Extend your photography session by one hour",
       icon: Camera,
     },
     {
-      name: "Custom Video with Music",
-      price: "+50€",
-      description: "Personalized soundtrack and editing",
+      name: "Extra Reel / short video",
+      price: "20€",
+      description: "Add one edited reel or short-form video",
       icon: Sparkles,
+    },
+    {
+      name: "Extra 10 edited photographs",
+      price: "25€",
+      description: "Receive ten additional professionally edited photos",
+      icon: Camera,
+    },
+    {
+      name: "24-hour express delivery",
+      price: "30€",
+      description: "Get your finished gallery delivered within 24 hours",
+      icon: Zap,
     },
   ]
 
