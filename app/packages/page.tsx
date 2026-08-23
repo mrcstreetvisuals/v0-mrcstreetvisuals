@@ -18,6 +18,7 @@ import {
   Home,
   PartyPopper,
   Package,
+  Zap,
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -394,6 +395,39 @@ export default function PackagesPage() {
       ],
       popular: true,
       color: "from-orange-500 to-red-500",
+    },
+  ]
+
+  const regularContentPackages = [
+    {
+      id: "content-starter",
+      name: "Starter",
+      price: "180€/month",
+      duration: "1 content session/month",
+      icon: Camera,
+      features: ["Up to 2 hours shooting", "20 edited photos", "3 short-form vertical videos", "Professional color grading", "Social-media ready files", "Delivery within 3–4 days", "Equivalent to 90€/session"],
+      popular: false,
+      color: "from-sky-500 to-blue-600",
+    },
+    {
+      id: "content-growth",
+      name: "Growth",
+      price: "320€/month",
+      duration: "2 content sessions/month",
+      icon: Sparkles,
+      features: ["Up to 2 hours per session", "40 edited photos", "6 short-form vertical videos", "Professional color grading", "Basic retouching", "Social-media ready formats", "Priority delivery within 2–3 days", "Equivalent to 160€/session"],
+      popular: true,
+      color: "from-fuchsia-500 to-purple-600",
+    },
+    {
+      id: "content-premium",
+      name: "Premium",
+      price: "550€/month",
+      duration: "4 content sessions/month",
+      icon: Zap,
+      features: ["Up to 2 hours per session", "80+ edited photos", "12 short-form vertical videos", "Advanced color grading", "Professional retouching", "Multiple locations when practical", "Priority delivery within 48h", "Equivalent to 137.50€/session"],
+      popular: false,
+      color: "from-amber-500 to-orange-600",
     },
   ]
 
@@ -1386,6 +1420,58 @@ export default function PackagesPage() {
                 </Card>
               </GradualBlurWrapper>
             ))}
+          </div>
+        </ResponsiveContainer>
+      </section>
+
+      {/* Regular Content Packages */}
+      <section id="content-packages" className="relative py-16 sm:py-20 md:py-24 lg:py-32 bg-black">
+        <ResponsiveContainer maxWidth="2xl" className="relative z-20 px-4">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-sky-400 via-fuchsia-400 to-amber-400 bg-clip-text text-transparent py-1.5">
+              Regular Content Packages
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
+              Consistent photography and short-form video content for brands and businesses.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-6">
+            {regularContentPackages.map((pkg) => (
+              <Card key={pkg.id} className={`bg-gray-900/95 backdrop-blur-sm border-gray-800 overflow-hidden relative h-full flex flex-col ${pkg.popular ? "ring-2 ring-fuchsia-500/70" : ""}`}>
+                {pkg.popular && <Badge className="absolute top-4 right-4 z-10 bg-fuchsia-500 text-white">Most Popular</Badge>}
+                <CardContent className="p-5 sm:p-7 flex flex-col h-full">
+                  <div className={`w-11 h-11 rounded-lg bg-gradient-to-r ${pkg.color} flex items-center justify-center mb-4`}>
+                    <pkg.icon className="h-5 w-5 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-2">{pkg.name}</h3>
+                  <div className="text-2xl sm:text-3xl font-bold text-white mb-1">{pkg.price}</div>
+                  <p className="text-sm text-gray-400 mb-5">{pkg.duration}</p>
+                  <ul className="space-y-3 mb-6 flex-1">
+                    {pkg.features.map((feature) => (
+                      <li key={feature} className="flex items-start text-sm text-gray-300">
+                        <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Button onClick={() => handleBooking(`${pkg.name} Content Package`, pkg.price)} className={`w-full bg-gradient-to-r ${pkg.color} hover:opacity-90 text-white`}>
+                    Book Now
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-300">
+            <div className="rounded-xl border border-gray-800 bg-gray-900/60 p-5">
+              <h3 className="font-semibold text-white mb-3">Included</h3>
+              <p>Land-based photography, short-form social media video, lifestyle, brand, product and location content, editing and color grading.</p>
+            </div>
+            <div className="rounded-xl border border-gray-800 bg-gray-900/60 p-5">
+              <h3 className="font-semibold text-white mb-3">Not included</h3>
+              <p>In-water surf photography, drone work, large-scale productions, models, studio rental, props or special equipment. These can be quoted separately.</p>
+            </div>
           </div>
         </ResponsiveContainer>
       </section>
