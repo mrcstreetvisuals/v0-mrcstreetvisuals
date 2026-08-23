@@ -1,135 +1,131 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { useState, useEffect } from "react"
+import { usePathname } from "next/navigation"
+import { useEffect, useState } from "react"
+import { UserRound, BriefcaseBusiness, Layers3, Mail, X } from "lucide-react"
 
-interface MobileNavigationProps {
-  currentSection?: string
-}
+const workLinks = [
+  { href: "/portfolio/sports", label: "Surf & Sports" },
+  { href: "/portfolio/portraits", label: "Portraits" },
+  { href: "/portfolio/events", label: "Events" },
+  { href: "/portfolio/products", label: "Product" },
+  { href: "/portfolio/real-estate", label: "Real Estate" },
+  { href: "/portfolio/automotive", label: "Automotive" },
+]
 
-export function MobileNavigation({ currentSection }: MobileNavigationProps) {
-  const [isOpen, setIsOpen] = useState(false)
+const navigationItems = [
+  { href: "/", label: "Home", icon: Layers3 },
+  { href: "#portfolio", label: "Work", icon: BriefcaseBusiness },
+  { href: "/packages", label: "Services", icon: Layers3 },
+  { href: "#about", label: "About", icon: UserRound },
+  { href: "#contact", label: "Contact", icon: Mail },
+]
 
-  const navigationItems = [
-    { href: "#home", label: "Home" },
-    { href: "#portfolio", label: "Portfolio" },
-    { href: "/packages", label: "Packages" },
-    { href: "/shop", label: "Shop" },
-    { href: "#about", label: "About" },
-    { href: "#contact", label: "Contact" },
-  ]
+export function MobileNavigation() {
+  const pathname = usePathname()
+  const [isWorkOpen, setIsWorkOpen] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
 
-  // Close mobile menu when clicking outside or on link
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      const target = event.target as HTMLElement
-      if (isOpen && !target.closest(".mobile-nav-container")) {
-        setIsOpen(false)
-      }
+    let previousY = window.scrollY
+    const onScroll = () => {
+      const currentY = window.scrollY
+      setIsVisible(currentY < 24 || currentY < previousY || isWorkOpen)
+      previousY = currentY
     }
 
-    document.addEventListener("mousedown", handleClickOutside)
-    return () => document.removeEventListener("mousedown", handleClickOutside)
-  }, [isOpen])
-
-  // Prevent body scroll when menu is open
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden"
-    } else {
-      document.body.style.overflow = "unset"
-    }
-
+    document.body.style.paddingBottom = "calc(4.75rem + env(safe-area-inset-bottom))"
+    window.addEventListener("scroll", onScroll, { passive: true })
     return () => {
-      document.body.style.overflow = "unset"
+      window.removeEventListener("scroll", onScroll)
+      document.body.style.paddingBottom = ""
     }
-  }, [isOpen])
+  }, [isWorkOpen])
 
-  const handleLinkClick = () => {
-    setIsOpen(false)
-  }
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : href.startsWith("/") && pathname.startsWith(href)
 
   return (
     <div className="mobile-nav-container md:hidden">
-      {/* Hamburger Button */}
-      <Button
-        variant="ghost"
-        size="icon"
-        onClick={() => setIsOpen(!isOpen)}
-        className={`relative z-50 text-white hover:bg-white/10 mobile-touch-target transition-all duration-300 ${
-          isOpen ? "bg-white/10 rotate-90" : ""
-        }`}
-        aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
-      >
-        <div className="w-6 h-6 flex flex-col justify-center items-center">
-          <span
-            className={`hamburger-line w-6 h-0.5 bg-current transition-all duration-300 ${
-              isOpen ? "rotate-45 translate-y-1.5" : "mb-1.5"
-            }`}
-          ></span>
-          <span
-            className={`hamburger-line w-6 h-0.5 bg-current transition-all duration-300 ${
-              isOpen ? "opacity-0" : "mb-1.5"
-            }`}
-          ></span>
-          <span
-            className={`hamburger-line w-6 h-0.5 bg-current transition-all duration-300 ${
-              isOpen ? "-rotate-45 -translate-y-1.5" : ""
-            }`}
-          ></span>
-        </div>
-      </Button>
-
-      <div
-        className={`fixed inset-0 bg-black/60 z-40 backdrop-blur-md transition-opacity duration-300 ${
-          isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
-        onClick={() => setIsOpen(false)}
-      />
-
-      {/* Mobile Menu */}
-      <div
-        className={`fixed top-0 right-0 h-full w-[280px] bg-gray-950/95 border-l border-white/10 z-40 transform transition-transform duration-500 cubic-bezier(0.4, 0, 0.2, 1) ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <div className="flex flex-col h-full pt-20">
-          {" "}
-          {/* Added top padding for header space */}
-          {/* Navigation Links */}
-          <nav className="flex-1 px-6 py-4">
-            <ul className="space-y-2">
-              {navigationItems.map((item, index) => (
-                <li
-                  key={item.href}
-                  className={`transform transition-all duration-500 delay-[${index * 50}ms] ${
-                    isOpen ? "translate-x-0 opacity-100" : "translate-x-8 opacity-0"
-                  }`}
-                >
-                  <Link
-                    href={item.href}
-                    onClick={handleLinkClick}
-                    className={`block py-3 px-4 rounded-xl text-lg font-medium transition-all duration-300 ${
-                      currentSection === item.href.replace("#", "")
-                        ? "bg-purple-500/20 text-purple-400"
-                        : "text-white/80 hover:text-white hover:bg-white/5"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
+      {isWorkOpen && (
+        <div className="fixed inset-0 z-40 flex items-end bg-black/55 p-3 backdrop-blur-sm" onClick={() => setIsWorkOpen(false)}>
+          <div
+            className="w-full rounded-2xl border border-white/15 bg-neutral-950/95 p-5 shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+            role="dialog"
+            aria-label="Work categories"
+          >
+            <div className="mb-4 flex items-center justify-between">
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-white/45">Portfolio index</p>
+                <h2 className="mt-1 text-lg font-medium text-white">Selected work</h2>
+              </div>
+              <button type="button" onClick={() => setIsWorkOpen(false)} className="rounded-full p-2 text-white/60 hover:bg-white/10 hover:text-white" aria-label="Close work menu">
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+            <nav aria-label="Work categories" className="grid grid-cols-2 gap-2">
+              {workLinks.map((link) => (
+                <Link key={link.href} href={link.href} onClick={() => setIsWorkOpen(false)} className="rounded-xl border border-white/10 px-3 py-3 text-sm text-white/75 transition hover:border-white/30 hover:bg-white/10 hover:text-white">
+                  {link.label}
+                </Link>
               ))}
-            </ul>
-          </nav>
-          {/* Footer */}
-          <div className="p-4 sm:p-6 border-t border-gray-800">
-            <p className="text-xs sm:text-sm text-gray-400 text-center mobile-body-adjust">
-              © {new Date().getFullYear()} mrcstreetvisuals
-            </p>
+            </nav>
           </div>
         </div>
-      </div>
+      )}
+
+      <nav
+        aria-label="Mobile navigation"
+        className={`fixed inset-x-3 bottom-3 z-50 rounded-2xl border border-white/15 bg-neutral-950/80 px-1.5 pb-[calc(0.35rem+env(safe-area-inset-bottom))] pt-2 shadow-2xl backdrop-blur-xl transition-transform duration-300 ${isVisible ? "translate-y-0" : "translate-y-[calc(100%+1rem)]"}`}
+      >
+        <ul className="grid grid-cols-5">
+          {navigationItems.map((item) => {
+            const active = isActive(item.href)
+            const Icon = item.icon
+            const content = (
+              <>
+                <Icon className="h-4 w-4" strokeWidth={1.5} />
+                <span>{item.label}</span>
+                <span className={`h-px w-5 bg-white transition-opacity ${active ? "opacity-100" : "opacity-0"}`} />
+              </>
+            )
+
+            return (
+              <li key={item.label}>
+                {item.label === "Work" ? (
+                  <button type="button" onClick={() => setIsWorkOpen((open) => !open)} aria-expanded={isWorkOpen} className={`flex min-h-12 w-full flex-col items-center justify-center gap-1 text-[10px] font-medium uppercase tracking-[0.12em] transition-colors ${isWorkOpen ? "text-white" : "text-white/55 hover:text-white"}`}>
+                    {content}
+                  </button>
+                ) : (
+                  <Link href={item.href} className={`flex min-h-12 flex-col items-center justify-center gap-1 text-[10px] font-medium uppercase tracking-[0.12em] transition-colors ${active ? "text-white" : "text-white/55 hover:text-white"}`}>
+                    {content}
+                  </Link>
+                )}
+              </li>
+            )
+          })}
+        </ul>
+      </nav>
     </div>
   )
 }
+
+// Keep the type available for existing imports.
+export type MobileNavigationProps = { currentSection?: string }
+
+<automated_v0_instructions_reminder>
+- Read Only Files
+  - Files in user_read_only_context are read-only and cannot be edited by v0.
+  - They also can't be imported by other files in the codebase.
+- If you want to use or edit the code from these files, you can use Move(operation="copy") to copy them to a writable location.
+
+- Context Gathering
+  - Use Parallel Tool Calls Where Possible
+  - Don't stop at first match - When searching finds multiple files, examine ALL of them to ensure you find the right variant/version
+  - Understand the full system before changes - Check existing patterns, parent components, and architecture to see how solutions fit into the broader codebase.
+- You always Edit/Write to files using Edit and Write tools.
+- Only edit the files that need to be changed.
+- After Edit/Write, write a postamble explaining your changes in 2-4 sentences.
+</automated_v0_instructions_reminder>
