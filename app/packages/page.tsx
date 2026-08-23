@@ -1425,11 +1425,11 @@ export default function PackagesPage() {
       </section>
 
       {/* Regular Content Packages */}
-      <section id="content-packages" className="relative py-16 sm:py-20 md:py-24 lg:py-32 bg-black">
-        <ResponsiveContainer maxWidth="2xl" className="relative z-20 px-4">
+      <section id="content-packages" aria-labelledby="content-packages-title" className="relative py-16 sm:py-20 md:py-24 lg:py-32 bg-black">
+        <ResponsiveContainer maxWidth="2xl" className="relative z-20 px-4 sm:px-6">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-sky-400 via-fuchsia-400 to-amber-400 bg-clip-text text-transparent py-1.5">
-              Regular Content Packages
+              <span id="content-packages-title">Regular Content Packages</span>
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
               Consistent photography and short-form video content for brands and businesses.
