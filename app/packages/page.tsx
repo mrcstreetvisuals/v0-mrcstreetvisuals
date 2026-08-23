@@ -24,6 +24,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { GradualBlurWrapper } from "@/components/gradual-blur-wrapper"
 import { ResponsiveContainer } from "@/components/responsive-container"
+import { PackageAlbum } from "@/components/package-album"
 
 export default function PackagesPage() {
   const surfPackages = [
@@ -431,6 +432,19 @@ export default function PackagesPage() {
     },
   ]
 
+  const albumSections = [
+    { id: "surf", eyebrow: "Surf", title: "Ocean in motion", description: "From first wave to full cinematic coverage, choose a session built around your time in the water.", image: "/images/sports/surf-lineup-turquoise.jpg", packages: surfPackages },
+    { id: "portrait", eyebrow: "Portrait", title: "Your story, framed", description: "Natural light portraits with a streetwise, coastal point of view.", image: "/images/portraits/street-vendor-golden-hour.jpg", packages: portraitPackages },
+    { id: "combo", eyebrow: "Surf + Portrait", title: "The whole day", description: "Pair the energy of the ocean with portraits that carry the feeling home.", image: "/images/shop/sunset-couple-surfboards.jpg", packages: comboPackages },
+    { id: "couple", eyebrow: "Couple", title: "Two people, one story", description: "Romantic sessions made for beaches, streets, golden hours, and everything between.", image: "/images/sunset-couple-silhouette.jpg", packages: couplePackages },
+    { id: "real-estate", eyebrow: "Real Estate & Rentals", title: "Make space memorable", description: "Bright, honest property imagery that helps guests and buyers picture themselves there.", image: "/images/real-estate/rooftop-terrace-sunset-chairs.jpg", packages: realEstatePackages },
+    { id: "events", eyebrow: "Events", title: "Stay in the moment", description: "A focused visual record of the people, details, and energy that made your event matter.", image: "/images/events/nightclub-red.jpg", packages: eventPackages },
+    { id: "product", eyebrow: "Product", title: "Objects with presence", description: "Clean, considered product photography for shops, launches, and social campaigns.", image: "/images/product-nafa-duo.jpg", packages: productPackages },
+    { id: "content", eyebrow: "Regular Content", title: "Keep showing up", description: "Reliable monthly photography and short-form video for brands that need a consistent visual rhythm.", image: "/images/events/traditional-cultural-ensemble.jpg", packages: regularContentPackages },
+    { id: "automotive", eyebrow: "Automotive", title: "Machines in motion", description: "Detail-led, cinematic coverage that turns your vehicle into a visual statement.", image: "/images/pink-car-automotive.jpg", packages: automotivePackages },
+    { id: "motorcycle", eyebrow: "Motorcycle", title: "Ride your own line", description: "Capture the character, details, and freedom of your motorcycle in every frame.", image: "/images/motorcycle/motorcycle-signature-session.png", packages: motorcyclePackages },
+  ]
+
   const addOns = [
     {
       name: "Extra shooting hour",
@@ -584,6 +598,10 @@ export default function PackagesPage() {
         </ResponsiveContainer>
       </section>
 
+      <PackageAlbum sections={albumSections} onBook={handleBooking} />
+
+      <div className="hidden" aria-hidden="true">
+      {/* Legacy package grids retained for data compatibility */}
       {/* Surf Photography Packages */}
       <section id="surf-packages" className="relative py-16 sm:py-20 md:py-24 lg:py-32">
         <div className="absolute inset-0">
@@ -1487,6 +1505,7 @@ export default function PackagesPage() {
           </div>
         </ResponsiveContainer>
       </section>
+      </div>
 
       {/* Add-ons Section */}
       <section className="relative py-16 sm:py-20 md:py-24 bg-black">
