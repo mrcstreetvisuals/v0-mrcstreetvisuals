@@ -115,17 +115,3 @@ export function MobileNavigation() {
 // Keep the type available for existing imports.
 export type MobileNavigationProps = { currentSection?: string }
 
-<automated_v0_instructions_reminder>
-- Read Only Files
-  - Files in user_read_only_context are read-only and cannot be edited by v0.
-  - They also can't be imported by other files in the codebase.
-- If you want to use or edit the code from these files, you can use Move(operation="copy") to copy them to a writable location.
-
-- Context Gathering
-  - Use Parallel Tool Calls Where Possible
-  - Don't stop at first match - When searching finds multiple files, examine ALL of them to ensure you find the right variant/version
-  - Understand the full system before changes - Check existing patterns, parent components, and architecture to see how solutions fit into the broader codebase.
-- You always Edit/Write to files using Edit and Write tools.
-- Only edit the files that need to be changed.
-- After Edit/Write, write a postamble explaining your changes in 2-4 sentences.
-</automated_v0_instructions_reminder>
