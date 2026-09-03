@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
-import { UserRound, BriefcaseBusiness, Layers3, Mail, X } from "lucide-react"
+import { UserRound, BriefcaseBusiness, Layers3, Mail, X, ShoppingBag, Menu } from "lucide-react"
 
 const workLinks = [
   { href: "/portfolio/sports", label: "Surf & Sports" },
@@ -16,102 +16,82 @@ const workLinks = [
 
 const navigationItems = [
   { href: "/", label: "Home", icon: Layers3 },
-  { href: "#portfolio", label: "Work", icon: BriefcaseBusiness },
-  { href: "/packages", label: "Services", icon: Layers3 },
+  { href: "#portfolio", label: "Portfolio", icon: BriefcaseBusiness },
+  { href: "/packages", label: "Packages", icon: Layers3 },
+  { href: "/shop", label: "Shop", icon: ShoppingBag },
   { href: "#about", label: "About", icon: UserRound },
   { href: "#contact", label: "Contact", icon: Mail },
 ]
 
 export function MobileNavigation() {
   const pathname = usePathname()
+  const [isOpen, setIsOpen] = useState(false)
   const [isWorkOpen, setIsWorkOpen] = useState(false)
-  const [isVisible, setIsVisible] = useState(true)
 
   useEffect(() => {
-    let previousY = window.scrollY
-    const onScroll = () => {
-      const currentY = window.scrollY
-      setIsVisible(currentY < 24 || currentY < previousY || isWorkOpen)
-      previousY = currentY
-    }
-
-    document.body.style.paddingBottom = "calc(4.75rem + env(safe-area-inset-bottom))"
-    window.addEventListener("scroll", onScroll, { passive: true })
+    document.body.style.overflow = isOpen ? "hidden" : ""
     return () => {
-      window.removeEventListener("scroll", onScroll)
-      document.body.style.paddingBottom = ""
+      document.body.style.overflow = ""
     }
-  }, [isWorkOpen])
+  }, [isOpen])
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : href.startsWith("/") && pathname.startsWith(href)
 
   return (
-    <div className="mobile-nav-container md:hidden">
-      {isWorkOpen && (
-        <div className="fixed inset-0 z-40 flex items-end bg-black/55 p-3 backdrop-blur-sm" onClick={() => setIsWorkOpen(false)}>
-          <div
-            className="w-full rounded-2xl border border-white/15 bg-neutral-950/95 p-5 shadow-2xl"
-            onClick={(event) => event.stopPropagation()}
-            role="dialog"
-            aria-label="Work categories"
-          >
-            <div className="mb-4 flex items-center justify-between">
+    <div className="md:hidden">
+      {isOpen && (
+        <div className="fixed inset-0 z-[60] bg-black/70 p-4 backdrop-blur-md" onClick={() => setIsOpen(false)}>
+          <div className="mx-auto mt-16 max-w-sm rounded-3xl border border-white/15 bg-neutral-950/95 p-5 shadow-2xl" onClick={(event) => event.stopPropagation()}>
+            <div className="mb-5 flex items-center justify-between border-b border-white/10 pb-4">
               <div>
-                <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-white/45">Portfolio index</p>
-                <h2 className="mt-1 text-lg font-medium text-white">Selected work</h2>
+                <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/45">Navigation</p>
+                <p className="mt-1 text-lg font-medium text-white">mrcstreetvisuals</p>
               </div>
-              <button type="button" onClick={() => setIsWorkOpen(false)} className="rounded-full p-2 text-white/60 hover:bg-white/10 hover:text-white" aria-label="Close work menu">
-                <X className="h-4 w-4" />
+              <button type="button" onClick={() => setIsOpen(false)} className="rounded-full p-2 text-white/65 hover:bg-white/10 hover:text-white" aria-label="Close navigation">
+                <X className="h-5 w-5" />
               </button>
             </div>
-            <nav aria-label="Work categories" className="grid grid-cols-2 gap-2">
-              {workLinks.map((link) => (
-                <Link key={link.href} href={link.href} onClick={() => setIsWorkOpen(false)} className="rounded-xl border border-white/10 px-3 py-3 text-sm text-white/75 transition hover:border-white/30 hover:bg-white/10 hover:text-white">
-                  {link.label}
-                </Link>
-              ))}
+            <nav aria-label="Mobile navigation">
+              <ul className="grid grid-cols-2 gap-2">
+                {navigationItems.map((item) => {
+                  const Icon = item.icon
+                  const active = isActive(item.href)
+                  return (
+                    <li key={item.label}>
+                      <Link href={item.href} onClick={() => setIsOpen(false)} className={`flex min-h-14 items-center gap-3 rounded-2xl border px-3 text-sm transition ${active ? "border-white/35 bg-white/10 text-white" : "border-white/10 text-white/65 hover:border-white/25 hover:text-white"}`}>
+                        <Icon className="h-4 w-4" strokeWidth={1.6} />
+                        {item.label}
+                      </Link>
+                    </li>
+                  )
+                })}
+              </ul>
+              <div className="mt-5 border-t border-white/10 pt-4">
+                <button type="button" onClick={() => setIsWorkOpen((open) => !open)} aria-expanded={isWorkOpen} className="flex w-full items-center justify-between px-1 text-left text-xs font-medium uppercase tracking-[0.2em] text-white/70">
+                  <span>Portfolio categories</span>
+                  <span aria-hidden="true">{isWorkOpen ? "−" : "+"}</span>
+                </button>
+                {isWorkOpen && (
+                  <div className="mt-3 grid grid-cols-2 gap-2">
+                    {workLinks.map((link) => (
+                      <Link key={link.href} href={link.href} onClick={() => setIsOpen(false)} className="rounded-xl border border-white/10 px-3 py-3 text-xs text-white/65 hover:border-white/25 hover:text-white">
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             </nav>
           </div>
         </div>
       )}
 
-      <nav
-        aria-label="Mobile navigation"
-        className={`fixed inset-x-3 bottom-3 z-50 rounded-2xl border border-white/15 bg-neutral-950/80 px-1.5 pb-[calc(0.35rem+env(safe-area-inset-bottom))] pt-2 shadow-2xl backdrop-blur-xl transition-transform duration-300 ${isVisible ? "translate-y-0" : "translate-y-[calc(100%+1rem)]"}`}
-      >
-        <ul className="grid grid-cols-5">
-          {navigationItems.map((item) => {
-            const active = isActive(item.href)
-            const Icon = item.icon
-            const content = (
-              <>
-                <Icon className="h-4 w-4" strokeWidth={1.5} />
-                <span>{item.label}</span>
-                <span className={`h-px w-5 bg-white transition-opacity ${active ? "opacity-100" : "opacity-0"}`} />
-              </>
-            )
-
-            return (
-              <li key={item.label}>
-                {item.label === "Work" ? (
-                  <button type="button" onClick={() => setIsWorkOpen((open) => !open)} aria-expanded={isWorkOpen} className={`flex min-h-12 w-full flex-col items-center justify-center gap-1 text-[10px] font-medium uppercase tracking-[0.12em] transition-colors ${isWorkOpen ? "text-white" : "text-white/55 hover:text-white"}`}>
-                    {content}
-                  </button>
-                ) : (
-                  <Link href={item.href} className={`flex min-h-12 flex-col items-center justify-center gap-1 text-[10px] font-medium uppercase tracking-[0.12em] transition-colors ${active ? "text-white" : "text-white/55 hover:text-white"}`}>
-                    {content}
-                  </Link>
-                )}
-              </li>
-            )
-          })}
-        </ul>
-      </nav>
+      <button type="button" onClick={() => setIsOpen(true)} className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/35 text-white shadow-lg backdrop-blur-md transition hover:border-white/45 hover:bg-white/10" aria-label="Open navigation" aria-expanded={isOpen}>
+        <Menu className="h-5 w-5" />
+      </button>
     </div>
   )
 }
 
-// Keep the type available for existing imports.
 export type MobileNavigationProps = { currentSection?: string }
-
