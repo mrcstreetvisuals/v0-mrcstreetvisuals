@@ -27,6 +27,11 @@ export function MobileNavigation() {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
   const [isWorkOpen, setIsWorkOpen] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : ""
@@ -40,7 +45,7 @@ export function MobileNavigation() {
 
   return (
     <div className="md:hidden">
-      {isOpen && (
+      {isMounted && isOpen && (
         <div className="fixed inset-0 z-[60] bg-black/70 p-4 backdrop-blur-md" onClick={() => setIsOpen(false)}>
           <div className="mx-auto mt-16 max-w-sm rounded-3xl border border-white/15 bg-neutral-950/95 p-5 shadow-2xl" onClick={(event) => event.stopPropagation()}>
             <div className="mb-5 flex items-center justify-between border-b border-white/10 pb-4">
