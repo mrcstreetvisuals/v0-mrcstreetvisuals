@@ -31,23 +31,20 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
     // Add smooth scroll behavior
     document.documentElement.style.scrollBehavior = "smooth"
 
-    // Suppress ResizeObserver loop errors
-    const originalError = console.error
-    console.error = function (...args: any[]) {
-      if (
-        args[0] &&
-        typeof args[0] === "string" &&
-        args[0].includes("ResizeObserver loop completed with undelivered notifications")
-      ) {
-        return
+    // This browser diagnostic is emitted as a window error rather than a console error.
+    // It is benign when an observer finishes a layout pass with a queued notification.
+    const handleResizeObserverError = (event: ErrorEvent) => {
+      if (event.message.includes("ResizeObserver loop completed with undelivered notifications")) {
+        event.preventDefault()
+        event.stopImmediatePropagation()
       }
-      originalError.apply(console, args)
     }
 
-    // Clean up on unmount
+    window.addEventListener("error", handleResizeObserverError)
+
     return () => {
       document.documentElement.style.scrollBehavior = ""
-      console.error = originalError
+      window.removeEventListener("error", handleResizeObserverError)
     }
   }, [])
 
