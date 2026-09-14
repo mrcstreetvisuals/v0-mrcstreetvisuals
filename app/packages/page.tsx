@@ -18,11 +18,14 @@ import {
   Home,
   PartyPopper,
   Package,
+  Zap,
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { GradualBlurWrapper } from "@/components/gradual-blur-wrapper"
 import { ResponsiveContainer } from "@/components/responsive-container"
+import { PackageAlbum } from "@/components/package-album"
+import { editorialImages } from "@/lib/editorial-image-map"
 
 export default function PackagesPage() {
   const surfPackages = [
@@ -357,18 +360,116 @@ export default function PackagesPage() {
     },
   ]
 
+  const automotivePackages = [
+    {
+      id: "automotive-signature-session",
+      name: "Automotive Signature Session",
+      price: "100€",
+      duration: "1.5 hours",
+      icon: Camera,
+      image: "/images/pink-car-automotive.jpg",
+      features: [
+        "1.5-hour location shoot",
+        "15 professionally edited vehicle photos",
+        "Detail, interior, and exterior coverage",
+        "Creative lighting and cinematic color grading",
+        "Private online gallery delivered within 48h",
+      ],
+      popular: true,
+      color: "from-fuchsia-500 to-purple-500",
+    },
+  ]
+
+  const motorcyclePackages = [
+    {
+      id: "motorcycle-signature-session",
+      name: "Motorcycle Signature Session",
+      price: "90€",
+      duration: "1 hour",
+      icon: Camera,
+      image: "/images/motorcycle/motorcycle-signature-session.png",
+      features: [
+        "1-hour location shoot",
+        "12 professionally edited motorcycle photos",
+        "Detail, riding, and lifestyle coverage",
+        "Cinematic color grading",
+        "Private online gallery delivered within 48h",
+      ],
+      popular: true,
+      color: "from-orange-500 to-red-500",
+    },
+  ]
+
+  const regularContentPackages = [
+    {
+      id: "content-starter",
+      name: "Starter",
+      price: "180€/month",
+      duration: "1 content session/month",
+      icon: Camera,
+      features: ["Up to 2 hours shooting", "20 edited photos", "3 short-form vertical videos", "Professional color grading", "Social-media ready files", "Delivery within 3–4 days", "Equivalent to 90€/session"],
+      popular: false,
+      color: "from-sky-500 to-blue-600",
+    },
+    {
+      id: "content-growth",
+      name: "Growth",
+      price: "320€/month",
+      duration: "2 content sessions/month",
+      icon: Sparkles,
+      features: ["Up to 2 hours per session", "40 edited photos", "6 short-form vertical videos", "Professional color grading", "Basic retouching", "Social-media ready formats", "Priority delivery within 2–3 days", "Equivalent to 160€/session"],
+      popular: true,
+      color: "from-fuchsia-500 to-purple-600",
+    },
+    {
+      id: "content-premium",
+      name: "Premium",
+      price: "550€/month",
+      duration: "4 content sessions/month",
+      icon: Zap,
+      features: ["Up to 2 hours per session", "80+ edited photos", "12 short-form vertical videos", "Advanced color grading", "Professional retouching", "Multiple locations when practical", "Priority delivery within 48h", "Equivalent to 137.50€/session"],
+      popular: false,
+      color: "from-amber-500 to-orange-600",
+    },
+  ]
+
+  const albumSections = [
+    { id: "surf", eyebrow: "Surf", title: "Ocean in motion", description: "From first wave to full cinematic coverage, choose a session built around your time in the water.", image: editorialImages.hero.src, packages: surfPackages },
+    { id: "portrait", eyebrow: "Portrait", title: "Your story, framed", description: "Natural light portraits with a streetwise, coastal point of view.", image: editorialImages.portraits.src, packages: portraitPackages },
+    { id: "combo", eyebrow: "Surf + Portrait", title: "The whole day", description: "Pair the energy of the ocean with portraits that carry the feeling home.", image: "/images/shop/sunset-couple-surfboards.jpg", packages: comboPackages },
+    { id: "couple", eyebrow: "Couple", title: "Two people, one story", description: "Romantic sessions made for beaches, streets, golden hours, and everything between.", image: "/images/sunset-couple-silhouette.jpg", packages: couplePackages },
+    { id: "real-estate", eyebrow: "Real Estate & Rentals", title: "Make space memorable", description: "Bright, honest property imagery that helps guests and buyers picture themselves there.", image: "/images/real-estate/rooftop-terrace-sunset-chairs.jpg", packages: realEstatePackages },
+    { id: "events", eyebrow: "Events", title: "Stay in the moment", description: "A focused visual record of the people, details, and energy that made your event matter.", image: "/images/events/nightclub-red.jpg", packages: eventPackages },
+    { id: "product", eyebrow: "Product", title: "Objects with presence", description: "Clean, considered product photography for shops, launches, and social campaigns.", image: "/images/product-nafa-duo.jpg", packages: productPackages },
+    { id: "content", eyebrow: "Regular Content", title: "Keep showing up", description: "Reliable monthly photography and short-form video for brands that need a consistent visual rhythm.", image: "/images/events/traditional-cultural-ensemble.jpg", packages: regularContentPackages },
+    { id: "automotive", eyebrow: "Automotive", title: "Machines in motion", description: "Detail-led, cinematic coverage that turns your vehicle into a visual statement.", image: "/images/pink-car-automotive.jpg", packages: automotivePackages },
+    { id: "motorcycle", eyebrow: "Motorcycle", title: "Ride your own line", description: "Capture the character, details, and freedom of your motorcycle in every frame.", image: "/images/motorcycle/motorcycle-signature-session.png", packages: motorcyclePackages },
+  ]
+
   const addOns = [
     {
-      name: "Printed Photos",
-      price: "+20€-45€",
-      description: "Physical prints or small photobook",
+      name: "Extra shooting hour",
+      price: "40€",
+      description: "Extend your photography session by one hour",
       icon: Camera,
     },
     {
-      name: "Custom Video with Music",
-      price: "+50€",
-      description: "Personalized soundtrack and editing",
+      name: "Extra Reel / short video",
+      price: "20€",
+      description: "Add one edited reel or short-form video",
       icon: Sparkles,
+    },
+    {
+      name: "Extra 10 edited photographs",
+      price: "25€",
+      description: "Receive ten additional professionally edited photos",
+      icon: Camera,
+    },
+    {
+      name: "24-hour express delivery",
+      price: "30€",
+      description: "Get your finished gallery delivered within 24 hours",
+      icon: Zap,
     },
   ]
 
@@ -498,6 +599,10 @@ export default function PackagesPage() {
         </ResponsiveContainer>
       </section>
 
+      <PackageAlbum sections={albumSections} onBook={handleBooking} />
+
+      <div className="hidden" aria-hidden="true">
+      {/* Legacy package grids retained for data compatibility */}
       {/* Surf Photography Packages */}
       <section id="surf-packages" className="relative py-16 sm:py-20 md:py-24 lg:py-32">
         <div className="absolute inset-0">
@@ -1171,6 +1276,237 @@ export default function PackagesPage() {
           </div>
         </ResponsiveContainer>
       </section>
+
+      {/* Automotive Photography Package */}
+      <section id="automotive-packages" className="relative py-16 sm:py-20 md:py-24 lg:py-32">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-10" />
+          <Image
+            src="/images/automotive/black-bmw-parking-lot.jpg"
+            alt="Automotive photography background"
+            fill
+            className="object-cover opacity-20"
+          />
+        </div>
+
+        <ResponsiveContainer maxWidth="2xl" className="relative z-20 px-4">
+          <div className="text-center mb-12 sm:mb-16">
+            <GradualBlurWrapper
+              blurAmount={12}
+              duration={1000}
+              delay={100}
+              animationType="blur-fade"
+              threshold={0.2}
+              triggerOnce={false}
+              reverseOnExit={true}
+            >
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-fuchsia-400 to-purple-500 bg-clip-text text-transparent py-1.5">
+                Automotive Photography
+              </h2>
+              <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
+                Turn your car into a visual statement with polished, detail-focused imagery.
+              </p>
+            </GradualBlurWrapper>
+          </div>
+
+          <div className="grid grid-cols-1 max-w-2xl mx-auto">
+            {automotivePackages.map((pkg, index) => (
+              <GradualBlurWrapper
+                key={pkg.id}
+                blurAmount={10}
+                duration={1000}
+                delay={200 + index * 100}
+                animationType="blur-slide"
+                direction="up"
+                threshold={0.15}
+                triggerOnce={false}
+                reverseOnExit={true}
+              >
+                <Card className="bg-gray-900/95 backdrop-blur-sm border-gray-800 overflow-hidden group hover:scale-[1.02] transition-all duration-300 relative h-full flex flex-col ring-2 ring-fuchsia-500/70">
+                  <div className="absolute top-4 right-4 z-10">
+                    <Badge className="bg-fuchsia-500 text-white text-xs sm:text-sm">Featured</Badge>
+                  </div>
+
+                  <div className="relative aspect-[16/9] w-full overflow-hidden">
+                    <Image
+                      src={pkg.image}
+                      alt={pkg.name}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, 672px"
+                    />
+                  </div>
+
+                  <CardContent className="p-5 sm:p-7 flex flex-col">
+                    <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-r ${pkg.color} flex items-center justify-center mb-4`}>
+                      <pkg.icon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">{pkg.name}</h3>
+                    <div className="text-3xl sm:text-4xl font-bold text-white mb-1">{pkg.price}</div>
+                    <p className="text-sm text-gray-400 mb-5 sm:mb-6">{pkg.duration}</p>
+                    <ul className="space-y-3 mb-6 sm:mb-7">
+                      {pkg.features.map((feature, i) => (
+                        <li key={i} className="flex items-start text-sm text-gray-300">
+                          <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Button
+                      onClick={() => handleBooking(pkg.name, pkg.price)}
+                      className={`w-full bg-gradient-to-r ${pkg.color} hover:opacity-90 text-white transform hover:scale-105 transition-all duration-300`}
+                    >
+                      Book Now
+                    </Button>
+                  </CardContent>
+                </Card>
+              </GradualBlurWrapper>
+            ))}
+          </div>
+        </ResponsiveContainer>
+      </section>
+
+      {/* Motorcycle Photography Package */}
+      <section id="motorcycle-packages" aria-label="Motorcycle photography packages" className="relative py-16 sm:py-20 md:py-24 lg:py-32">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-10" />
+          <Image
+            src="/images/motorcycle/motorcycle-signature-session.png"
+            alt="Motorcycle photography background"
+            fill
+            className="object-cover opacity-20"
+          />
+        </div>
+
+        <ResponsiveContainer maxWidth="2xl" className="relative z-20 px-4">
+          <div className="text-center mb-12 sm:mb-16">
+            <GradualBlurWrapper
+              blurAmount={12}
+              duration={1000}
+              delay={100}
+              animationType="blur-fade"
+              threshold={0.2}
+              triggerOnce={false}
+              reverseOnExit={true}
+            >
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent py-1.5">
+                Motorcycle Photography
+              </h2>
+              <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
+                Capture the character, details, and freedom of your motorcycle in every frame.
+              </p>
+            </GradualBlurWrapper>
+          </div>
+
+          <div className="grid grid-cols-1 max-w-2xl mx-auto">
+            {motorcyclePackages.map((pkg, index) => (
+              <GradualBlurWrapper
+                key={pkg.id}
+                blurAmount={10}
+                duration={1000}
+                delay={200 + index * 100}
+                animationType="blur-slide"
+                direction="up"
+                threshold={0.15}
+                triggerOnce={false}
+                reverseOnExit={true}
+              >
+                <Card className="bg-gray-900/95 backdrop-blur-sm border-gray-800 overflow-hidden group hover:scale-[1.02] transition-all duration-300 relative h-full flex flex-col ring-2 ring-orange-500/70">
+                  <div className="absolute top-4 right-4 z-10">
+                    <Badge className="bg-orange-500 text-white text-xs sm:text-sm">Featured</Badge>
+                  </div>
+
+                  <div className="relative aspect-[16/9] w-full overflow-hidden">
+                    <Image
+                      src={pkg.image}
+                      alt={pkg.name}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, 672px"
+                    />
+                  </div>
+
+                  <CardContent className="p-5 sm:p-7 flex flex-col">
+                    <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-r ${pkg.color} flex items-center justify-center mb-4`}>
+                      <pkg.icon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">{pkg.name}</h3>
+                    <div className="text-3xl sm:text-4xl font-bold text-white mb-1">{pkg.price}</div>
+                    <p className="text-sm text-gray-400 mb-5 sm:mb-6">{pkg.duration}</p>
+                    <ul className="space-y-3 mb-6 sm:mb-7">
+                      {pkg.features.map((feature, i) => (
+                        <li key={i} className="flex items-start text-sm text-gray-300">
+                          <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Button
+                      onClick={() => handleBooking(pkg.name, pkg.price)}
+                      className={`w-full bg-gradient-to-r ${pkg.color} hover:opacity-90 text-white transform hover:scale-105 transition-all duration-300`}
+                    >
+                      Book Now
+                    </Button>
+                  </CardContent>
+                </Card>
+              </GradualBlurWrapper>
+            ))}
+          </div>
+        </ResponsiveContainer>
+      </section>
+
+      {/* Regular Content Packages */}
+      <section id="content-packages" aria-labelledby="content-packages-title" className="relative py-16 sm:py-20 md:py-24 lg:py-32 bg-black">
+        <ResponsiveContainer maxWidth="2xl" className="relative z-20 px-4 sm:px-6">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-sky-400 via-fuchsia-400 to-amber-400 bg-clip-text text-transparent py-1.5">
+              <span id="content-packages-title">Regular Content Packages</span>
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
+              Consistent photography and short-form video content for brands and businesses.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-6">
+            {regularContentPackages.map((pkg) => (
+              <Card key={pkg.id} className={`bg-gray-900/95 backdrop-blur-sm border-gray-800 overflow-hidden relative h-full flex flex-col ${pkg.popular ? "ring-2 ring-fuchsia-500/70" : ""}`}>
+                {pkg.popular && <Badge className="absolute top-4 right-4 z-10 bg-fuchsia-500 text-white">Most Popular</Badge>}
+                <CardContent className="p-5 sm:p-7 flex flex-col h-full">
+                  <div className={`w-11 h-11 rounded-lg bg-gradient-to-r ${pkg.color} flex items-center justify-center mb-4`}>
+                    <pkg.icon className="h-5 w-5 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-2">{pkg.name}</h3>
+                  <div className="text-2xl sm:text-3xl font-bold text-white mb-1">{pkg.price}</div>
+                  <p className="text-sm text-gray-400 mb-5">{pkg.duration}</p>
+                  <ul className="space-y-3 mb-6 flex-1">
+                    {pkg.features.map((feature) => (
+                      <li key={feature} className="flex items-start text-sm text-gray-300">
+                        <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Button onClick={() => handleBooking(`${pkg.name} Content Package`, pkg.price)} className={`w-full bg-gradient-to-r ${pkg.color} hover:opacity-90 text-white`}>
+                    Book Now
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-300">
+            <div className="rounded-xl border border-gray-800 bg-gray-900/60 p-5">
+              <h3 className="font-semibold text-white mb-3">Included</h3>
+              <p>Land-based photography, short-form social media video, lifestyle, brand, product and location content, editing and color grading.</p>
+            </div>
+            <div className="rounded-xl border border-gray-800 bg-gray-900/60 p-5">
+              <h3 className="font-semibold text-white mb-3">Not included</h3>
+              <p>In-water surf photography, drone work, large-scale productions, models, studio rental, props or special equipment. These can be quoted separately.</p>
+            </div>
+          </div>
+        </ResponsiveContainer>
+      </section>
+      </div>
 
       {/* Add-ons Section */}
       <section className="relative py-16 sm:py-20 md:py-24 bg-black">

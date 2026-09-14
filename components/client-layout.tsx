@@ -31,9 +31,25 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
     // Add smooth scroll behavior
     document.documentElement.style.scrollBehavior = "smooth"
 
-    // Clean up on unmount
+    // This browser diagnostic is emitted as a window error rather than a console error.
+    // It is benign when an observer finishes a layout pass with a queued notification.
+    const handleResizeObserverError = (event: ErrorEvent) => {
+      const message = event.message || event.error?.message || ""
+      if (
+        message.includes("ResizeObserver loop completed with undelivered notifications") ||
+        message.includes("ResizeObserver loop limit exceeded")
+      ) {
+        event.preventDefault()
+        event.stopImmediatePropagation()
+      }
+    }
+
+    // Capture the browser diagnostic before framework/dev-overlay listeners receive it.
+    window.addEventListener("error", handleResizeObserverError, true)
+
     return () => {
       document.documentElement.style.scrollBehavior = ""
+      window.removeEventListener("error", handleResizeObserverError, true)
     }
   }, [])
 
