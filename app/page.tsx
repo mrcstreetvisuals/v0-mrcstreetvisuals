@@ -12,6 +12,7 @@ import { ImageSlider } from "@/components/image-slider"
 import { ResponsiveContainer } from "@/components/responsive-container"
 import { GradualBlurWrapper } from "@/components/gradual-blur-wrapper"
 import { BackgroundImage } from "@/components/background-image"
+import { InstagramCarousel } from "@/components/instagram-carousel"
 import { editorialImages } from "@/lib/editorial-image-map"
 
 export default function Portfolio() {
@@ -66,6 +67,12 @@ export default function Portfolio() {
       src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A4822-rYld5gINmmCf1QgoPPVNnY28ypxvNI.jpg",
       alt: "DJ at turntables with ocean backdrop",
     },
+  ]
+
+  const instagramPosts = [
+    { id: "feed-1", src: editorialImages.hero.src, alt: editorialImages.hero.alt, caption: "Motion, salt, and light.", permalink: "https://www.instagram.com/_mrcstreetvisuals_/" },
+    { id: "feed-2", src: editorialImages.about.src, alt: editorialImages.about.alt, caption: "Stories built in the street.", permalink: "https://www.instagram.com/_mrcstreetvisuals_/" },
+    { id: "feed-3", src: "/images/nightclub-red.jpg", alt: "Nightlife photography in red light", caption: "After dark.", permalink: "https://www.instagram.com/_mrcstreetvisuals_/" },
   ]
 
   const portfolioCategories = [
@@ -239,7 +246,7 @@ export default function Portfolio() {
       </header>
 
       {/* Hero Section with Image Slider */}
-      <section id="home" className="relative h-screen ios-vh-fix flex items-center justify-center overflow-hidden">
+      <section id="home" className="relative h-screen ios-vh-fix flex items-center justify-center overflow-hidden editorial-hero">
         <div className="absolute inset-0">
           <ImageSlider
             images={heroSliderImages}
@@ -343,7 +350,7 @@ export default function Portfolio() {
       </section>
 
       {/* Portfolio Albums Section */}
-      <section id="portfolio" className="section-padding relative">
+      <section id="portfolio" className="section-padding relative editorial-archive">
         <BackgroundImage
           src={editorialImages.action.src}
           alt={editorialImages.action.alt}
@@ -399,7 +406,7 @@ export default function Portfolio() {
                 exitDelay={50}
               >
                 <Link href={category.href}>
-                  <Card className="bg-gray-900 border-gray-800 overflow-hidden group hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20 cursor-pointer h-full">
+                  <Card className="bg-gray-950/70 border-white/15 overflow-hidden group hover:-translate-y-2 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20 cursor-pointer h-full rounded-none">
                     <CardContent className="p-0 relative h-full flex flex-col">
                       <div className="relative aspect-[4/3] overflow-hidden">
                         <Image
@@ -740,6 +747,18 @@ export default function Portfolio() {
               <div className="elfsight-app-f87d232c-8173-4b1a-a1e4-a6cb527721a4" data-elfsight-app-lazy></div>
             </div>
           </GradualBlurWrapper>
+        </ResponsiveContainer>
+      </section>
+
+      {/* Instagram Section */}
+      <section id="instagram" className="section-padding relative overflow-hidden editorial-feed-section">
+        <ResponsiveContainer maxWidth="5xl" className="relative z-10">
+          <div className="editorial-section-heading">
+            <span className="eyebrow">Current / Instagram</span>
+            <h2>From the feed</h2>
+            <p>Recent frames from <span className="text-white">@_mrcstreetvisuals_</span> — the uncut edge of the archive.</p>
+          </div>
+          <InstagramCarousel posts={instagramPosts} className="editorial-instagram-carousel" />
         </ResponsiveContainer>
       </section>
 
