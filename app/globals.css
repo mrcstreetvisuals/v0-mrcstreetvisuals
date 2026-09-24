@@ -204,6 +204,18 @@ body::before {
   mix-blend-mode: screen;
 }
 
+.editorial-album-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(1rem, 2.5vw, 2.5rem); align-items: start; }
+.editorial-album-card { grid-column: span 4; transform: translateY(calc(var(--album-offset, 0) * 1rem)); transition: transform .6s cubic-bezier(.2,.8,.2,1), box-shadow .6s ease; }
+.editorial-album-card-1 { grid-column: span 7; --album-offset: 0; }
+.editorial-album-card-2 { grid-column: span 5; --album-offset: 4; }
+.editorial-album-card-3 { grid-column: span 4; --album-offset: 1; }
+.editorial-album-card-4 { grid-column: span 5; --album-offset: 5; }
+.editorial-album-card-5 { grid-column: span 3; --album-offset: 0; }
+.editorial-album-card-6 { grid-column: span 7; --album-offset: 2; }
+.editorial-album-card:hover { transform: translateY(calc((var(--album-offset, 0) - .5) * 1rem)) rotate(-.35deg); }
+.editorial-album-card img { transition: transform .8s cubic-bezier(.2,.8,.2,1); }
+.editorial-album-card:hover img { transform: scale(1.08); }
+
 .editorial-section-heading {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
@@ -224,7 +236,15 @@ body::before {
 @media (max-width: 768px) { .editorial-archive::before { right: 1rem; } .editorial-feed-section .editorial-instagram-carousel { margin-left: 0; } }
 .editorial-instagram-carousel > div:first-child { border-radius: 0; border: 1px solid rgba(255,255,255,.16); box-shadow: 18px 18px 0 rgba(239,71,111,.12); }
 
+@media (max-width: 768px) {
+  .editorial-album-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+  .editorial-album-card, .editorial-album-card-1, .editorial-album-card-2, .editorial-album-card-3, .editorial-album-card-4, .editorial-album-card-5, .editorial-album-card-6 { grid-column: span 1; --album-offset: 0; }
+  .editorial-album-card-1, .editorial-album-card-6 { grid-column: span 2; }
+}
+
 @media (max-width: 640px) {
+  .editorial-album-grid { grid-template-columns: 1fr; }
+  .editorial-album-card, .editorial-album-card-1, .editorial-album-card-2, .editorial-album-card-3, .editorial-album-card-4, .editorial-album-card-5, .editorial-album-card-6 { grid-column: span 1; }
   .editorial-section-heading { display: block; margin-bottom: 2rem; }
   .editorial-section-heading h2 { margin: .8rem 0 1rem; font-size: clamp(3rem, 17vw, 5rem); }
 }

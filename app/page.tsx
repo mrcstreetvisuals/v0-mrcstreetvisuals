@@ -69,11 +69,9 @@ export default function Portfolio() {
     },
   ]
 
-  const instagramPosts = [
-    { id: "feed-1", src: editorialImages.hero.src, alt: editorialImages.hero.alt, caption: "Motion, salt, and light.", permalink: "https://www.instagram.com/_mrcstreetvisuals_/" },
-    { id: "feed-2", src: editorialImages.about.src, alt: editorialImages.about.alt, caption: "Stories built in the street.", permalink: "https://www.instagram.com/_mrcstreetvisuals_/" },
-    { id: "feed-3", src: "/images/nightclub-red.jpg", alt: "Nightlife photography in red light", caption: "After dark.", permalink: "https://www.instagram.com/_mrcstreetvisuals_/" },
-  ]
+  // Add the dedicated Instagram image URLs here when they are available.
+  // Deliberately kept empty so portfolio images are never presented as Instagram content.
+  const instagramPosts = []
 
   const portfolioCategories = [
     {
@@ -121,27 +119,9 @@ export default function Portfolio() {
   ]
 
   const packages = [
-    {
-      title: "Starter Session",
-      description: "Perfect for individuals and small projects",
-      icon: Camera,
-      features: ["1 hour session", "20 edited photos", "Online gallery"],
-      gradient: "from-blue-500 to-cyan-500",
-    },
-    {
-      title: "Professional Package",
-      description: "Ideal for events and commercial work",
-      icon: Users,
-      features: ["3 hour session", "50 edited photos", "Print rights"],
-      gradient: "from-purple-500 to-pink-500",
-    },
-    {
-      title: "Premium Experience",
-      description: "Complete coverage for your special moments",
-      icon: Sparkles,
-      features: ["Full day coverage", "100+ edited photos", "Premium album"],
-      gradient: "from-red-500 to-orange-500",
-    },
+    { title: "Wave Starter", price: "30€", description: "30–45 min shore session with 5 edited high-res surf shots.", icon: Camera, features: ["Basic color correction", "Delivery same day"], gradient: "from-blue-500 to-cyan-500" },
+    { title: "Ride Session", price: "70€", description: "1–1.5 hours shooting with 15 edited surf photos and a short highlight video.", icon: Users, features: ["Color corrected", "Delivery within 24h"], gradient: "from-purple-500 to-pink-500" },
+    { title: "Pro Wave Edit", price: "100€–120€", description: "2–3 hour session with 30+ edited photos and a cinematic surf video.", icon: Sparkles, features: ["Music + slow-mo + color grade", "Priority delivery"], gradient: "from-orange-500 to-red-500" },
   ]
 
   useEffect(() => {
@@ -391,7 +371,7 @@ export default function Portfolio() {
             </GradualBlurWrapper>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <div className="editorial-album-grid">
             {portfolioCategories.map((category, index) => (
               <GradualBlurWrapper
                 key={category.title}
@@ -406,9 +386,9 @@ export default function Portfolio() {
                 exitDelay={50}
               >
                 <Link href={category.href}>
-                  <Card className="bg-gray-950/70 border-white/15 overflow-hidden group hover:-translate-y-2 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20 cursor-pointer h-full rounded-none">
+                  <Card className={`editorial-album-card editorial-album-card-${index + 1} bg-gray-950/70 border-white/15 overflow-hidden group hover:-translate-y-2 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20 cursor-pointer h-full rounded-none`}>
                     <CardContent className="p-0 relative h-full flex flex-col">
-                      <div className="relative aspect-[4/3] overflow-hidden">
+                      <div className="relative aspect-[4/3] md:aspect-auto md:min-h-[18rem] overflow-hidden">
                         <Image
                           src={category.thumbnail || "/placeholder.svg"}
                           alt={category.title}
@@ -506,7 +486,10 @@ export default function Portfolio() {
                     <div className={`inline-flex p-3 rounded-lg bg-gradient-to-r ${pkg.gradient} mb-4`}>
                       <pkg.icon className="w-6 h-6 text-white" />
                     </div>
-                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">{pkg.title}</h3>
+                    <div className="flex items-baseline justify-between gap-4 mb-2">
+                      <h3 className="text-xl sm:text-2xl font-bold text-white">{pkg.title}</h3>
+                      <span className="text-lg font-semibold text-white">{pkg.price}</span>
+                    </div>
                     <p className="text-sm sm:text-base text-gray-400 mb-6">{pkg.description}</p>
                     <ul className="space-y-3 mb-8">
                       {pkg.features.map((feature) => (
@@ -516,9 +499,9 @@ export default function Portfolio() {
                         </li>
                       ))}
                     </ul>
-                    <Button className="w-full bg-gradient-to-r from-red-500 to-purple-600 hover:from-red-600 hover:to-purple-700 text-white font-semibold">
-                      Get Started
-                    </Button>
+      <Button asChild className="w-full bg-gradient-to-r from-red-500 to-purple-600 hover:from-red-600 hover:to-purple-700 text-white font-semibold">
+        <Link href="/packages">Get Started</Link>
+      </Button>
                   </CardContent>
                 </Card>
               </GradualBlurWrapper>
@@ -754,9 +737,9 @@ export default function Portfolio() {
       <section id="instagram" className="section-padding relative overflow-hidden editorial-feed-section">
         <ResponsiveContainer maxWidth="5xl" className="relative z-10">
           <div className="editorial-section-heading">
-            <span className="eyebrow">Current / Instagram</span>
+            <span className="eyebrow">Instagram / @mrcstreetvisuals</span>
             <h2>From the feed</h2>
-            <p>Recent frames from <span className="text-white">@_mrcstreetvisuals_</span> — the uncut edge of the archive.</p>
+            <p>Dedicated Instagram frames from <span className="text-white">@mrcstreetvisuals</span> — kept separate from the website portfolio archive.</p>
           </div>
           <InstagramCarousel posts={instagramPosts} className="editorial-instagram-carousel" />
         </ResponsiveContainer>

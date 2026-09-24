@@ -92,11 +92,16 @@ export function InstagramCarousel({
     setIsLoaded(true)
   }, [])
 
-  if (!isLoaded || posts.length === 0) {
+  if (posts.length === 0) {
     return (
-      <div className={`w-full aspect-square sm:aspect-video bg-gray-900 rounded-2xl animate-pulse ${className}`} />
+      <div className={`w-full border border-white/10 bg-white/[0.03] p-8 sm:p-12 ${className}`}>
+        <p className="text-sm uppercase tracking-[0.2em] text-white/45">Instagram image URLs pending</p>
+        <p className="mt-3 max-w-md text-white/60">Add 6–8 dedicated photos from @mrcstreetvisuals to the `instagramPosts` array in the homepage. Website portfolio images are intentionally not reused here.</p>
+      </div>
     )
   }
+
+  if (!isLoaded) return null
 
   const currentPost = posts[currentIndex]
 
