@@ -69,9 +69,13 @@ export default function Portfolio() {
     },
   ]
 
-  // Add the dedicated Instagram image URLs here when they are available.
-  // Deliberately kept empty so portfolio images are never presented as Instagram content.
-  const instagramPosts = []
+  const instagramPosts = [
+    { id: "dwkk4mlj-gic", postUrl: "https://www.instagram.com/p/DWKK4MljGIC/?img_index=1", alt: "Instagram post DWKK4MljGIC", caption: "Open exact post", permalink: "https://www.instagram.com/p/DWKK4MljGIC/?img_index=1" },
+    { id: "dxzqyhssep4", postUrl: "https://www.instagram.com/p/DXzqyHsseP4/", alt: "Instagram post DXzqyHsseP4", caption: "Open exact post", permalink: "https://www.instagram.com/p/DXzqyHsseP4/" },
+    { id: "dp9fbnij-khm", postUrl: "https://www.instagram.com/p/DP9FBnIjKhM/?img_index=1", alt: "Instagram post DP9FBnIjKhM", caption: "Open exact post", permalink: "https://www.instagram.com/p/DP9FBnIjKhM/?img_index=1" },
+    { id: "dwukaeukfgz", postUrl: "https://www.instagram.com/p/DWUkAeukfgZ/?img_index=1", alt: "Instagram post DWUkAeukfgZ", caption: "Open exact post", permalink: "https://www.instagram.com/p/DWUkAeukfgZ/?img_index=1" },
+    { id: "dy-o44jdnqh", postUrl: "https://www.instagram.com/p/DY-O44JDNQH/?img_index=1", alt: "Instagram post DY-O44JDNQH", caption: "Open exact post", permalink: "https://www.instagram.com/p/DY-O44JDNQH/?img_index=1" },
+  ]
 
   const portfolioCategories = [
     {
@@ -739,7 +743,7 @@ export default function Portfolio() {
           <div className="editorial-section-heading">
             <span className="eyebrow">Instagram / @mrcstreetvisuals</span>
             <h2>From the feed</h2>
-            <p>Dedicated Instagram frames from <span className="text-white">@mrcstreetvisuals</span> — kept separate from the website portfolio archive.</p>
+            <p>Five exact posts from <span className="text-white">@mrcstreetvisuals</span> — kept separate from the website portfolio archive.</p>
           </div>
           <InstagramCarousel posts={instagramPosts} className="editorial-instagram-carousel" />
         </ResponsiveContainer>

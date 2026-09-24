@@ -8,7 +8,8 @@ import { ChevronLeft, ChevronRight, Instagram as InstagramIcon } from "lucide-re
 
 export interface InstagramPost {
   id: string
-  src: string
+  src?: string
+  postUrl?: string
   alt: string
   caption: string
   permalink: string
@@ -118,14 +119,28 @@ export function InstagramCarousel({
         {/* Current slide */}
         <Link href={currentPost.permalink} target="_blank" rel="noopener noreferrer">
           <div className="relative w-full h-full cursor-pointer group">
-            <Image
-              src={currentPost.src}
-              alt={currentPost.alt}
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              priority={currentIndex === 0}
-            />
+            {currentPost.src ? (
+              <Image
+                src={currentPost.src}
+                alt={currentPost.alt}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                priority={currentIndex === 0}
+              />
+            ) : (
+              <div className="flex h-full flex-col justify-between bg-[linear-gradient(135deg,#211b2d,#090909_58%,#ef476f)] p-6 sm:p-10 text-white transition-transform duration-500 group-hover:scale-[1.02]">
+                <div className="flex items-center justify-between text-white/65">
+                  <InstagramIcon className="h-7 w-7" aria-hidden="true" />
+                  <span className="text-[10px] uppercase tracking-[0.24em]">Exact post reference</span>
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-[0.2em] text-white/55">@mrcstreetvisuals</p>
+                  <p className="mt-3 max-w-sm text-2xl font-semibold tracking-tight sm:text-4xl">{currentPost.alt}</p>
+                  <p className="mt-4 text-sm text-white/70">Instagram image extraction is blocked in preview. Open the exact post to view the unchanged photograph.</p>
+                </div>
+              </div>
+            )}
 
             {/* Video indicator */}
             {currentPost.isVideo && (
@@ -198,7 +213,7 @@ export function InstagramCarousel({
       {/* Follow button */}
       {showFollowButton && (
         <div className="mt-6 flex justify-center">
-          <Link href="https://www.instagram.com/_mrcstreetvisuals_/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.instagram.com/mrcstreetvisuals/" target="_blank" rel="noopener noreferrer">
             <Button className="bg-gradient-to-r from-red-500 to-purple-600 hover:from-red-600 hover:to-purple-700 text-white font-semibold px-8 py-3 rounded-full flex items-center gap-2 transition-all hover:scale-105">
               <InstagramIcon className="w-5 h-5" />
               Follow on Instagram
