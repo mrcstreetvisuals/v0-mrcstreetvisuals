@@ -70,11 +70,13 @@ export default function Portfolio() {
   ]
 
   const instagramPosts = [
-    { id: "dwkk4mlj-gic", postUrl: "https://www.instagram.com/p/DWKK4MljGIC/?img_index=1", alt: "Instagram post DWKK4MljGIC", caption: "Open exact post", permalink: "https://www.instagram.com/p/DWKK4MljGIC/?img_index=1" },
-    { id: "dxzqyhssep4", postUrl: "https://www.instagram.com/p/DXzqyHsseP4/", alt: "Instagram post DXzqyHsseP4", caption: "Open exact post", permalink: "https://www.instagram.com/p/DXzqyHsseP4/" },
-    { id: "dp9fbnij-khm", postUrl: "https://www.instagram.com/p/DP9FBnIjKhM/?img_index=1", alt: "Instagram post DP9FBnIjKhM", caption: "Open exact post", permalink: "https://www.instagram.com/p/DP9FBnIjKhM/?img_index=1" },
-    { id: "dwukaeukfgz", postUrl: "https://www.instagram.com/p/DWUkAeukfgZ/?img_index=1", alt: "Instagram post DWUkAeukfgZ", caption: "Open exact post", permalink: "https://www.instagram.com/p/DWUkAeukfgZ/?img_index=1" },
-    { id: "dy-o44jdnqh", postUrl: "https://www.instagram.com/p/DY-O44JDNQH/?img_index=1", alt: "Instagram post DY-O44JDNQH", caption: "Open exact post", permalink: "https://www.instagram.com/p/DY-O44JDNQH/?img_index=1" },
+    { id: "35146", src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/35146.jpg-C3DcsJbzhUFiP8sYfWh20EtuFZbj1N.jpeg", alt: "Close-up portrait of a person applying blue face paint", caption: "Texture and instinct.", permalink: "https://www.instagram.com/mrcstreetvisuals/" },
+    { id: "30834", src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/30834.jpg-PC3nJTkg1Uz0lvh4003bv7Kiq1Jkj6.jpeg", alt: "Portrait of a person standing among desert cacti", caption: "Portraits in the wild.", permalink: "https://www.instagram.com/mrcstreetvisuals/" },
+    { id: "31389", src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/31389.jpg-LFsiF4G2mqHiOMyY7o7ZiLbW1rv064.jpeg", alt: "Portrait of a person sitting beside a glowing fire at night", caption: "After dark.", permalink: "https://www.instagram.com/mrcstreetvisuals/" },
+    { id: "31417", src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/31417.jpg-HT3xChwrlEqod20DGJmclLrYIq6rcI.jpeg", alt: "Motocross rider raising a gloved hand beneath a blue sky", caption: "Motion, framed low.", permalink: "https://www.instagram.com/mrcstreetvisuals/" },
+    { id: "66557", src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/66557.jpg-CX3V5sdVB5oALSItdI4TLsQTK53xy6.jpeg", alt: "Colorful shared meal photographed in warm restaurant light", caption: "A table tells a story.", permalink: "https://www.instagram.com/mrcstreetvisuals/" },
+    { id: "dscf9220", src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DSCF9220.JPG-tIljrZNPUxotDh3ec33uqp6oInFpcd.jpeg", alt: "Motocross rider raising a gloved hand beneath a blue sky", caption: "Field notes.", permalink: "https://www.instagram.com/mrcstreetvisuals/" },
+    { id: "ba9a1523", src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A1523-uc5OYHNf8bPyZXYIH22IpfR2ipZImE.jpg", alt: "Motocross rider raising a gloved hand beneath a blue sky", caption: "Ride close.", permalink: "https://www.instagram.com/mrcstreetvisuals/" },
   ]
 
   const portfolioCategories = [
@@ -743,7 +745,7 @@ export default function Portfolio() {
           <div className="editorial-section-heading">
             <span className="eyebrow">Instagram / @mrcstreetvisuals</span>
             <h2>From the feed</h2>
-            <p>Five exact posts from <span className="text-white">@mrcstreetvisuals</span> — kept separate from the website portfolio archive.</p>
+            <p>Seven selected frames from <span className="text-white">@mrcstreetvisuals</span> — kept separate from the website portfolio archive.</p>
           </div>
           <InstagramCarousel posts={instagramPosts} className="editorial-instagram-carousel" />
         </ResponsiveContainer>
