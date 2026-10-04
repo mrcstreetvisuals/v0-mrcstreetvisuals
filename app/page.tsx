@@ -17,6 +17,7 @@ import { editorialImages } from "@/lib/editorial-image-map"
 
 export default function Portfolio() {
   const [currentBgIndex, setCurrentBgIndex] = useState(0)
+  const [activePortfolioCategory, setActivePortfolioCategory] = useState("All")
 
   const heroSliderImages = [
     {
@@ -129,6 +130,11 @@ export default function Portfolio() {
     { title: "Ride Session", price: "70€", description: "1–1.5 hours shooting with 15 edited surf photos and a short highlight video.", icon: Users, features: ["Color corrected", "Delivery within 24h"], gradient: "from-purple-500 to-pink-500" },
     { title: "Pro Wave Edit", price: "100€–120€", description: "2–3 hour session with 30+ edited photos and a cinematic surf video.", icon: Sparkles, features: ["Music + slow-mo + color grade", "Priority delivery"], gradient: "from-orange-500 to-red-500" },
   ]
+
+  const portfolioFilters = ["All", ...portfolioCategories.map((category) => category.title)]
+  const visiblePortfolioCategories = activePortfolioCategory === "All"
+    ? portfolioCategories
+    : portfolioCategories.filter((category) => category.title === activePortfolioCategory)
 
   useEffect(() => {
     let lastScrollY = window.scrollY
@@ -377,8 +383,22 @@ export default function Portfolio() {
             </GradualBlurWrapper>
           </div>
 
+          <nav className="editorial-portfolio-filters" aria-label="Portfolio categories">
+            {portfolioFilters.map((filter) => (
+              <button
+                key={filter}
+                type="button"
+                className={`editorial-portfolio-filter ${activePortfolioCategory === filter ? "is-active" : ""}`}
+                aria-pressed={activePortfolioCategory === filter}
+                onClick={() => setActivePortfolioCategory(filter)}
+              >
+                {filter}
+              </button>
+            ))}
+          </nav>
+
           <div className="editorial-album-grid">
-            {portfolioCategories.map((category, index) => (
+            {visiblePortfolioCategories.map((category, index) => (
               <GradualBlurWrapper
                 key={category.title}
                 blurAmount={12}
@@ -392,9 +412,9 @@ export default function Portfolio() {
                 exitDelay={50}
               >
                 <Link href={category.href}>
-                  <Card className={`editorial-album-card editorial-album-card-${index + 1} bg-gray-950/70 border-white/15 overflow-hidden group hover:-translate-y-2 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20 cursor-pointer h-full rounded-none`}>
+                  <Card className={`editorial-album-card editorial-album-card-${index + 1} bg-transparent border-0 overflow-hidden group cursor-pointer h-full rounded-none`}>
                     <CardContent className="p-0 relative h-full flex flex-col">
-                      <div className="relative aspect-[4/3] md:aspect-auto md:min-h-[18rem] overflow-hidden">
+                      <div className="relative aspect-[4/3] md:aspect-auto md:min-h-[18rem] overflow-hidden bg-black/30">
                         <Image
                           src={category.thumbnail || "/placeholder.svg"}
                           alt={category.title}
@@ -405,26 +425,17 @@ export default function Portfolio() {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                       </div>
-                      <div className="p-4 sm:p-6 flex-1 flex flex-col">
-                        <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3 bg-gradient-to-r from-red-500 to-purple-400 bg-clip-text text-transparent mobile-heading-adjust">
-                          {category.title}
-                        </h3>
-                        <p className="text-sm sm:text-base md:text-lg text-gray-400 mb-3 sm:mb-4 line-clamp-2 flex-1 mobile-body-adjust">
+                      <div className="px-1 pt-4 sm:pt-5 flex-1 flex flex-col">
+                        <div className="flex items-baseline justify-between gap-4">
+                          <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight text-white mobile-heading-adjust">
+                            {category.title}
+                          </h3>
+                          <span className="text-[10px] uppercase tracking-[0.2em] text-white/40">0{index + 1}</span>
+                        </div>
+                        <p className="mt-2 max-w-md text-sm sm:text-base text-white/55 line-clamp-2 flex-1 mobile-body-adjust">
                           {category.description}
                         </p>
-                        <div className="flex items-center justify-between">
-                          <span className="text-xs sm:text-sm text-gray-500">Click to explore</span>
-                          <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-red-500 to-purple-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                            <svg
-                              className="w-3 h-3 sm:w-4 sm:h-4 text-white"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                          </div>
-                        </div>
+                        <span className="mt-4 text-[10px] uppercase tracking-[0.2em] text-white/35 transition-colors group-hover:text-white/75">View album ↗</span>
                       </div>
                     </CardContent>
                   </Card>
