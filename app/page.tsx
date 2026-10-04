@@ -343,15 +343,8 @@ export default function Portfolio() {
 
       {/* Portfolio Albums Section */}
       <section id="portfolio" className="section-padding relative editorial-archive">
-        <BackgroundImage
-          src={editorialImages.action.src}
-          alt={editorialImages.action.alt}
-          opacity={0.3}
-          priority={false}
-          fadeInDuration={1500}
-        />
-        <ResponsiveContainer maxWidth="2xl" className="content-spacing-lg relative z-10">
-          <div className="text-center mb-12 sm:mb-16">
+        <ResponsiveContainer maxWidth="full" className="content-spacing-lg relative z-10 editorial-portfolio-shell">
+          <div className="editorial-portfolio-heading">
             <GradualBlurWrapper
               blurAmount={15}
               duration={1200}
@@ -414,13 +407,13 @@ export default function Portfolio() {
                 <Link href={category.href}>
                   <Card className={`editorial-album-card editorial-album-card-${index + 1} bg-transparent border-0 overflow-hidden group cursor-pointer h-full rounded-none`}>
                     <CardContent className="p-0 relative h-full flex flex-col">
-                      <div className="relative aspect-[4/3] md:aspect-auto md:min-h-[18rem] overflow-hidden bg-black/30">
+                      <div className={`editorial-album-image editorial-album-image-${index + 1} relative overflow-hidden bg-black/30`}>
                         <Image
                           src={category.thumbnail || "/placeholder.svg"}
                           alt={category.title}
                           fill
                           className="object-cover group-hover:scale-110 transition-transform duration-700"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 50vw"
                           priority={index < 3}
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
