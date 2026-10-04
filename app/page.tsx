@@ -132,9 +132,15 @@ export default function Portfolio() {
   ]
 
   const portfolioFilters = ["All", ...portfolioCategories.map((category) => category.title)]
-  const visiblePortfolioCategories = activePortfolioCategory === "All"
-    ? portfolioCategories
-    : portfolioCategories.filter((category) => category.title === activePortfolioCategory)
+  const portfolioPhotos = [
+    ["Portraits", ["/images/portraits/studio-portrait-bw.jpg", "/images/portraits/fashion-night-portrait.jpg", "/images/portraits/cultural-headdress-bw.jpg", "/images/nightclub-red.jpg", "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A3946-H0mbL25fuw7YkkBJ5cmFJNsNMRmT96.jpg", "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A3900-uwDvdhTQfi6ZqLLIbBtXBdAi6Yk0Qd.jpg", "/images/portrait-nature.jpg", "/images/portraits/stylized-portrait-sunglasses.jpg", "/images/portrait-blue.jpg", "/images/portraits/reading-portrait-bw.jpg", "/images/portraits/street-vendor-golden-hour.jpg", "/images/portraits/woman-sunglasses-warm-light.jpg", "/images/portraits/elderly-man-bougainvillea.jpg", "/images/portraits/contemplative-woman-curly-hair.jpg"]],
+    ["Events", ["/images/events/cultural-performers-bw.jpg", "/images/events/night-musicians-rooftop.jpg", "/images/events/indoor-party-neon.jpg", "/images/events/performance-stage-blue.jpg", "/images/nightclub-red.jpg", "/images/events/the-lost-haven-neon.jpg", "/images/events/live-concert-blue-lights.jpg", "/images/nightclub-dance.jpg", "/images/events/traditional-cultural-ensemble.jpg", "/images/events/nightclub-dance-motion.jpg", "/images/dj-performance.jpg", "/images/cultural-performance-bw.jpg", "/images/events/musician-traditional-instrument.jpg", "/images/events/band-performance-bw.jpg", "/images/light-trails.jpg"]],
+    ["Surf & Skate", ["/images/sports/skateboard-trick-sky.jpg", "/images/surfer-wave-action.jpg", "/images/sports/surf-powerful-wave.jpg", "/images/sports/skateboard-bowl-colorful.jpg", "/images/surfer-action.jpg", "/images/sports/surf-wave-bw.jpg", "/images/sports/female-surfer-golden-hour.jpg", "/images/sports/surf-lineup-turquoise.jpg", "/images/surfers-bw-silhouette.jpg", "/images/sports/skateboard-park-action.jpg", "/images/sports/surf-wipeout-bw.jpg", "/images/sports/skateboard-street-celebration.jpg", "/images/sports/surf-silhouette-sparkling.jpg", "/images/surfers-lifestyle.jpg"]],
+    ["Automotive", ["/images/pink-car-automotive.jpg", "/images/automotive/pink-audi-front-detail.jpg", "/images/automotive/black-bmw-side-profile.jpg", "/images/automotive/black-bmw-front-detail.jpg", "/images/automotive/black-bmw-parking-lot.jpg", "/images/automotive/pink-audi-aerial-view.jpg", "/images/automotive/pink-audi-interior.jpg", "/images/automotive/pink-audi-rear-detail.jpg", "/images/automotive/pink-audi-golden-hour.jpg"]],
+    ["Products", ["https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A1471-A9uaj6D85IDGuOWPNMB7Ec1I6DO.jpg", "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A1523-TQSmvXleYQm2qlm3DieHXAuSQCUYc9.jpg", "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A4334-b81QLuGRcKsfWKuX2suJCkAibxGvLx.jpg", "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A4800-UVA2awRrjfbBluKKQhLdXbONTMKxpy.jpg", "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A4859-uq3opqs6yFmOAMQNioB0jdAznZY9lT.jpg", "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A3246-dxK3uh69xQYNVzL05fkLaWB5CvAMGT.jpg", "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A2954-yXkJ3UOn8xEFMRqSkNac2PF4K5j8kx.jpg", "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A4822-rYld5gINmmCf1QgoPPVNnY28ypxvNI.jpg", "/images/product-nafa-single.jpg", "/images/product-nafa-duo.jpg"]],
+    ["Real Estate", ["/images/real-estate/rustic-bedroom-pallet-bed.jpg", "/images/real-estate/blue-bedroom-moroccan-decor.jpg", "/images/real-estate/bedroom-white-curtains-netting.jpg", "/images/real-estate/interior-details-mirror-rack.jpg", "/images/real-estate/outdoor-terrace-seating-area.jpg", "/images/real-estate/twin-bedroom-wooden-furniture.jpg", "/images/real-estate/rustic-bar-thatched-ceiling.jpg", "/images/real-estate/minimalist-bedroom-yellow-pillows.jpg", "/images/real-estate/rooftop-terrace-sunset-chairs.jpg", "/images/real-estate/rustic-furniture-detail-sunlight.jpg", "/images/real-estate/rooftop-hammock-city-view.jpg", "/images/real-estate/bedroom-blue-wall-decorative.jpg", "/images/real-estate/rooftop-hammock-moonlight.jpg", "/images/real-estate/twin-bedroom-checkered-floor.jpg"]],
+  ].flatMap(([category, sources]) => (sources as string[]).map((src, index) => ({ src, category: category as string, alt: `${category} photograph ${index + 1}` })))
+  const visiblePortfolioPhotos = activePortfolioCategory === "All" ? portfolioPhotos : portfolioPhotos.filter((photo) => photo.category === activePortfolioCategory)
 
   useEffect(() => {
     let lastScrollY = window.scrollY
@@ -355,7 +361,7 @@ export default function Portfolio() {
               reverseOnExit={true}
             >
               <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-red-500 to-purple-400 bg-clip-text text-transparent mobile-heading-adjust">
-                Portfolio Albums
+Portfolio
               </h2>
             </GradualBlurWrapper>
 
@@ -370,8 +376,7 @@ export default function Portfolio() {
               reverseOnExit={true}
             >
               <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-400 max-w-3xl mx-auto mobile-body-adjust">
-                Explore my diverse photography work organized by specialty. Each album showcases a unique aspect of my
-                creative vision and technical expertise.
+                A direct edit of photographs across portraits, events, action, automotive, products, and spaces.
               </p>
             </GradualBlurWrapper>
           </div>
@@ -390,50 +395,21 @@ export default function Portfolio() {
             ))}
           </nav>
 
-          <div className="editorial-album-grid">
-            {visiblePortfolioCategories.map((category, index) => (
-              <GradualBlurWrapper
-                key={category.title}
-                blurAmount={12}
-                duration={1200}
-                delay={200 + index * 150}
-                animationType="blur-slide"
-                direction={index % 2 === 0 ? "up" : "left"}
-                threshold={0.15}
-                triggerOnce={false}
-                reverseOnExit={true}
-                exitDelay={50}
-              >
-                <Link href={category.href}>
-                  <Card className={`editorial-album-card editorial-album-card-${index + 1} bg-transparent border-0 overflow-hidden group cursor-pointer h-full rounded-none`}>
-                    <CardContent className="p-0 relative h-full flex flex-col">
-                      <div className={`editorial-album-image editorial-album-image-${index + 1} relative overflow-hidden bg-black/30`}>
-                        <Image
-                          src={category.thumbnail || "/placeholder.svg"}
-                          alt={category.title}
-                          fill
-                          className="object-cover group-hover:scale-110 transition-transform duration-700"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 50vw"
-                          priority={index < 3}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                      </div>
-                      <div className="px-1 pt-4 sm:pt-5 flex-1 flex flex-col">
-                        <div className="flex items-baseline justify-between gap-4">
-                          <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight text-white mobile-heading-adjust">
-                            {category.title}
-                          </h3>
-                          <span className="text-[10px] uppercase tracking-[0.2em] text-white/40">0{index + 1}</span>
-                        </div>
-                        <p className="mt-2 max-w-md text-sm sm:text-base text-white/55 line-clamp-2 flex-1 mobile-body-adjust">
-                          {category.description}
-                        </p>
-                        <span className="mt-4 text-[10px] uppercase tracking-[0.2em] text-white/35 transition-colors group-hover:text-white/75">View album ↗</span>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </Link>
-              </GradualBlurWrapper>
+          <div className="editorial-photo-grid">
+            {visiblePortfolioPhotos.map((photo, index) => (
+              <figure key={`${photo.src}-${index}`} className={`editorial-photo editorial-photo-${index % 8} group`}>
+                <div className="editorial-photo-frame">
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    fill
+                    className="object-cover transition duration-700 ease-out group-hover:scale-[1.04] group-hover:brightness-110"
+                    sizes="(max-width: 640px) 92vw, (max-width: 1024px) 48vw, 34vw"
+                    priority={index < 4}
+                  />
+                  <figcaption className="editorial-photo-caption">{photo.category}</figcaption>
+                </div>
+              </figure>
             ))}
           </div>
         </ResponsiveContainer>
