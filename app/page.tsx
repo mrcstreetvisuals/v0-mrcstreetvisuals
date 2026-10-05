@@ -20,6 +20,8 @@ export default function Portfolio() {
   const [currentBgIndex, setCurrentBgIndex] = useState(0)
   const [activePortfolioCategory, setActivePortfolioCategory] = useState("All")
   const [activePackageCategory, setActivePackageCategory] = useState("All")
+  const [portfolioVisibleCount, setPortfolioVisibleCount] = useState(10)
+  const [packageVisibleCount, setPackageVisibleCount] = useState(6)
 
   const heroSliderImages = [
     {
@@ -132,9 +134,11 @@ export default function Portfolio() {
     section.packages.map((pkg) => ({ ...pkg, category: section.eyebrow }))
   )
   const packageCategories = ["All", ...packageSections.map((section) => section.eyebrow)]
-  const visiblePackages = activePackageCategory === "All"
+  const filteredPackages = activePackageCategory === "All"
     ? packageCatalog
     : packageCatalog.filter((pkg) => pkg.category === activePackageCategory)
+  const visiblePackages = filteredPackages.slice(0, packageVisibleCount)
+  const hasMorePackages = packageVisibleCount < filteredPackages.length
 
   const portfolioFilters = ["All", ...portfolioCategories.map((category) => category.title)]
   const portfolioPhotos = [
@@ -145,7 +149,9 @@ export default function Portfolio() {
     ["Products", ["https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A1471-A9uaj6D85IDGuOWPNMB7Ec1I6DO.jpg", "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A1523-TQSmvXleYQm2qlm3DieHXAuSQCUYc9.jpg", "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A4334-b81QLuGRcKsfWKuX2suJCkAibxGvLx.jpg", "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A4800-UVA2awRrjfbBluKKQhLdXbONTMKxpy.jpg", "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A4859-uq3opqs6yFmOAMQNioB0jdAznZY9lT.jpg", "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A3246-dxK3uh69xQYNVzL05fkLaWB5CvAMGT.jpg", "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A2954-yXkJ3UOn8xEFMRqSkNac2PF4K5j8kx.jpg", "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A4822-rYld5gINmmCf1QgoPPVNnY28ypxvNI.jpg", "/images/product-nafa-single.jpg", "/images/product-nafa-duo.jpg"]],
     ["Real Estate", ["/images/real-estate/rustic-bedroom-pallet-bed.jpg", "/images/real-estate/blue-bedroom-moroccan-decor.jpg", "/images/real-estate/bedroom-white-curtains-netting.jpg", "/images/real-estate/interior-details-mirror-rack.jpg", "/images/real-estate/outdoor-terrace-seating-area.jpg", "/images/real-estate/twin-bedroom-wooden-furniture.jpg", "/images/real-estate/rustic-bar-thatched-ceiling.jpg", "/images/real-estate/minimalist-bedroom-yellow-pillows.jpg", "/images/real-estate/rooftop-terrace-sunset-chairs.jpg", "/images/real-estate/rustic-furniture-detail-sunlight.jpg", "/images/real-estate/rooftop-hammock-city-view.jpg", "/images/real-estate/bedroom-blue-wall-decorative.jpg", "/images/real-estate/rooftop-hammock-moonlight.jpg", "/images/real-estate/twin-bedroom-checkered-floor.jpg"]],
   ].flatMap(([category, sources]) => (sources as string[]).map((src, index) => ({ src, category: category as string, alt: `${category} photograph ${index + 1}` })))
-  const visiblePortfolioPhotos = activePortfolioCategory === "All" ? portfolioPhotos : portfolioPhotos.filter((photo) => photo.category === activePortfolioCategory)
+  const filteredPortfolioPhotos = activePortfolioCategory === "All" ? portfolioPhotos : portfolioPhotos.filter((photo) => photo.category === activePortfolioCategory)
+  const visiblePortfolioPhotos = filteredPortfolioPhotos.slice(0, portfolioVisibleCount)
+  const hasMorePortfolioPhotos = portfolioVisibleCount < filteredPortfolioPhotos.length
 
   useEffect(() => {
     let lastScrollY = window.scrollY
@@ -228,9 +234,9 @@ export default function Portfolio() {
               <Link href="#portfolio" className="hover:text-purple-400 transition-colors text-sm lg:text-base">
                 Portfolio
               </Link>
-              <Link href="/packages" className="hover:text-purple-400 transition-colors text-sm lg:text-base">
-                Packages
-              </Link>
+<a href="#packages" className="hover:text-purple-400 transition-colors text-sm lg:text-base">
+  Packages
+</a>
               <Link href="/shop" className="hover:text-purple-400 transition-colors text-sm lg:text-base">
                 Shop
               </Link>
@@ -393,7 +399,7 @@ Portfolio
                 type="button"
                 className={`editorial-portfolio-filter ${activePortfolioCategory === filter ? "is-active" : ""}`}
                 aria-pressed={activePortfolioCategory === filter}
-                onClick={() => setActivePortfolioCategory(filter)}
+                onClick={() => { setActivePortfolioCategory(filter); setPortfolioVisibleCount(10) }}
               >
                 {filter}
               </button>
@@ -417,6 +423,13 @@ Portfolio
               </figure>
             ))}
           </div>
+          {filteredPortfolioPhotos.length > 10 && (
+            <div className="mt-12 text-center">
+              <button type="button" className="editorial-reveal-button" onClick={() => setPortfolioVisibleCount(hasMorePortfolioPhotos ? portfolioVisibleCount + 10 : 10)}>
+                {hasMorePortfolioPhotos ? "Show more →" : "Show less"}
+              </button>
+            </div>
+          )}
         </ResponsiveContainer>
       </section>
 
@@ -444,7 +457,7 @@ Portfolio
                 type="button"
                 className={`editorial-portfolio-filter ${activePackageCategory === category ? "is-active" : ""}`}
                 aria-pressed={activePackageCategory === category}
-                onClick={() => setActivePackageCategory(category)}
+                onClick={() => { setActivePackageCategory(category); setPackageVisibleCount(6) }}
               >
                 {category}
               </button>
@@ -471,13 +484,19 @@ Portfolio
                     <ul className="mt-5 space-y-2 border-t border-white/10 pt-4">
                       {pkg.features.map((feature) => <li key={feature} className="text-sm text-white/65">{feature}</li>)}
                     </ul>
-                    <Button asChild variant="link" className="mt-4 h-auto p-0 text-xs uppercase tracking-[0.18em] text-white/60 hover:text-white"><Link href="/packages">Get Started <span aria-hidden="true">↗</span></Link></Button>
+                    <Button asChild variant="link" className="mt-4 h-auto p-0 text-xs uppercase tracking-[0.18em] text-white/60 hover:text-white"><a href="#contact">Get Started <span aria-hidden="true">↗</span></a></Button>
                   </div>
                 </article>
               </GradualBlurWrapper>
             ))}
           </div>
-          <div className="mt-14 text-center"><Link href="/packages" className="text-xs uppercase tracking-[0.2em] text-white/55 transition-colors hover:text-white">View all packages <span aria-hidden="true">→</span></Link></div>
+          {filteredPackages.length > 6 && (
+            <div className="mt-14 text-center">
+              <button type="button" className="editorial-reveal-button" onClick={() => setPackageVisibleCount(hasMorePackages ? packageVisibleCount + 6 : 6)}>
+                {hasMorePackages ? "Show more →" : "Show less"}
+              </button>
+            </div>
+          )}
         </ResponsiveContainer>
       </section>
 
