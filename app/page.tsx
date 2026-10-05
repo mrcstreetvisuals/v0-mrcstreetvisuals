@@ -14,10 +14,12 @@ import { GradualBlurWrapper } from "@/components/gradual-blur-wrapper"
 import { BackgroundImage } from "@/components/background-image"
 import { InstagramCarousel } from "@/components/instagram-carousel"
 import { editorialImages } from "@/lib/editorial-image-map"
+import { getPackageSections } from "@/lib/package-catalog"
 
 export default function Portfolio() {
   const [currentBgIndex, setCurrentBgIndex] = useState(0)
   const [activePortfolioCategory, setActivePortfolioCategory] = useState("All")
+  const [activePackageCategory, setActivePackageCategory] = useState("All")
 
   const heroSliderImages = [
     {
@@ -125,11 +127,14 @@ export default function Portfolio() {
     },
   ]
 
-  const packages = [
-    { title: "Wave Starter", price: "30€", description: "30–45 min shore session with 5 edited high-res surf shots.", icon: Camera, features: ["Basic color correction", "Delivery same day"], gradient: "from-blue-500 to-cyan-500" },
-    { title: "Ride Session", price: "70€", description: "1–1.5 hours shooting with 15 edited surf photos and a short highlight video.", icon: Users, features: ["Color corrected", "Delivery within 24h"], gradient: "from-purple-500 to-pink-500" },
-    { title: "Pro Wave Edit", price: "100€–120€", description: "2–3 hour session with 30+ edited photos and a cinematic surf video.", icon: Sparkles, features: ["Music + slow-mo + color grade", "Priority delivery"], gradient: "from-orange-500 to-red-500" },
-  ]
+  const packageSections = getPackageSections()
+  const packageCatalog = packageSections.flatMap((section) =>
+    section.packages.map((pkg) => ({ ...pkg, category: section.eyebrow }))
+  )
+  const packageCategories = ["All", ...packageSections.map((section) => section.eyebrow)]
+  const visiblePackages = activePackageCategory === "All"
+    ? packageCatalog
+    : packageCatalog.filter((pkg) => pkg.category === activePackageCategory)
 
   const portfolioFilters = ["All", ...portfolioCategories.map((category) => category.title)]
   const portfolioPhotos = [
@@ -424,75 +429,55 @@ Portfolio
           fadeInDuration={2000}
         />
         <ResponsiveContainer maxWidth="5xl" className="relative z-10">
-          <div className="text-center mb-12 sm:mb-16">
-            <GradualBlurWrapper
-              blurAmount={15}
-              duration={1200}
-              delay={100}
-              animationType="blur-fade"
-              threshold={0.2}
-              triggerOnce={false}
-              reverseOnExit={true}
-            >
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-red-500 to-purple-400 bg-clip-text text-transparent mobile-heading-adjust" style={{ marginTop: '-6px', paddingTop: '7px', lineHeight: '1.6em' }}>
-                Photography Packages
-              </h2>
-            </GradualBlurWrapper>
-
-            <GradualBlurWrapper
-              blurAmount={12}
-              duration={1000}
-              delay={300}
-              animationType="blur-slide"
-              direction="up"
-              threshold={0.2}
-              triggerOnce={false}
-              reverseOnExit={true}
-            >
-              <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mobile-body-adjust">
-                Choose the perfect package for your photography needs
-              </p>
-            </GradualBlurWrapper>
+          <div className="editorial-packages-heading">
+            <div>
+              <span className="eyebrow">Services / Packages</span>
+              <h2>Packages</h2>
+            </div>
+            <p>Actual sessions, deliverables, and pricing from the full Packages page.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            {packages.map((pkg, index) => (
-              <GradualBlurWrapper
-                key={pkg.title}
-                blurAmount={10}
-                duration={1000}
-                delay={500 + index * 200}
-                animationType="blur-scale"
-                threshold={0.2}
-                triggerOnce={false}
-                reverseOnExit={true}
+          <nav className="editorial-portfolio-filters" aria-label="Package categories">
+            {packageCategories.map((category) => (
+              <button
+                key={category}
+                type="button"
+                className={`editorial-portfolio-filter ${activePackageCategory === category ? "is-active" : ""}`}
+                aria-pressed={activePackageCategory === category}
+                onClick={() => setActivePackageCategory(category)}
               >
-                <Card className="bg-white/5 backdrop-blur-sm border-white/10 hover:border-white/20 transition-colors h-full">
-                  <CardContent className="p-6 sm:p-8">
-                    <div className={`inline-flex p-3 rounded-lg bg-gradient-to-r ${pkg.gradient} mb-4`}>
-                      <pkg.icon className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="flex items-baseline justify-between gap-4 mb-2">
-                      <h3 className="text-xl sm:text-2xl font-bold text-white">{pkg.title}</h3>
+                {category}
+              </button>
+            ))}
+          </nav>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
+            {visiblePackages.map((pkg, index) => (
+              <GradualBlurWrapper key={pkg.id} blurAmount={10} duration={700} delay={index * 80} animationType="blur-scale" threshold={0.1} triggerOnce={false} reverseOnExit={true}>
+                <article className="editorial-package-card group">
+                  <div className="relative aspect-[4/3] overflow-hidden bg-white/[0.04]">
+                    <Image src={pkg.image} alt={`${pkg.name} package`} fill className="object-cover transition duration-700 group-hover:scale-[1.04]" sizes="(max-width: 768px) 100vw, 33vw" />
+                    {pkg.popular && <span className="absolute left-4 top-4 bg-white text-black px-3 py-1 text-[10px] uppercase tracking-[0.18em]">Popular</span>}
+                  </div>
+                  <div className="pt-5">
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <p className="text-[10px] uppercase tracking-[0.2em] text-white/40">{pkg.category}</p>
+                        <h3 className="mt-2 text-xl font-semibold tracking-tight text-white">{pkg.name}</h3>
+                      </div>
                       <span className="text-lg font-semibold text-white">{pkg.price}</span>
                     </div>
-                    <p className="text-sm sm:text-base text-gray-400 mb-6">{pkg.description}</p>
-                    <ul className="space-y-3 mb-8">
-                      {pkg.features.map((feature) => (
-                        <li key={feature} className="flex items-center gap-3 text-sm sm:text-base text-gray-300">
-                          <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-red-500 to-purple-500" />
-                          {feature}
-                        </li>
-                      ))}
+                    <p className="mt-2 text-sm text-white/45">{pkg.duration}</p>
+                    <ul className="mt-5 space-y-2 border-t border-white/10 pt-4">
+                      {pkg.features.map((feature) => <li key={feature} className="text-sm text-white/65">{feature}</li>)}
                     </ul>
-      <Button asChild className="w-full bg-gradient-to-r from-red-500 to-purple-600 hover:from-red-600 hover:to-purple-700 text-white font-semibold">
-        <Link href="/packages">Get Started</Link>
-      </Button>
-                  </CardContent>
-                </Card>
+                    <Button asChild variant="link" className="mt-4 h-auto p-0 text-xs uppercase tracking-[0.18em] text-white/60 hover:text-white"><Link href="/packages">Get Started <span aria-hidden="true">↗</span></Link></Button>
+                  </div>
+                </article>
               </GradualBlurWrapper>
             ))}
           </div>
+          <div className="mt-14 text-center"><Link href="/packages" className="text-xs uppercase tracking-[0.2em] text-white/55 transition-colors hover:text-white">View all packages <span aria-hidden="true">→</span></Link></div>
         </ResponsiveContainer>
       </section>
 
