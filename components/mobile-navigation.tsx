@@ -17,7 +17,7 @@ const workLinks = [
 const navigationItems = [
   { href: "/", label: "Home", icon: Layers3 },
   { href: "#portfolio", label: "Portfolio", icon: BriefcaseBusiness },
-  { href: "/packages", label: "Packages", icon: Layers3 },
+  { href: "#packages", label: "Packages", icon: Layers3 },
   { href: "/shop", label: "Shop", icon: ShoppingBag },
   { href: "#about", label: "About", icon: UserRound },
   { href: "#contact", label: "Contact", icon: Mail },

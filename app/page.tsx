@@ -12,10 +12,16 @@ import { ImageSlider } from "@/components/image-slider"
 import { ResponsiveContainer } from "@/components/responsive-container"
 import { GradualBlurWrapper } from "@/components/gradual-blur-wrapper"
 import { BackgroundImage } from "@/components/background-image"
+import { InstagramCarousel } from "@/components/instagram-carousel"
 import { editorialImages } from "@/lib/editorial-image-map"
+import { getPackageSections } from "@/lib/package-catalog"
 
 export default function Portfolio() {
   const [currentBgIndex, setCurrentBgIndex] = useState(0)
+  const [activePortfolioCategory, setActivePortfolioCategory] = useState("All")
+  const [activePackageCategory, setActivePackageCategory] = useState("All")
+  const [portfolioVisibleCount, setPortfolioVisibleCount] = useState(10)
+  const [packageVisibleCount, setPackageVisibleCount] = useState(6)
 
   const heroSliderImages = [
     {
@@ -68,6 +74,16 @@ export default function Portfolio() {
     },
   ]
 
+  const instagramPosts = [
+    { id: "35146", src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/35146.jpg-C3DcsJbzhUFiP8sYfWh20EtuFZbj1N.jpeg", alt: "Close-up portrait of a person applying blue face paint", caption: "Texture and instinct.", permalink: "https://www.instagram.com/mrcstreetvisuals/" },
+    { id: "30834", src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/30834.jpg-PC3nJTkg1Uz0lvh4003bv7Kiq1Jkj6.jpeg", alt: "Portrait of a person standing among desert cacti", caption: "Portraits in the wild.", permalink: "https://www.instagram.com/mrcstreetvisuals/" },
+    { id: "31389", src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/31389.jpg-LFsiF4G2mqHiOMyY7o7ZiLbW1rv064.jpeg", alt: "Portrait of a person sitting beside a glowing fire at night", caption: "After dark.", permalink: "https://www.instagram.com/mrcstreetvisuals/" },
+    { id: "31417", src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/31417.jpg-HT3xChwrlEqod20DGJmclLrYIq6rcI.jpeg", alt: "Motocross rider raising a gloved hand beneath a blue sky", caption: "Motion, framed low.", permalink: "https://www.instagram.com/mrcstreetvisuals/" },
+    { id: "66557", src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/66557.jpg-CX3V5sdVB5oALSItdI4TLsQTK53xy6.jpeg", alt: "Colorful shared meal photographed in warm restaurant light", caption: "A table tells a story.", permalink: "https://www.instagram.com/mrcstreetvisuals/" },
+    { id: "dscf9220", src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DSCF9220.JPG-tIljrZNPUxotDh3ec33uqp6oInFpcd.jpeg", alt: "Motocross rider raising a gloved hand beneath a blue sky", caption: "Field notes.", permalink: "https://www.instagram.com/mrcstreetvisuals/" },
+    { id: "ba9a1523", src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A1523-uc5OYHNf8bPyZXYIH22IpfR2ipZImE.jpg", alt: "Motocross rider raising a gloved hand beneath a blue sky", caption: "Ride close.", permalink: "https://www.instagram.com/mrcstreetvisuals/" },
+  ]
+
   const portfolioCategories = [
     {
       title: "Portraits",
@@ -113,29 +129,29 @@ export default function Portfolio() {
     },
   ]
 
-  const packages = [
-    {
-      title: "Starter Session",
-      description: "Perfect for individuals and small projects",
-      icon: Camera,
-      features: ["1 hour session", "20 edited photos", "Online gallery"],
-      gradient: "from-blue-500 to-cyan-500",
-    },
-    {
-      title: "Professional Package",
-      description: "Ideal for events and commercial work",
-      icon: Users,
-      features: ["3 hour session", "50 edited photos", "Print rights"],
-      gradient: "from-purple-500 to-pink-500",
-    },
-    {
-      title: "Premium Experience",
-      description: "Complete coverage for your special moments",
-      icon: Sparkles,
-      features: ["Full day coverage", "100+ edited photos", "Premium album"],
-      gradient: "from-red-500 to-orange-500",
-    },
-  ]
+  const packageSections = getPackageSections()
+  const packageCatalog = packageSections.flatMap((section) =>
+    section.packages.map((pkg) => ({ ...pkg, category: section.eyebrow }))
+  )
+  const packageCategories = ["All", ...packageSections.map((section) => section.eyebrow)]
+  const filteredPackages = activePackageCategory === "All"
+    ? packageCatalog
+    : packageCatalog.filter((pkg) => pkg.category === activePackageCategory)
+  const visiblePackages = filteredPackages.slice(0, packageVisibleCount)
+  const hasMorePackages = packageVisibleCount < filteredPackages.length
+
+  const portfolioFilters = ["All", ...portfolioCategories.map((category) => category.title)]
+  const portfolioPhotos = [
+    ["Portraits", ["/images/portraits/studio-portrait-bw.jpg", "/images/portraits/fashion-night-portrait.jpg", "/images/portraits/cultural-headdress-bw.jpg", "/images/nightclub-red.jpg", "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A3946-H0mbL25fuw7YkkBJ5cmFJNsNMRmT96.jpg", "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A3900-uwDvdhTQfi6ZqLLIbBtXBdAi6Yk0Qd.jpg", "/images/portrait-nature.jpg", "/images/portraits/stylized-portrait-sunglasses.jpg", "/images/portrait-blue.jpg", "/images/portraits/reading-portrait-bw.jpg", "/images/portraits/street-vendor-golden-hour.jpg", "/images/portraits/woman-sunglasses-warm-light.jpg", "/images/portraits/elderly-man-bougainvillea.jpg", "/images/portraits/contemplative-woman-curly-hair.jpg"]],
+    ["Events", ["/images/events/cultural-performers-bw.jpg", "/images/events/night-musicians-rooftop.jpg", "/images/events/indoor-party-neon.jpg", "/images/events/performance-stage-blue.jpg", "/images/nightclub-red.jpg", "/images/events/the-lost-haven-neon.jpg", "/images/events/live-concert-blue-lights.jpg", "/images/nightclub-dance.jpg", "/images/events/traditional-cultural-ensemble.jpg", "/images/events/nightclub-dance-motion.jpg", "/images/dj-performance.jpg", "/images/cultural-performance-bw.jpg", "/images/events/musician-traditional-instrument.jpg", "/images/events/band-performance-bw.jpg", "/images/light-trails.jpg"]],
+    ["Surf & Skate", ["/images/sports/skateboard-trick-sky.jpg", "/images/surfer-wave-action.jpg", "/images/sports/surf-powerful-wave.jpg", "/images/sports/skateboard-bowl-colorful.jpg", "/images/surfer-action.jpg", "/images/sports/surf-wave-bw.jpg", "/images/sports/female-surfer-golden-hour.jpg", "/images/sports/surf-lineup-turquoise.jpg", "/images/surfers-bw-silhouette.jpg", "/images/sports/skateboard-park-action.jpg", "/images/sports/surf-wipeout-bw.jpg", "/images/sports/skateboard-street-celebration.jpg", "/images/sports/surf-silhouette-sparkling.jpg", "/images/surfers-lifestyle.jpg"]],
+    ["Automotive", ["/images/pink-car-automotive.jpg", "/images/automotive/pink-audi-front-detail.jpg", "/images/automotive/black-bmw-side-profile.jpg", "/images/automotive/black-bmw-front-detail.jpg", "/images/automotive/black-bmw-parking-lot.jpg", "/images/automotive/pink-audi-aerial-view.jpg", "/images/automotive/pink-audi-interior.jpg", "/images/automotive/pink-audi-rear-detail.jpg", "/images/automotive/pink-audi-golden-hour.jpg"]],
+    ["Products", ["https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A1471-A9uaj6D85IDGuOWPNMB7Ec1I6DO.jpg", "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A1523-TQSmvXleYQm2qlm3DieHXAuSQCUYc9.jpg", "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A4334-b81QLuGRcKsfWKuX2suJCkAibxGvLx.jpg", "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A4800-UVA2awRrjfbBluKKQhLdXbONTMKxpy.jpg", "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A4859-uq3opqs6yFmOAMQNioB0jdAznZY9lT.jpg", "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A3246-dxK3uh69xQYNVzL05fkLaWB5CvAMGT.jpg", "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A2954-yXkJ3UOn8xEFMRqSkNac2PF4K5j8kx.jpg", "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A4822-rYld5gINmmCf1QgoPPVNnY28ypxvNI.jpg", "/images/product-nafa-single.jpg", "/images/product-nafa-duo.jpg"]],
+    ["Real Estate", ["/images/real-estate/rustic-bedroom-pallet-bed.jpg", "/images/real-estate/blue-bedroom-moroccan-decor.jpg", "/images/real-estate/bedroom-white-curtains-netting.jpg", "/images/real-estate/interior-details-mirror-rack.jpg", "/images/real-estate/outdoor-terrace-seating-area.jpg", "/images/real-estate/twin-bedroom-wooden-furniture.jpg", "/images/real-estate/rustic-bar-thatched-ceiling.jpg", "/images/real-estate/minimalist-bedroom-yellow-pillows.jpg", "/images/real-estate/rooftop-terrace-sunset-chairs.jpg", "/images/real-estate/rustic-furniture-detail-sunlight.jpg", "/images/real-estate/rooftop-hammock-city-view.jpg", "/images/real-estate/bedroom-blue-wall-decorative.jpg", "/images/real-estate/rooftop-hammock-moonlight.jpg", "/images/real-estate/twin-bedroom-checkered-floor.jpg"]],
+  ].flatMap(([category, sources]) => (sources as string[]).map((src, index) => ({ src, category: category as string, alt: `${category} photograph ${index + 1}` })))
+  const filteredPortfolioPhotos = activePortfolioCategory === "All" ? portfolioPhotos : portfolioPhotos.filter((photo) => photo.category === activePortfolioCategory)
+  const visiblePortfolioPhotos = filteredPortfolioPhotos.slice(0, portfolioVisibleCount)
+  const hasMorePortfolioPhotos = portfolioVisibleCount < filteredPortfolioPhotos.length
 
   useEffect(() => {
     let lastScrollY = window.scrollY
@@ -218,9 +234,9 @@ export default function Portfolio() {
               <Link href="#portfolio" className="hover:text-purple-400 transition-colors text-sm lg:text-base">
                 Portfolio
               </Link>
-              <Link href="/packages" className="hover:text-purple-400 transition-colors text-sm lg:text-base">
-                Packages
-              </Link>
+<a href="#packages" className="hover:text-purple-400 transition-colors text-sm lg:text-base">
+  Packages
+</a>
               <Link href="/shop" className="hover:text-purple-400 transition-colors text-sm lg:text-base">
                 Shop
               </Link>
@@ -239,7 +255,7 @@ export default function Portfolio() {
       </header>
 
       {/* Hero Section with Image Slider */}
-      <section id="home" className="relative h-screen ios-vh-fix flex items-center justify-center overflow-hidden">
+      <section id="home" className="relative h-screen ios-vh-fix flex items-center justify-center overflow-hidden editorial-hero">
         <div className="absolute inset-0">
           <ImageSlider
             images={heroSliderImages}
@@ -343,16 +359,9 @@ export default function Portfolio() {
       </section>
 
       {/* Portfolio Albums Section */}
-      <section id="portfolio" className="section-padding relative">
-        <BackgroundImage
-          src={editorialImages.action.src}
-          alt={editorialImages.action.alt}
-          opacity={0.3}
-          priority={false}
-          fadeInDuration={1500}
-        />
-        <ResponsiveContainer maxWidth="2xl" className="content-spacing-lg relative z-10">
-          <div className="text-center mb-12 sm:mb-16">
+      <section id="portfolio" className="section-padding relative editorial-archive">
+        <ResponsiveContainer maxWidth="full" className="content-spacing-lg relative z-10 editorial-portfolio-shell">
+          <div className="editorial-portfolio-heading">
             <GradualBlurWrapper
               blurAmount={15}
               duration={1200}
@@ -363,7 +372,7 @@ export default function Portfolio() {
               reverseOnExit={true}
             >
               <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-red-500 to-purple-400 bg-clip-text text-transparent mobile-heading-adjust">
-                Portfolio Albums
+Portfolio
               </h2>
             </GradualBlurWrapper>
 
@@ -378,67 +387,49 @@ export default function Portfolio() {
               reverseOnExit={true}
             >
               <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-400 max-w-3xl mx-auto mobile-body-adjust">
-                Explore my diverse photography work organized by specialty. Each album showcases a unique aspect of my
-                creative vision and technical expertise.
+                A direct edit of photographs across portraits, events, action, automotive, products, and spaces.
               </p>
             </GradualBlurWrapper>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {portfolioCategories.map((category, index) => (
-              <GradualBlurWrapper
-                key={category.title}
-                blurAmount={12}
-                duration={1200}
-                delay={200 + index * 150}
-                animationType="blur-slide"
-                direction={index % 2 === 0 ? "up" : "left"}
-                threshold={0.15}
-                triggerOnce={false}
-                reverseOnExit={true}
-                exitDelay={50}
+          <nav className="editorial-portfolio-filters" aria-label="Portfolio categories">
+            {portfolioFilters.map((filter) => (
+              <button
+                key={filter}
+                type="button"
+                className={`editorial-portfolio-filter ${activePortfolioCategory === filter ? "is-active" : ""}`}
+                aria-pressed={activePortfolioCategory === filter}
+                onClick={() => { setActivePortfolioCategory(filter); setPortfolioVisibleCount(10) }}
               >
-                <Link href={category.href}>
-                  <Card className="bg-gray-900 border-gray-800 overflow-hidden group hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20 cursor-pointer h-full">
-                    <CardContent className="p-0 relative h-full flex flex-col">
-                      <div className="relative aspect-[4/3] overflow-hidden">
-                        <Image
-                          src={category.thumbnail || "/placeholder.svg"}
-                          alt={category.title}
-                          fill
-                          className="object-cover group-hover:scale-110 transition-transform duration-700"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                          priority={index < 3}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                      </div>
-                      <div className="p-4 sm:p-6 flex-1 flex flex-col">
-                        <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3 bg-gradient-to-r from-red-500 to-purple-400 bg-clip-text text-transparent mobile-heading-adjust">
-                          {category.title}
-                        </h3>
-                        <p className="text-sm sm:text-base md:text-lg text-gray-400 mb-3 sm:mb-4 line-clamp-2 flex-1 mobile-body-adjust">
-                          {category.description}
-                        </p>
-                        <div className="flex items-center justify-between">
-                          <span className="text-xs sm:text-sm text-gray-500">Click to explore</span>
-                          <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-red-500 to-purple-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                            <svg
-                              className="w-3 h-3 sm:w-4 sm:h-4 text-white"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                          </div>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </Link>
-              </GradualBlurWrapper>
+                {filter}
+              </button>
+            ))}
+          </nav>
+
+          <div className="editorial-photo-grid">
+            {visiblePortfolioPhotos.map((photo, index) => (
+              <figure key={`${photo.src}-${index}`} className={`editorial-photo editorial-photo-${index % 8} group`}>
+                <div className="editorial-photo-frame">
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    fill
+                    className="object-cover transition duration-700 ease-out group-hover:scale-[1.04] group-hover:brightness-110"
+                    sizes="(max-width: 640px) 92vw, (max-width: 1024px) 48vw, 34vw"
+                    priority={index < 4}
+                  />
+                  <figcaption className="editorial-photo-caption">{photo.category}</figcaption>
+                </div>
+              </figure>
             ))}
           </div>
+          {filteredPortfolioPhotos.length > 10 && (
+            <div className="mt-12 text-center">
+              <button type="button" className="editorial-reveal-button" onClick={() => setPortfolioVisibleCount(hasMorePortfolioPhotos ? portfolioVisibleCount + 10 : 10)}>
+                {hasMorePortfolioPhotos ? "Show more →" : "Show less"}
+              </button>
+            </div>
+          )}
         </ResponsiveContainer>
       </section>
 
@@ -451,72 +442,61 @@ export default function Portfolio() {
           fadeInDuration={2000}
         />
         <ResponsiveContainer maxWidth="5xl" className="relative z-10">
-          <div className="text-center mb-12 sm:mb-16">
-            <GradualBlurWrapper
-              blurAmount={15}
-              duration={1200}
-              delay={100}
-              animationType="blur-fade"
-              threshold={0.2}
-              triggerOnce={false}
-              reverseOnExit={true}
-            >
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-red-500 to-purple-400 bg-clip-text text-transparent mobile-heading-adjust" style={{ marginTop: '-6px', paddingTop: '7px', lineHeight: '1.6em' }}>
-                Photography Packages
-              </h2>
-            </GradualBlurWrapper>
-
-            <GradualBlurWrapper
-              blurAmount={12}
-              duration={1000}
-              delay={300}
-              animationType="blur-slide"
-              direction="up"
-              threshold={0.2}
-              triggerOnce={false}
-              reverseOnExit={true}
-            >
-              <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mobile-body-adjust">
-                Choose the perfect package for your photography needs
-              </p>
-            </GradualBlurWrapper>
+          <div className="editorial-packages-heading">
+            <div>
+              <span className="eyebrow">Services / Packages</span>
+              <h2>Packages</h2>
+            </div>
+            <p>Actual sessions, deliverables, and pricing from the full Packages page.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            {packages.map((pkg, index) => (
-              <GradualBlurWrapper
-                key={pkg.title}
-                blurAmount={10}
-                duration={1000}
-                delay={500 + index * 200}
-                animationType="blur-scale"
-                threshold={0.2}
-                triggerOnce={false}
-                reverseOnExit={true}
+          <nav className="editorial-portfolio-filters" aria-label="Package categories">
+            {packageCategories.map((category) => (
+              <button
+                key={category}
+                type="button"
+                className={`editorial-portfolio-filter ${activePackageCategory === category ? "is-active" : ""}`}
+                aria-pressed={activePackageCategory === category}
+                onClick={() => { setActivePackageCategory(category); setPackageVisibleCount(6) }}
               >
-                <Card className="bg-white/5 backdrop-blur-sm border-white/10 hover:border-white/20 transition-colors h-full">
-                  <CardContent className="p-6 sm:p-8">
-                    <div className={`inline-flex p-3 rounded-lg bg-gradient-to-r ${pkg.gradient} mb-4`}>
-                      <pkg.icon className="w-6 h-6 text-white" />
+                {category}
+              </button>
+            ))}
+          </nav>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
+            {visiblePackages.map((pkg, index) => (
+              <GradualBlurWrapper key={pkg.id} blurAmount={10} duration={700} delay={index * 80} animationType="blur-scale" threshold={0.1} triggerOnce={false} reverseOnExit={true}>
+                <article className="editorial-package-card group">
+                  <div className="relative aspect-[4/3] overflow-hidden bg-white/[0.04]">
+                    <Image src={pkg.image} alt={`${pkg.name} package`} fill className="object-cover transition duration-700 group-hover:scale-[1.04]" sizes="(max-width: 768px) 100vw, 33vw" />
+                    {pkg.popular && <span className="absolute left-4 top-4 bg-white text-black px-3 py-1 text-[10px] uppercase tracking-[0.18em]">Popular</span>}
+                  </div>
+                  <div className="pt-5">
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <p className="text-[10px] uppercase tracking-[0.2em] text-white/40">{pkg.category}</p>
+                        <h3 className="mt-2 text-xl font-semibold tracking-tight text-white">{pkg.name}</h3>
+                      </div>
+                      <span className="text-lg font-semibold text-white">{pkg.price}</span>
                     </div>
-                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">{pkg.title}</h3>
-                    <p className="text-sm sm:text-base text-gray-400 mb-6">{pkg.description}</p>
-                    <ul className="space-y-3 mb-8">
-                      {pkg.features.map((feature) => (
-                        <li key={feature} className="flex items-center gap-3 text-sm sm:text-base text-gray-300">
-                          <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-red-500 to-purple-500" />
-                          {feature}
-                        </li>
-                      ))}
+                    <p className="mt-2 text-sm text-white/45">{pkg.duration}</p>
+                    <ul className="mt-5 space-y-2 border-t border-white/10 pt-4">
+                      {pkg.features.map((feature) => <li key={feature} className="text-sm text-white/65">{feature}</li>)}
                     </ul>
-                    <Button className="w-full bg-gradient-to-r from-red-500 to-purple-600 hover:from-red-600 hover:to-purple-700 text-white font-semibold">
-                      Get Started
-                    </Button>
-                  </CardContent>
-                </Card>
+                    <Button asChild variant="link" className="mt-4 h-auto p-0 text-xs uppercase tracking-[0.18em] text-white/60 hover:text-white"><a href="#contact">Get Started <span aria-hidden="true">↗</span></a></Button>
+                  </div>
+                </article>
               </GradualBlurWrapper>
             ))}
           </div>
+          {filteredPackages.length > 6 && (
+            <div className="mt-14 text-center">
+              <button type="button" className="editorial-reveal-button" onClick={() => setPackageVisibleCount(hasMorePackages ? packageVisibleCount + 6 : 6)}>
+                {hasMorePackages ? "Show more →" : "Show less"}
+              </button>
+            </div>
+          )}
         </ResponsiveContainer>
       </section>
 
@@ -740,6 +720,18 @@ export default function Portfolio() {
               <div className="elfsight-app-f87d232c-8173-4b1a-a1e4-a6cb527721a4" data-elfsight-app-lazy></div>
             </div>
           </GradualBlurWrapper>
+        </ResponsiveContainer>
+      </section>
+
+      {/* Instagram Section */}
+      <section id="instagram" className="section-padding relative overflow-hidden editorial-feed-section">
+        <ResponsiveContainer maxWidth="5xl" className="relative z-10">
+          <div className="editorial-section-heading">
+            <span className="eyebrow">Instagram / @mrcstreetvisuals</span>
+            <h2>From the feed</h2>
+            <p>Seven selected frames from <span className="text-white">@mrcstreetvisuals</span> — kept separate from the website portfolio archive.</p>
+          </div>
+          <InstagramCarousel posts={instagramPosts} className="editorial-instagram-carousel" />
         </ResponsiveContainer>
       </section>
 
