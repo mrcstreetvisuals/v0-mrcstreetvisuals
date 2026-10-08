@@ -354,26 +354,6 @@ export function getPackageSections() {
     },
   ]
 
-  const motorcyclePackages = [
-    {
-      id: "motorcycle-signature-session",
-      name: "Motorcycle Signature Session",
-      price: "90€",
-      duration: "1 hour",
-      icon: Camera,
-      image: "/images/motorcycle/motorcycle-signature-session.png",
-      features: [
-        "1-hour location shoot",
-        "12 professionally edited motorcycle photos",
-        "Detail, riding, and lifestyle coverage",
-        "Cinematic color grading",
-        "Private online gallery delivered within 48h",
-      ],
-      popular: true,
-      color: "from-orange-500 to-red-500",
-    },
-  ]
-
   const regularContentPackages = [
     {
       id: "content-starter",
@@ -381,7 +361,8 @@ export function getPackageSections() {
       price: "180€/month",
       duration: "1 content session/month",
       icon: Camera,
-      features: ["Up to 2 hours shooting", "20 edited photos", "3 short-form vertical videos", "Professional color grading", "Social-media ready files", "Delivery within 3–4 days", "Equivalent to 90€/session"],
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DSCF9002.JPG-m9r2NRLrWQXOrTVDZx1kLNmBHoJjiN.jpeg",
+      features: ["Up to 2 hours shooting", "20 edited photos", "2 short-form vertical videos", "Professional color grading", "Social-media ready files", "Delivery within 3–4 days", "Equivalent to 90€/session"],
       popular: false,
       color: "from-sky-500 to-blue-600",
     },
@@ -391,7 +372,8 @@ export function getPackageSections() {
       price: "320€/month",
       duration: "2 content sessions/month",
       icon: Sparkles,
-      features: ["Up to 2 hours per session", "40 edited photos", "6 short-form vertical videos", "Professional color grading", "Basic retouching", "Social-media ready formats", "Priority delivery within 2–3 days", "Equivalent to 160€/session"],
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BA9A9229-RqQHgPv5SAZs8q2Sh2q2ZaP5oF1VCH.jpg",
+      features: ["Up to 2 hours per session", "40 edited photos", "4 short-form vertical videos", "Professional color grading", "Basic retouching", "Social-media ready formats", "Priority delivery within 2–3 days", "Equivalent to 160€/session"],
       popular: true,
       color: "from-fuchsia-500 to-purple-600",
     },
@@ -401,7 +383,8 @@ export function getPackageSections() {
       price: "550€/month",
       duration: "4 content sessions/month",
       icon: Zap,
-      features: ["Up to 2 hours per session", "80+ edited photos", "12 short-form vertical videos", "Advanced color grading", "Professional retouching", "Multiple locations when practical", "Priority delivery within 48h", "Equivalent to 137.50€/session"],
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DSCF9220.JPG-E5wL3GA0xvuhS6eEpkyQe6APAnwblV.jpeg",
+      features: ["Up to 2 hours per session", "80+ edited photos", "6 short-form vertical videos", "Advanced color grading", "Professional retouching", "Multiple locations when practical", "Priority delivery within 48h", "Equivalent to 137.50€/session"],
       popular: false,
       color: "from-amber-500 to-orange-600",
     },
@@ -417,7 +400,6 @@ export function getPackageSections() {
     { id: "product", eyebrow: "Product", title: "Objects with presence", description: "Clean, considered product photography for shops, launches, and social campaigns.", image: "/images/product-nafa-duo.jpg", packages: productPackages },
     { id: "content", eyebrow: "Regular Content", title: "Keep showing up", description: "Reliable monthly photography and short-form video for brands that need a consistent visual rhythm.", image: "/images/events/traditional-cultural-ensemble.jpg", packages: regularContentPackages },
     { id: "automotive", eyebrow: "Automotive", title: "Machines in motion", description: "Detail-led, cinematic coverage that turns your vehicle into a visual statement.", image: "/images/pink-car-automotive.jpg", packages: automotivePackages },
-    { id: "motorcycle", eyebrow: "Motorcycle", title: "Ride your own line", description: "Capture the character, details, and freedom of your motorcycle in every frame.", image: "/images/motorcycle/motorcycle-signature-session.png", packages: motorcyclePackages },
   ]
 
   return albumSections
