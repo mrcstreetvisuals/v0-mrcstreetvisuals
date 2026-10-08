@@ -408,16 +408,9 @@ export function getPackageSections() {
   ]
 
   const albumSections = [
-    { id: "surf", eyebrow: "Surf", title: "Ocean in motion", description: "From first wave to full cinematic coverage, choose a session built around your time in the water.", image: editorialImages.hero.src, packages: surfPackages },
-    { id: "portrait", eyebrow: "Portrait", title: "Your story, framed", description: "Natural light portraits with a streetwise, coastal point of view.", image: editorialImages.portraits.src, packages: portraitPackages },
-    { id: "combo", eyebrow: "Surf + Portrait", title: "The whole day", description: "Pair the energy of the ocean with portraits that carry the feeling home.", image: "/images/shop/sunset-couple-surfboards.jpg", packages: comboPackages },
-    { id: "couple", eyebrow: "Couple", title: "Two people, one story", description: "Romantic sessions made for beaches, streets, golden hours, and everything between.", image: "/images/sunset-couple-silhouette.jpg", packages: couplePackages },
-    { id: "real-estate", eyebrow: "Real Estate & Rentals", title: "Make space memorable", description: "Bright, honest property imagery that helps guests and buyers picture themselves there.", image: "/images/real-estate/rooftop-terrace-sunset-chairs.jpg", packages: realEstatePackages },
-    { id: "events", eyebrow: "Events", title: "Stay in the moment", description: "A focused visual record of the people, details, and energy that made your event matter.", image: "/images/events/nightclub-red.jpg", packages: eventPackages },
-    { id: "product", eyebrow: "Product", title: "Objects with presence", description: "Clean, considered product photography for shops, launches, and social campaigns.", image: "/images/product-nafa-duo.jpg", packages: productPackages },
-    { id: "content", eyebrow: "Regular Content", title: "Keep showing up", description: "Reliable monthly photography and short-form video for brands that need a consistent visual rhythm.", image: "/images/events/traditional-cultural-ensemble.jpg", packages: regularContentPackages },
-    { id: "automotive", eyebrow: "Automotive", title: "Machines in motion", description: "Detail-led, cinematic coverage that turns your vehicle into a visual statement.", image: "/images/pink-car-automotive.jpg", packages: automotivePackages },
-    { id: "motorcycle", eyebrow: "Motorcycle", title: "Ride your own line", description: "Capture the character, details, and freedom of your motorcycle in every frame.", image: "/images/motorcycle/motorcycle-signature-session.png", packages: motorcyclePackages },
+    { id: "content", eyebrow: "Regular Content", title: "Keep showing up", description: "Reliable monthly photography and short-form video for brands that need a consistent visual rhythm.", image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DSCF9220.JPG-Ujz27aPiLh2m8vS1tokzKOK5rmYao1.jpeg", packages: regularContentPackages },
+    { id: "portrait", eyebrow: "Portrait", title: "Your story, framed", description: "Natural light portraits with a streetwise, coastal point of view.", image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DSCF9002.JPG-MBLV8OfcF4tn888liy3SbwjatXbtfd.jpeg", packages: portraitPackages },
+    { id: "surf", eyebrow: "Surf", title: "Ocean in motion", description: "From first wave to full cinematic coverage, choose a session built around your time in the water.", image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DSCF8434.JPG-3H8qR3EigXV68D4C8EHHJNP9tKBHkk.jpeg", packages: surfPackages },
   ]
 
   return albumSections
