@@ -131,7 +131,7 @@ export default function Portfolio() {
 
   const packageSections = getPackageSections()
   const packageCatalog = packageSections.flatMap((section) =>
-    section.packages.map((pkg) => ({ ...pkg, category: section.eyebrow, categoryImage: section.image }))
+    section.packages.map((pkg) => ({ ...pkg, category: section.eyebrow }))
   )
   const packageCategories = ["All", ...packageSections.map((section) => section.eyebrow)]
   const filteredPackages = activePackageCategory === "All"
@@ -469,7 +469,7 @@ Portfolio
               <GradualBlurWrapper key={pkg.id} blurAmount={10} duration={700} delay={index * 80} animationType="blur-scale" threshold={0.1} triggerOnce={false} reverseOnExit={true}>
                 <article className="editorial-package-card group">
                   <div className="relative aspect-[4/3] overflow-hidden bg-white/[0.04]">
-                    <Image src={pkg.categoryImage} alt={`${pkg.category} package category`} fill className="object-cover transition duration-700 group-hover:scale-[1.04]" sizes="(max-width: 768px) 100vw, 33vw" />
+                    <Image src={pkg.image} alt={`${pkg.name} package`} fill className="object-cover transition duration-700 group-hover:scale-[1.04]" sizes="(max-width: 768px) 100vw, 33vw" />
                     {pkg.popular && <span className="absolute left-4 top-4 bg-white text-black px-3 py-1 text-[10px] uppercase tracking-[0.18em]">Popular</span>}
                   </div>
                   <div className="pt-5">
